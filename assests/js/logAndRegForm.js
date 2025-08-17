@@ -43,6 +43,31 @@ function validateForm(form) {
       confirmPass.setCustomValidity("");
     }
   }
+
+const emailInputs = document.querySelectorAll('input[type="email"]');
+emailInputs.forEach(input => {
+  input.addEventListener("input", function () {
+    const emailRegex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
+    if (!emailRegex.test(this.value)) {
+      this.setCustomValidity("Please enter a valid email (example@domain.com).");
+    } else {
+      this.setCustomValidity("");
+    }
+  });
+});
+
+const passwordInputs = document.querySelectorAll('input[type="password"]');
+passwordInputs.forEach(input => {
+  input.addEventListener("input", function () {
+      const passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])\S{8,16}$/;
+      if (!passwordRegex.test(this.value)) {
+          this.setCustomValidity("Password must be 8-16 chars with uppercase, lowercase, number, and special char.");
+      } else {
+          this.setCustomValidity("");
+      }
+  });
+})
+
   return form.checkValidity();
 }
 
