@@ -47,7 +47,7 @@ function validateForm(form) {
 const emailInputs = document.querySelectorAll('input[type="email"]');
 emailInputs.forEach(input => {
   input.addEventListener("input", function () {
-    const emailRegex = /^((?!\.)[\w\-_.]*[^.])(@\w+)(\.\w+(\.\w+)?[^.\W])$/gm;
+    const emailRegex = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/gm;
     if (!emailRegex.test(this.value)) {
       this.setCustomValidity("Please enter a valid email (example@domain.com).");
     } else {
