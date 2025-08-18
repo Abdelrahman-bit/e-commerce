@@ -1,46 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Browse Categories</title>
-  <link rel="stylesheet" href="../assests/css/categories.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Browse Categories</title>
+    <link rel="stylesheet" href="../assests/css/categories.css">
 </head>
+
 <body>
-  <div class="category-section">
-    <div class="d-flex align-items-center justify-content-between">
-        <h2>Browse By Category</h2>
-        <div class="row">
-            <div class="arrow" id="prevBtn">‹</div>
-            <div class="arrow" id="nextBtn">›</div>
+    <div class="category-section">
+        <div class="d-flex align-items-center justify-content-between">
+            <h2>Browse By Category</h2>
+            <div class="d-flex">
+                <div class="arrow" id="prevBtn">‹</div>
+                <div class="arrow" id="nextBtn">›</div>
+            </div>
+        </div>
+
+        <div class="categories-container">
+            <div class="categories" id="categoryList">
+                <div class="category"><img src="https://img.icons8.com/ios/50/000000/iphone.png" /><span>Phones</span>
+                </div>
+                <div class="category"><img
+                        src="https://img.icons8.com/?size=100&id=22193&format=png&color=000000" /><span><br>Smart
+                        Watches</span></div>
+                <div class="category"><img src="https://img.icons8.com/ios/50/000000/camera.png" /><span>Cameras</span>
+                </div>
+                <div class="category"><img
+                        src="https://img.icons8.com/ios/50/000000/headphones.png" /><span>Headphones</span></div>
+                <div class="category"><img src="https://img.icons8.com/ios/50/000000/imac.png" /><span>Computers</span>
+                </div>
+                <div class="category"><img
+                        src="https://img.icons8.com/ios/50/000000/controller.png" /><span>Gaming</span></div>
+            </div>
         </div>
     </div>
 
-    <div class="categories-container">
-      <div class="categories" id="categoryList">
-        <div class="category"><img src="https://img.icons8.com/ios/50/000000/iphone.png"/><span>Phones</span></div>
-        <div class="category"><img src="https://img.icons8.com/?size=100&id=22193&format=png&color=000000"/><span><br>Smart Watches</span></div>
-        <div class="category"><img src="https://img.icons8.com/ios/50/000000/camera.png"/><span>Cameras</span></div>
-        <div class="category"><img src="https://img.icons8.com/ios/50/000000/headphones.png"/><span>Headphones</span></div>
-        <div class="category"><img src="https://img.icons8.com/ios/50/000000/imac.png"/><span>Computers</span></div>
-        <div class="category"><img src="https://img.icons8.com/ios/50/000000/controller.png"/><span>Gaming</span></div>
-      </div>
-    </div>
-  </div>
+    <script>
+        const categoryList = document.getElementById('categoryList');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
 
-  <script>
-    const categoryList = document.getElementById('categoryList');
-const prevBtn = document.getElementById('prevBtn');
-const nextBtn = document.getElementById('nextBtn');
+        nextBtn.addEventListener('click', () => {
+            categoryList.scrollBy({ left: 200, behavior: 'smooth' });
+        });
 
-nextBtn.addEventListener('click', () => {
-  categoryList.scrollBy({ left: 200, behavior: 'smooth' });
-});
+        prevBtn.addEventListener('click', () => {
+            categoryList.scrollBy({ left: -200, behavior: 'smooth' });
+        });
 
-prevBtn.addEventListener('click', () => {
-  categoryList.scrollBy({ left: -200, behavior: 'smooth' });
-});
-
-  </script>
+    </script>
 </body>
+
 </html>
