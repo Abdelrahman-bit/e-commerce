@@ -14,19 +14,14 @@
     />
     <link rel="stylesheet" href="./components/style.css" />
     <script type="module">
-        import { loadComponent } from './assests/js/utils.js';
-        // Load header and footer components
-        // loadComponent(where you want to load the component in the current page, the component file path)
-        loadComponent('header', './components/header.html');
-        loadComponent('footer', './components/footer.html');
-        loadComponent('category', './components/category.html');
+      import { loadComponent } from './assests/js/utils.js';
+      loadComponent('header', './components/header.html');
+      loadComponent('footer', './components/footer.html');
     </script>
   </head>
   <body>
-    <!-- Header  -->
+    <!-- Header Navigation -->
     <header id="header"></header>
-    <!-- categorys -->
-    <div id="category"></div>
 
     <!-- Main Content (Demo) -->
     <main class="main-content">
