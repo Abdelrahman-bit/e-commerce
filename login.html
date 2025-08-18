@@ -1,14 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="./assests/js/bootstrap.bundle.min.js" defer></script>
-    <link rel="stylesheet" href="./assests/css/bootstrap.min.css">
-    <title>Login</title>
-
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assests/css/login.css">
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="row login-container">
+
+            <!-- Left Side -->
+            <div class="col-md-6 left-side d-none d-md-flex flex-column justify-content-center">
+                <h1>Cyber</h1>
+                <img src="assests/images/line.png" alt="vector" width="150">
+                <h2>All-in-One E-Commerce Made Easy.</h2>
+                <p>From product management to order tracking, our platform
+                    helps you run your online business smoothly and
+                    effectively.</p>
+                <div class="mt-4">
+                    <img src="assests/images/Logowhite.png" alt="logo" class="img-fluid">
+                </div>
+            </div>
+
+            <!-- Right Side -->
+            <div class="col-md-6 form-section">
+                <div id="form-alert"></div> <!-- مكان الرسالة -->
+
+                <div class="text-center mb-4">
+                    <img src="assests/images/Logo.png" width="100" alt="logo">
+                    <h3 class="mt-2" id="form-title">Welcome Back</h3>
+                    <p id="form-subtitle">Please login to your account</p>
+                </div>
+
+
+                <!-- Login Form -->
+                <form id="login-form" novalidate>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email address" required>
+                        <div class="invalid-feedback">Please enter a valid email.</div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Password" required minlength="6">
+                        <div class="invalid-feedback">Incorrect email or password.</div>
+                    </div>
+                    <div class="d-flex justify-content-between mb-3">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="btn btn-login w-100">Login</button>
+                </form>
+
+                <!-- Register Form -->
+                <form id="register-form" class="d-none" novalidate>
+                    <div class="mb-3">
+                        <input type="text" class="form-control" placeholder="Full Name" required>
+                        <div class="invalid-feedback">Full name is required.</div>
+                    </div>
+                    <div class="mb-3">
+                        <input 
+                        type="email" 
+                        class="form-control" 
+                        id="email" 
+                        placeholder="Email address" 
+                        required 
+                        >
+                        <div class="invalid-feedback">Please enter a valid email (example@domain.com).</div>
+
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Password" required>
+                        <div class="invalid-feedback">Password must be 8-16 chars with uppercase, lowercase, number, and special char</div>
+                    </div>
+                    <div class="mb-3">
+                        <input type="password" class="form-control" placeholder="Confirm Password" required>
+                        <div class="invalid-feedback">Please confirm your password.</div>
+                    </div>
+                    <button type="submit" class="btn btn-login w-100">Signup</button>
+                </form>
+
+
+                <div class="text-center mt-4">
+                    <span id="toggle-text">Don’t have an account? <a href="#" id="toggle-link">Signup</a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="assests/js/logAndRegForm.js"></script>
 </body>
+
 </html>
