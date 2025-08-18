@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber - Tech Store</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./components/style.css" />
+  <script type="module">
+    import { loadComponent } from './assests/js/utils.js';
+    loadComponent('header', './components/header.html');
+    loadComponent('footer', './components/footer.html');
+  </script>
+</head>
+
+<body>
+  <!-- Header Navigation -->
+  <header id="header"></header>
+
+  <main class="container">
+    
+    <!-- breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/">Home</a></li>
+        <li class="breadcrumb-item active" aria-current="page">smart phones</li>
+      </ol>
+    </nav>
+
+    <!-- Main Content (Demo) -->
+
+  </main>
+  
+
+  <!-- Footer -->
+  <footer id="footer"> </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  
+</body>
+
+</html>

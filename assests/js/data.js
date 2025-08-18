@@ -13,6 +13,13 @@ export const users = [
 		email: "hamada@example.com",
 		password: "hamada123",
 	},
+	{
+		id: 3,
+		name: "ali",
+		role: "customer",
+		email: "ali@example.com",
+		password: "ali123",
+	},
 ];
 
 export const products = [
@@ -85,3 +92,26 @@ export const currentUser = {
     email: "hamada@example.com",
     password: "hamada123",
 }
+
+export const favorites = [
+	{
+		id: 1,
+		sellerEmail: "hamada@example.com",
+		name: "laptop",
+		price: 100,
+		description: "Description for laptop",
+		category: "smart devices",
+		image: "url",
+		stock: 50,
+	},
+	{
+		id: 5,
+		sellerEmail: "hamada@example.com",
+		name: "wireless earbuds",
+		price: 100,
+		description: "Description for wireless earbuds",
+		category: "smart devices",
+		image: "url",
+		stock: 40,
+	}
+];
