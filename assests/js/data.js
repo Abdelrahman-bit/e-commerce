@@ -30,7 +30,8 @@ export const products = [
 		price: 100,
 		description: "Description for laptop",
 		category: "smart devices",
-		image: "url",
+		image: "/assests/images/product.png",
+		fav: false,
 		stock: 50,
 	},
 	{
@@ -40,7 +41,8 @@ export const products = [
 		price: 200,
 		description: "Description for smartphone",
 		category: "smart devices",
-		image: "url",
+		image: "/assests/images/product.png",
+		fav: false,
 		stock: 30,
 	},
 	{
@@ -50,7 +52,8 @@ export const products = [
 		price: 300,
 		description: "Description for tablet",
 		category: "smart devices",
-		image: "url",
+		image: "/assests/images/product.png",
+		fav: false,
 		stock: 20,
 	},
 	{
@@ -60,7 +63,8 @@ export const products = [
 		price: 150,
 		description: "Description for smartwatch",
 		category: "smart devices",
-		image: "url",
+		image: "/assests/images/product.png",
+		fav: false,
 		stock: 25,
 	},
 	{
@@ -70,7 +74,8 @@ export const products = [
 		price: 100,
 		description: "Description for wireless earbuds",
 		category: "smart devices",
-		image: "url",
+		image: "/assests/images/product.png",
+		fav: false,
 		stock: 40,
 	},
 ];
