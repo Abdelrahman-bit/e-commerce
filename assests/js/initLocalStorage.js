@@ -16,3 +16,4 @@ if (getProducts().length === 0) {
 		addProduct(product);
 	});
 }
+
