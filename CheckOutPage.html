@@ -13,7 +13,6 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./components/style.css" />
-    <link rel="stylesheet" href="assests/css/homeStyle.css" />
     <script type="module">
       import { loadComponent } from "./assests/js/utils.js";
       // Load header and footer components
@@ -26,7 +25,9 @@
       type="module"
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
-    <link rel="stylesheet" href="assests/css/CheckOutStyles.css" />
+    <style>
+      
+    </style>
   </head>
   <body>
     <!-- Header  -->
@@ -35,20 +36,30 @@
     <div id="category"></div>
 
     <!-- Main Content (Demo) -->
-    <div class="card m-5">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="row">
-            <div class="col-12 col-md-8">
-      <h1 class="fw-bold mb-4">Shopping Cart</h1>
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container my-4">
+  <div class="row g-4">
+    
+    <!-- Left side - Cart items -->
+    <div class="col-12 col-md-8">
+      <h4 class="fw-bold mb-4">Shopping Cart</h4>
 
       <!-- Item 1 -->
       <div class="card mb-3 border-0 border-bottom rounded-0">
         <div class="row g-0 align-items-center p-3">
-          <div class="col-4 col-md-2">
+          <div class="col-3 col-md-2">
             <img src="assests/images/Products/IphoneProduct1.png" alt="Product" class="img-fluid rounded">
           </div>
-          <div class="col-8 col-md-10">
+          <div class="col-9 col-md-10">
             <div class="d-flex justify-content-between">
               <div>
                 <h6 class="mb-1">Apple iPhone 14 Pro Max 128Gb Deep Purple</h6>
@@ -61,21 +72,20 @@
               </div>
               <div class="text-end">
                 <h6>$1399</h6>
-                <button class="btn btn-sm ">&#x2715;</button>
+                <button class="btn btn-sm">&#x2715;</button>
               </div>
             </div>
           </div>
         </div>
       </div>
-      
 
       <!-- Item 2 -->
       <div class="card mb-3 border-0 border-bottom rounded-0">
         <div class="row g-0 align-items-center p-3">
-          <div class="col-4 col-md-2">
-            <img src="assests/images/Products/IphoneProduct1.png" alt="Product" class="img-fluid rounded">
+          <div class="col-3 col-md-2">
+            <img src="assests/images/Products/Airbodsmax.png" alt="Product" class="img-fluid rounded">
           </div>
-          <div class="col-8 col-md-10">
+          <div class="col-9 col-md-10">
             <div class="d-flex justify-content-between">
               <div>
                 <h6 class="mb-1">AirPods Max Silver</h6>
@@ -88,7 +98,7 @@
               </div>
               <div class="text-end">
                 <h6>$549</h6>
-                <button class="btn btn-sm ">&#x2715;</button>
+                <button class="btn btn-sm">&#x2715;</button>
               </div>
             </div>
           </div>
@@ -98,10 +108,10 @@
       <!-- Item 3 -->
       <div class="card mb-3 border-0 border-bottom rounded-0">
         <div class="row g-0 align-items-center p-3">
-          <div class="col-4 col-md-2">
-            <img src="assests/images/Products/IphoneProduct1.png" alt="Product" class="img-fluid rounded">
+          <div class="col-3 col-md-2">
+            <img src="assests/images/Products/applewatch.png" alt="Product" class="img-fluid rounded">
           </div>
-          <div class="col-8 col-md-10">
+          <div class="col-9 col-md-10">
             <div class="d-flex justify-content-between">
               <div>
                 <h6 class="mb-1">Apple Watch Series 9 GPS 41mm Starlight Aluminium</h6>
@@ -114,7 +124,7 @@
               </div>
               <div class="text-end">
                 <h6>$399</h6>
-                <button class="btn btn-sm ">&#x2715;</button>
+                <button class="btn btn-sm">&#x2715;</button>
               </div>
             </div>
           </div>
@@ -122,62 +132,42 @@
       </div>
 
     </div>
-            <div class="col-md-4">
-              <div
-                class="d-flex flex-column flex-md-column flex-lg-row justify-content-between align-items-center"
-              >
-                <h1 class="fw-bold">Order Summary</h1>
-              </div>
-              <div class="row">
-                <div class="col-md-12">
-                  <form role="form">
-                    <div class="form-group mb-4">
-                      <label for="Payment"> Payment Details </label>
-                      <input
-                        type="Text"
-                        class="form-control p-3"
-                        id="Payment"
-                      />
-                    </div>
-                    <div class="form-group mb-4">
-                      <label for="Shipping"> Shipping </label>
-                      <input
-                        type="date"
-                        class="form-control p-3"
-                        id="Shipping"
-                      />
-                    </div>
 
-                    <!-- Order Details -->
-                    <div class="d-flex justify-content-between mb-2">
-                      <span>Subtotal</span>
-                      <span class="fw-bold">$2347</span>
-                    </div>
-                    <div class="d-flex justify-content-between mb-2">
-                      <span>Estimated Tax</span>
-                      <span>$50</span>
-                    </div>
-                    <div class="d-flex justify-content-between mb-3">
-                      <span>Estimated shipping & Handling</span>
-                      <span>$29</span>
-                    </div>
+    <!-- Right side - Order Summary -->
+    <div class="col-12 col-md-4">
+      <div class="card p-4">
+        <h5 class="fw-bold mb-3">Order Summary</h5>
 
-                    <hr />
+        <div class="mb-3">
+          <label class="form-label">Payment Details</label>
+          <input type="text" class="form-control">
+        </div>
 
-                    <div class="d-flex justify-content-between mb-4">
-                      <span class="fw-bold">Total</span>
-                      <span class="fw-bold">$2426</span>
-                    </div>
-
-                    <button type="submit" class="btn checkout">Checkout</button>
-                  </form>
-                </div>
-              </div>
-            </div>
+        <div class="mb-3">
+          <label class="form-label">Order Date</label>
+          <div class="input-group">
+            <input type="date" class="form-control">
           </div>
         </div>
+
+        <ul class="list-unstyled">
+          <li class="d-flex justify-content-between"><strong>Subtotal</strong><strong>$2347</strong></li>
+          <li class="d-flex justify-content-between"><span>Estimated Tax</span><span>$50</span></li>
+          <li class="d-flex justify-content-between"><span>Estimated shipping & Handling</span><span>$29</span></li>
+          <hr>
+          <li class="d-flex justify-content-between fw-bold"><strong>Total</strong><strong>$2426</strong></li>
+        </ul>
+
+        <button class="btn btn-dark w-100 mt-3">Checkout</button>
       </div>
     </div>
+  </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
 
     <!-- Footer -->
     <footer id="footer"></footer>
