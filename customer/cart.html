@@ -1,13 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assests/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../components/style.css" />
     <script src="../assests/js/bootstrap.bundle.min.js" defer></script>
+    <script type="module">
+        import { loadComponent } from '../assests/js/utils.js';
+        // Load header and footer components
+        loadComponent('header', '../components/header.html');
+        loadComponent('footer', '../components/footer.html');
+    </script>
     <title>cart page</title>
 </head>
+
 <body>
-    
+    <header id="header"></header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center my-5">
+                    <h2>Your Shopping Cart</h2>
+                    <p class="lead">Review your selected items below</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer id="footer"></footer>
 </body>
+
 </html>
