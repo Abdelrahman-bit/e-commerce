@@ -1,44 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Cyber - Tech Store</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Bootstrap & FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet"/>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="./components/style.css" />
-  <link rel="stylesheet" href="./assests/css/homeStyle.css" />
-  <link rel="stylesheet" href="../assests/css/productCard.css">
+  <link rel="stylesheet" href="assests/css/homeStyle.css" />
+  <link rel="stylesheet" href="../assests/css/productCard.css" />
 
-  <!-- iniate the locale storage with dummy data -->
-  <script src="./assests/js/initLocalStorage.js" type="module"></script>
+  <!-- Auth & Navbar logic -->
+  <script src="./assests/js/auth.js" defer></script>
+  <script src="./assests/js/navbar.js" defer></script>
 
+  <!-- تحميل المكونات -->
   <script type="module">
     import { loadComponent } from "./assests/js/utils.js";
-    // Load header and footer components
-    // loadComponent(where you want to load the component in the current page, the component file path)
+    // تحميل الـ header / footer / category / mainCategories
     loadComponent("header", "./components/header.html");
     loadComponent("footer", "./components/footer.html");
     loadComponent("category", "./components/category.html");
     loadComponent("mainCategories", "./components/mainCategories.html");
-
   </script>
+
+  <!-- Model Viewer -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 </head>
-
 <body>
   <!-- Header  -->
   <header id="header"></header>
+
   <!-- categorys -->
   <div id="category"></div>
 
-  <!-- Main Content (Demo) -->
-
+  <!-- Main Content -->
   <section>
     <div class="container">
       <div class="row pt-5 pb-5">
-        <div class="col-12 col-sm-6 w-full">
+        <div class="col-12 col-sm-6">
           <p class="text-secondary fs-5 mb-3">Pro.Beyond.</p>
           <h1 class="display-1 fw-light mb-4">
             IPhone 14 <span class="fw-bold">Pro</span>
@@ -49,28 +53,39 @@
           <a href="#" class="btn btn-outline-light btn-lg px-5 py-3">Shop Now</a>
         </div>
 
-        <div class="col-12 w-full col-sm-6 text-center">
-          <model-viewer class="col-12" src="/assests/3d module/iphone-16-pro-max/iphone_16_pro_max.glb"
-            style="width: 100%; height: 400px" alt="3D Model" auto-rotate camera-controls background-color="#fff">
+        <div class="col-12 col-sm-6 text-center">
+          <model-viewer
+            class="col-12"
+            src="/assests/3d module/iphone-16-pro-max/iphone_16_pro_max.glb"
+            style="width: 100%; height: 400px"
+            alt="3D Model"
+            auto-rotate
+            camera-controls
+            background-color="#fff"
+          >
           </model-viewer>
         </div>
       </div>
     </div>
   </section>
+
+  <!-- Main Categories -->
   <main>
     <div class="container">
       <div id="mainCategories"></div>
     </div>
   </main>
 
+  <!-- Products -->
   <div class="container mb-4">
     <div class="row g-4" id="product-list"></div>
   </div>
 
-
   <!-- Footer -->
   <footer id="footer"></footer>
-  <script type="module" src="./assests/js/products.js"></script>
+
+  <!-- Scripts -->
+  <script type="module" src="../assests/js/products.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
 
