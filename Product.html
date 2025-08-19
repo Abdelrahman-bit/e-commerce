@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyber - Tech Store</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./components/style.css" />
+    <script type="module">
+      import { loadComponent } from './assests/js/utils.js';
+      loadComponent('header', './components/header.html');
+      loadComponent('footer', './components/footer.html');
+    </script>
+  </head>
+  <body>
+    <!-- Header Navigation -->
+    <header id="header"></header>
+
+    <!-- Main Content (Demo) -->
+    <main class="main-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 text-center my-5">
+            <h2>Welcome to Cyber</h2>
+            <p class="lead">Your one-stop shop for all technology needs</p>
+            <p class="text-muted">
+              This is a demo page showing the reusable header navigation and
+              footer components.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer id="footer"> </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
