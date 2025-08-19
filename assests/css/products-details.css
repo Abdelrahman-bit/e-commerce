@@ -181,11 +181,12 @@ section.s1 > * {
 }
 .features > div {
   padding: 0;
+
   .feature-item {
     /* width: 95px; */
     /* padding-inline: 5px; */
     gap: 10px;
-
+    width: 160px;
     i {
       font-size: 30px;
       padding: 14px 10px 4px 10px;
@@ -220,6 +221,19 @@ section.s1 > * {
     display: block;
     margin: 0 auto;
   }
+}
+.extra-text {
+  display: inline-block;
+  height: 90px;
+  transition: all 0.3s ease-in;
+  overflow: hidden;
+}
+.moreBtn {
+  display: inline-block;
+  cursor: pointer;
+}
+.hidden {
+  height: 0px;
 }
 /* Add margin to separate items on wrapped lines */
 /* .storage-item:not(:last-child) {

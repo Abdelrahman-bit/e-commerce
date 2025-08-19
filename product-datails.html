@@ -4,38 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="./assests/js/bootstrap.bundle.min.js" defer></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./assests/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assests/css/products-details.css" />
     <link rel="stylesheet" href="./components/style.css" />
     <link rel="stylesheet" href="/assests/css/style.css" />
-    <link rel="stylesheet" href="assests/css/homeStyle.css" />
+    <!-- <link rel="stylesheet" href="assests/css/homeStyle.css" /> -->
     <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
-      data-purpose="Layout StyleSheet"
-      title="Web Awesome"
-      href="/css/app-wa-9a55d8748fd46de7b7977d9ee8dee7a4.css?vsn=d"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/all.css"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-solid.css"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-regular.css"
-    />
-
-    <link
-      rel="stylesheet"
-      href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
     />
     <title>details</title>
+    <script src="./assests/js/product-details.js" type="module"></script>
     <script type="module">
       import { loadComponent } from "./assests/js/utils.js";
       loadComponent("header", "./components/header.html");
@@ -48,25 +31,7 @@
       <section
         class="d-flex flex-column align-items-center flex-md-row justify-content-center s1"
       >
-        <div
-          class="left-sec d-flex flex-column-reverse flex-md-row align-items-center justify-content-center"
-        >
-          <div
-            class="sub-cont-morephones d-flex flex-wrap justify-content-around flex-md-column align-items-center"
-          >
-            <div class="cover">
-              <img src="./assests/imgs/phone.png" alt="" />
-            </div>
-            <div class="cover">
-              <img src="./assests/imgs/phone1.png" alt="" />
-            </div>
-            <div class="cover">
-              <img src="./assests/imgs/phone2.png" alt="" />
-            </div>
-            <div class="cover">
-              <img src="./assests/imgs/phone3.png" alt="" />
-            </div>
-          </div>
+        <div class="left-sec d-flexalign-items-center justify-content-center">
           <div class="sub-cont-onephone h-100">
             <img src="./assests/imgs/phone.png" alt="" />
           </div>
@@ -92,7 +57,7 @@
               <label for="storage-1tb">1TB</label>
             </div>
           </div>
-          <div class="specs container">
+          <!-- <div class="specs container">
             <div class="row">
               <div class="col-6 col-md-4 spec-item d-flex align-items-center">
                 <i class="fa-solid fa-mobile-screen"></i>
@@ -138,54 +103,59 @@
                 </div>
               </div>
             </div>
-          </div>
-          <p class="description">
+          </div> -->
+          <p class="my-3 px-2 pr-5">
             Enhanced capabilities thanks toan enlarged display of 6.7 inchesand
             work without rechargingthroughout the day. Incredible photosas in
             weak, yesand in bright lightusing the new systemwith two camera
+            <span class="extra-text hidden">
+              hhh-work without rechargingthroughout the day. Incredible photosas
+              in weak, yesand in bright lightusing the new systemwith two
+              camera-hhh</span
+            >
             <span class="moreBtn">more</span>...
           </p>
           <div
-            class="btns d-flex flex-column flex-md-row justify-content-around"
+            class="btns d-flex flex-column flex-md-row justify-content-around my-3"
           >
             <button class="wishBtn btn">Add to Wishlist</button>
             <button class="cartBtn btn">Add to Cart</button>
           </div>
 
-          <div class="row features">
-            <div class="col-4 d-flex flex-column align-items-center">
+          <div class="row features justify-content-around">
+            <div class="col-5 d-flex flex-column align-items-center">
               <div
                 class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
               >
-                <i class="fa-regular fa-truck"></i>
+                <i class="fa-solid fa-truck"></i>
                 <div>
                   <p>Free Delevery</p>
                   <p>1-2 days</p>
                 </div>
               </div>
             </div>
-            <div class="col-4 d-flex flex-column align-items-center">
+            <div class="col-5 d-flex flex-column align-items-center">
               <div
                 class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
               >
-                <i class="fa-regular fa-store"></i>
+                <i class="fa-solid fa-store"></i>
                 <div>
-                  <p>In Stock</p>
-                  <p>always</p>
+                  <p>Stock Status</p>
+                  <p>In-Stock</p>
                 </div>
               </div>
             </div>
-            <div class="col-4 d-flex flex-column align-items-center">
+            <!-- <div class="col-4 d-flex flex-column align-items-center">
               <div
                 class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
               >
-                <i class="fa-regular fa-file-certificate"></i>
+                <i class="fa-regular fa-star"></i>
                 <div>
                   <p>Guaranteed</p>
                   <p>Screen Size</p>
                 </div>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
       </section>
