@@ -34,108 +34,14 @@
       href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
     />
     <title>details</title>
+    <script type="module">
+      import { loadComponent } from "./assests/js/utils.js";
+      loadComponent("header", "./components/header.html");
+      loadComponent("footer", "./components/footer.html");
+    </script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#" id="brand"
-          ><img src="/assests/images/LogoMainVector.png" alt=""
-        /></a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="mx-auto">
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                style="width: 300px"
-              />
-              <button class="btn btn-outline-secondary" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
-          </div>
-
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link main-nav-link active" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="far fa-heart"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="fas fa-shopping-cart"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="far fa-user"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Category Navigation -->
-    <nav class="category-nav">
-      <div class="container">
-        <ul class="nav col-12 text-center">
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-mobile-alt"></i>Phones
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-laptop"></i>Computers
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="far fa-clock"></i>Smart Watches
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-camera"></i>Cameras
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-headphones"></i>Headphones
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-gamepad"></i>Gaming
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <header id="header"></header>
     <div class="main-container px-3 px-md-4">
       <section
         class="d-flex flex-column align-items-center flex-md-row justify-content-center s1"
@@ -324,51 +230,7 @@
         </p>
         <button class="btn">View More</button>
       </section>
-      <footer>
-        <div class="container">
-          <div class="row justify-content-between">
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="footer-brand">
-                <img src="/assests/images/Logowhite.png" alt="" />
-              </div>
-              <p class="footer-description">
-                We are a residential interior design firm located in Portland.
-                Our boutique-studio offers more than
-              </p>
-              <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
-              <h6>Services</h6>
-              <ul class="footer-links">
-                <li><a href="#">Bonus program</a></li>
-                <li><a href="#">Gift cards</a></li>
-                <li><a href="#">Credit and payment</a></li>
-                <li><a href="#">Service contracts</a></li>
-                <li><a href="#">Non-cash account</a></li>
-                <li><a href="#">Payment</a></li>
-              </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
-              <h6>Assistance to the buyer</h6>
-              <ul class="footer-links">
-                <li><a href="#">Find an order</a></li>
-                <li><a href="#">Terms of delivery</a></li>
-                <li><a href="#">Exchange and return of goods</a></li>
-                <li><a href="#">Guarantee</a></li>
-                <li><a href="#">Frequently asked questions</a></li>
-                <li><a href="#">Terms of use of the site</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
+    <footer id="footer"></footer>
   </body>
 </html>
