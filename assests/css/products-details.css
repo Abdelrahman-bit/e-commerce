@@ -148,7 +148,7 @@ div.typeOfProduct-item {
   }
 } */
 .btnsWish_Cart {
-  margin: 20px 0;
+  margin: 40px 0;
   gap: 20px;
   /* .btn {
     height: 55px;
@@ -170,14 +170,28 @@ div.typeOfProduct-item {
   .cartBtn {
     background-color: #000;
     color: #fff;
+    transition: all 0.3s ease-in;
+  }
+  .cartBtn:hover {
+    background-color: white;
+    border: 1px solid black;
+    color: black;
   }
   /* height: 130px; */
 }
 .btnView {
-  height: 55px;
+  height: 40px;
   border-radius: 8px;
   border: 1px solid black;
+  background-color: #fff;
+  color: black;
   min-width: 165px;
+  transition: all 0.3s ease-in;
+}
+.btnView:hover {
+  border: 1px solid black;
+  background-color: #dadada;
+  color: black;
 }
 
 .featuresOfProduct {
