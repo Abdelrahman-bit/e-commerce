@@ -43,7 +43,9 @@
             <div class="invalid-feedback">Please enter a valid email.</div>
           </div>
           <div class="mb-3">
-            <input type="password" id="login-password" class="form-control" placeholder="Password" required >
+            <input type="password" id="login-password" class="form-control" placeholder="Password" required
+              pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])\S{8,16}$">
+
             <div class="invalid-feedback">Incorrect email or password.</div>
           </div>
           <div class="d-flex justify-content-between mb-3">
@@ -73,6 +75,9 @@
           </div>
           <div class="mb-3">
             <input type="password" id="reg-password" class="form-control" placeholder="Password" required minlength="6">
+            <div class="invalid-feedback">
+              Password must be 8-16 chars with uppercase, lowercase, number, and special char.
+            </div>
           </div>
           <div class="mb-3">
             <input type="password" id="reg-confirm" class="form-control" placeholder="Confirm Password" required>
@@ -88,7 +93,8 @@
     </div>
   </div>
 
-  <script src="./assests/js/logAndRegForm.js" ></script>
+  <script src="./assests/js/logAndRegForm.js"></script>
 
 </body>
+
 </html>

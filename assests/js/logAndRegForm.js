@@ -8,6 +8,8 @@ const toggleLink = document.getElementById("toggle-link");
 const alertBox = document.getElementById("form-alert");
 
 let isLogin = true;
+const emailRegex = /^[\w\-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+const passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])\S{8,16}$/;
 
 function showAlert(message, type = "danger") {
   alertBox.innerHTML = `
@@ -25,6 +27,28 @@ function showAlert(message, type = "danger") {
     }
   }, 3000);
 }
+
+
+document.querySelectorAll('input[type="email"]').forEach(input => {
+  input.addEventListener("input", function () {
+    if (!emailRegex.test(this.value)) {
+      this.setCustomValidity("Please enter a valid email (example@domain.com).");
+    } else {
+      this.setCustomValidity("");
+    }
+  });
+});
+
+document.querySelectorAll('input[type="password"]').forEach(input => {
+  input.addEventListener("input", function () {
+    if (!passwordRegex.test(this.value)) {
+      this.setCustomValidity("Password must be 8-16 chars with uppercase, lowercase, number, and special char.");
+    } else {
+      this.setCustomValidity("");
+    }
+  });
+});
+
 
 function validateForm(form) {
   form.classList.add("was-validated");
