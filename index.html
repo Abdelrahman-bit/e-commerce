@@ -20,19 +20,20 @@
     <link rel="stylesheet" href="assests/css/homeStyle.css" />
     <link rel="stylesheet" href="../assests/css/productCard.css" />
 
-    <!-- Auth & Navbar logic -->
-    <script src="./assests/js/auth.js" defer></script>
-    <script src="./assests/js/navbar.js" defer></script>
-
-    <!-- تحميل المكونات -->
-    <script type="module">
-      import { loadComponent } from "./assests/js/utils.js";
-      // تحميل الـ header / footer / category / mainCategories
-      loadComponent("header", "./components/header.html");
-      loadComponent("footer", "./components/footer.html");
-      loadComponent("category", "./components/category.html");
-      loadComponent("mainCategories", "./components/mainCategories.html");
-    </script>
+  <!-- Auth & Navbar logic -->
+  <script src="./assests/js/auth.js" defer></script>
+  <script src="./assests/js/navbar.js" defer></script>
+  <!-- load data to local storage on load -->
+  <script src="./assests/js/initLocalStorage.js" type="module"></script>
+  <!-- تحميل المكونات -->
+  <script type="module">
+    import { loadComponent } from "./assests/js/utils.js";
+    // تحميل الـ header / footer / category / mainCategories
+    loadComponent("header", "./components/header.html");
+    loadComponent("footer", "./components/footer.html");
+    loadComponent("category", "./components/category.html");
+    loadComponent("mainCategories", "./components/mainCategories.html");
+  </script>
 
     <!-- Model Viewer -->
     <script
@@ -87,16 +88,27 @@
       </div>
     </main>
 
-    <!-- Products -->
-    <div class="container mb-4">
-      <div class="row g-4" id="product-list"></div>
-    </div>
+  <!-- Products -->
+  <div class="container mb-4">
+    <div class="row g-4" id="products"></div>
+  </div>
 
     <!-- Footer -->
     <footer id="footer"></footer>
 
-    <!-- Scripts -->
-    <script type="module" src="../assests/js/products.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-  </body>
+  <!-- Scripts -->
+  <script type="module">
+    import { createProductCard } from './assests/js/card.js'
+    import { getProducts, addToCart } from './assests/js/storage.js'
+    const container = document.querySelector('#products');
+
+    let products = getProducts();
+    products.forEach(element => {
+      container.appendChild(createProductCard(element));
+    });
+
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>
