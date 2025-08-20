@@ -64,7 +64,6 @@
     if (cart) {
       cart.addEventListener("click", (e) => {
         e.preventDefault();
-
         const currentUser = localStorage.getItem("currentUser");
         if (currentUser) {
           window.location.href = "../customer/cart.html";

@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="./assests/css/products-details.css" />
     <link rel="stylesheet" href="./components/style.css" />
     <link rel="stylesheet" href="/assests/css/style.css" />   
-    
     <title>details</title>
     <script type="module">
       import { loadComponent } from "./assests/js/utils.js";
@@ -52,7 +51,7 @@
             </p>
 
             <!-- Add to Cart Button -->
-            <button class="btn btn-dark w-100 w-md-auto px-4 py-2 mt-3">
+            <button id="AddToCart-Btn" class="btn btn-dark w-100 w-md-auto px-4 py-2 mt-3">
               Add to Cart
             </button>
 
@@ -163,7 +162,28 @@
         <div class="alert alert-danger text-center">No product selected!</div>
       `;
     }
-    </script>
 
+    //check if user is logged while adding to cart
+    const AddToCart = document.getElementById("AddToCart-Btn");
+    const currentUser = localStorage.getItem("currentUser");
+    AddToCart.addEventListener("click",()=>{
+        if (currentUser) {
+          window.location.href = "../customer/cart.html";
+        } else {
+          document.body.insertAdjacentHTML(
+            "afterbegin",
+            `<div id="login-alert" class="alert alert-warning text-center" 
+              style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
+          ! يجب عليك أولاً تسجيل الدخول إلى حسابك
+        </div>`
+          );
+
+          setTimeout(() => {
+            document.getElementById("login-alert")?.remove();
+          }, 3000);
+        }
+    })
+
+    </script>
   </body>
 </html>

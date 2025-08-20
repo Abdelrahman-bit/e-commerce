@@ -4,21 +4,21 @@ export const users = [
 		name: "admin",
 		role: "admin",
 		email: "admin@example.com",
-		password: "admin123",
+		password: "Admin123@",
 	},
 	{
 		id: 2,
 		name: "hamada",
 		role: "seller",
 		email: "hamada@example.com",
-		password: "hamada123",
+		password: "Hamada123@",
 	},
 	{
 		id: 3,
 		name: "ali",
 		role: "customer",
 		email: "ali@example.com",
-		password: "ali123",
+		password: "Ali123@@",
 	},
 ];
 
