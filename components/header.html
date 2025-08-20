@@ -39,10 +39,10 @@
               <a class="nav-link main-nav-link active" href="/">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">About</a>
+              <a class="nav-link main-nav-link" href="./../about.html">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">Contact Us</a>
+              <a class="nav-link main-nav-link" href="#footer">Contact Us</a>
             </li>
             <li class="nav-item">
               <a class="nav-link main-nav-link" href="#">Blog</a>
@@ -82,6 +82,22 @@
         }
       });
     }
+    
+  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+  const currentPage = window.location.pathname.split("/").pop();
+
+  navLinks.forEach(link => {
+    const linkPage = link.getAttribute("href").split("/").pop();
+
+    if (linkPage === currentPage) {
+      link.classList.add("active");
+    } else {
+      link.classList.remove("active");
+    }
+  });
+  
+
+
   </script>
 
 
