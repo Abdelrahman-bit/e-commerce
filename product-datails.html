@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="./assests/js/bootstrap.bundle.min.js" defer></script>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assests/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="./assests/css/products-details.css" />
+    <link rel="stylesheet" href="./components/style.css" />
+    <link rel="stylesheet" href="/assests/css/style.css" />
+    <!-- <link rel="stylesheet" href="assests/css/homeStyle.css" /> -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <title>details</title>
+    <script src="./assests/js/product-details.js" type="module"></script>
+    <script type="module">
+      import { loadComponent } from "./assests/js/utils.js";
+      loadComponent("header", "./components/header.html");
+      loadComponent("footer", "./components/footer.html");
+    </script>
+  </head>
+  <body>
+    <header id="header"></header>
+    <div class="main-container px-3 px-md-4">
+      <section
+        class="d-flex flex-column align-items-center flex-md-row justify-content-center s1"
+      >
+        <div class="left-sec d-flexalign-items-center justify-content-center">
+          <div class="sub-cont-onephone h-100">
+            <img src="./assests/imgs/phone.png" alt="" />
+          </div>
+        </div>
+        <div class="right-sec">
+          <h1>Apple iPhone 15 Pro Max</h1>
+          <p class="price"><span>$1199</span><del>$1299</del></p>
+
+          <div
+            class="typeOfProduct row d-flex flex-wrap justify-content-center justify-content-md-start px-3"
+          >
+            <div
+              class="typeOfProduct-item col-12 col-md-2 d-flex align-items-center"
+            >
+              <input
+                type="radio"
+                name="typeOfProduct"
+                id="typeOfProduct-1"
+                checked
+              />
+              <label for="typeOfProduct-1">128GB</label>
+            </div>
+            <div
+              class="typeOfProduct-item col-12 col-md-2 d-flex align-items-center"
+            >
+              <input type="radio" name="typeOfProduct" id="typeOfProduct-2" />
+              <label for="typeOfProduct-2">256GB</label>
+            </div>
+            <div
+              class="typeOfProduct-item col-12 col-md-2 d-flex align-items-center"
+            >
+              <input type="radio" name="typeOfProduct" id="typeOfProduct-3" />
+              <label for="typeOfProduct-3">512GB</label>
+            </div>
+            <div
+              class="typeOfProduct-item col-12 col-md-2 d-flex align-items-center"
+            >
+              <input type="radio" name="typeOfProduct" id="typeOfProduct-4" />
+              <label for="typeOfProduct-4">1TB</label>
+            </div>
+          </div>
+
+          <p class="my-3 px-2 pr-5">
+            Enhanced capabilities thanks toan enlarged display of 6.7 inchesand
+            work without rechargingthroughout the day. Incredible photosas in
+            weak, yesand in bright lightusing the new systemwith two camera
+            <span class="extra-text hidden">
+              hhh-work without rechargingthroughout the day. Incredible photosas
+              in weak, yesand in bright lightusing the new systemwith two
+              camera-hhh</span
+            >
+            <span class="moreBtn">more</span>...
+          </p>
+          <div
+            class="btnsWish_Cart d-flex flex-column flex-md-row justify-content-around my-3"
+          >
+            <button class="wishBtn w-100 btn">Add to Wishlist</button>
+            <button class="cartBtn w-100 btn">Add to Cart</button>
+          </div>
+
+          <div class="row featuresOfProduct justify-content-around">
+            <div class="col-5 d-flex flex-column align-items-center">
+              <div
+                class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-truck"></i>
+                <div>
+                  <p>Free Delevery</p>
+                  <p>1-2 days</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-5 d-flex flex-column align-items-center">
+              <div
+                class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
+              >
+                <i class="fa-solid fa-store"></i>
+                <div>
+                  <p>Stock Status</p>
+                  <p>In-Stock</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="s2">
+        <h5>Details</h5>
+        <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero vitae
+          aperiam minima quisquam ratione quibusdam laborum corrupti atque
+          doloremque consequuntur!
+        </p>
+        <h5>Screen</h5>
+        <p class="d-flex justify-content-between">
+          <span>Screen Diagonal</span>
+          <span>6.7"</span>
+        </p>
+        <p class="d-flex justify-content-between">
+          <span>Screen resolution</span>
+          <span>2532 x 1170</span>
+        </p>
+        <p class="d-flex justify-content-between">
+          <span>Screen refresh rate</span>
+          <span>60Hz</span>
+        </p>
+        <p class="d-flex justify-content-between">
+          <span>Pixel density</span>
+          <span>460 ppi</span>
+        </p>
+        <p class="d-flex justify-content-between">
+          <span>Screen type</span>
+          <span> OLED</span>
+        </p>
+        <p class="d-flex justify-content-between">
+          <span>Screen Diagonal</span>
+          <span>6.7"</span>
+        </p>
+        <h5>CPU</h5>
+        <p class="d-flex justify-content-between">
+          <span>CPU</span>
+          <span>A17 Bionic</span>
+        </p>
+        <p class="d-flex justify-content-between">
+          <span>No. of Cores</span>
+          <span>6</span>
+        </p>
+        <button class="btnView">View More</button>
+      </section>
+    </div>
+    <footer id="footer"></footer>
+  </body>
+</html>
