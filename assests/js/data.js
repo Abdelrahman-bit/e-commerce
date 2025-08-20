@@ -13,9 +13,122 @@ export const users = [
 		email: "hamada@example.com",
 		password: "hamada123",
 	},
+	{
+		id: 3,
+		name: "ali",
+		role: "customer",
+		email: "ali@example.com",
+		password: "ali123",
+	},
 ];
 
 export const products = [
+	{
+		id: 1,
+		sellerEmail: "hamada@example.com",
+		name: "Microsoft Surface Laptop",
+		price: 100,
+		description: "Description for laptop",
+		category: "smart devices",
+		image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/laptop_ksseyu.jpg",
+		fav: false,
+		stock: 50,
+		quantity: 1,
+	},
+	{
+		id: 2,
+		sellerEmail: "hamada@example.com",
+		name: "Apple iPhone 14 Pro",
+		price: 200,
+		description: "Description for smartphone",
+		category: "phones",
+		image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681676/iphone_tsbejx.jpg",
+		fav: false,
+		stock: 30,
+		quantity: 1,
+	},
+	{
+		id: 3,
+		sellerEmail: "hamada@example.com",
+		name: "HUAWEI Tablet ",
+		price: 300,
+		description: "Description for tablet",
+		category: "phones",
+		image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/tablet_vfmlus.jpg",
+		fav: false,
+		stock: 20,
+		quantity: 1,
+	},
+	{
+		id: 4,
+		sellerEmail: "hamada@example.com",
+		name: "HUAWEI Watch Fit 3 Smartwatch",
+		price: 150,
+		description: "Description for smartwatch",
+		category: "smartwatch",
+		image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681884/smartwatch_mi1bhk.png",
+		fav: false,
+		stock: 25,
+		quantity: 1,
+	},
+	{
+		id: 5,
+		sellerEmail: "hamada@example.com",
+		name: "Music Sound MAXI2",
+		price: 100,
+		description:
+			"Music Sound MAXI2 Bluetooth Headphones Around Ear Bluetooth 5.0 – Play Time 22 Hours – Charging 1.5 Hours – Built-in Microphone – Controls on the Gazebo and Adjustable Headband, White: Buy Online",
+		category: "headphones",
+		image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/headphone_qmavwj.jpg",
+		fav: false,
+		stock: 40,
+		quantity: 1,
+	},
+];
+
+export const orders = [
+	{
+		id: new Date().getTime(),
+		customerEmail: "customer@example.com",
+		cart: [
+			{
+				id: new Date().getTime(),
+				sellerEmail: "hamada@example.com",
+				name: "tablet",
+				price: 300,
+				description: "Description for tablet",
+				category: "smart devices",
+				image: "/assests/images/product.png",
+				fav: false,
+				stock: 20,
+				quantity: 2,
+			},
+			{
+				id: new Date().getTime(),
+				sellerEmail: "hamada@example.com",
+				name: "wireless earbuds",
+				price: 100,
+				description: "Description for wireless earbuds",
+				category: "smart devices",
+				image: "/assests/images/product.png",
+				fav: false,
+				stock: 40,
+				quantity: 1,
+			},
+		],
+		total: 400,
+	},
+];
+
+export const currentUser = {
+	id: 2,
+	name: "hamada",
+	role: "seller",
+	email: "hamada@example.com",
+	password: "hamada123",
+};
+
+export const favorites = [
 	{
 		id: 1,
 		sellerEmail: "hamada@example.com",
@@ -25,36 +138,6 @@ export const products = [
 		category: "smart devices",
 		image: "url",
 		stock: 50,
-	},
-	{
-		id: 2,
-		sellerEmail: "hamada@example.com",
-		name: "smartphone",
-		price: 200,
-		description: "Description for smartphone",
-		category: "smart devices",
-		image: "url",
-		stock: 30,
-	},
-	{
-		id: 3,
-		sellerEmail: "hamada@example.com",
-		name: "tablet",
-		price: 300,
-		description: "Description for tablet",
-		category: "smart devices",
-		image: "url",
-		stock: 20,
-	},
-	{
-		id: 4,
-		sellerEmail: "hamada@example.com",
-		name: "smartwatch",
-		price: 150,
-		description: "Description for smartwatch",
-		category: "smart devices",
-		image: "url",
-		stock: 25,
 	},
 	{
 		id: 5,
@@ -67,21 +150,3 @@ export const products = [
 		stock: 40,
 	},
 ];
-
-export const orders = {
-	id: 1,
-	customerEmail: "customer@example.com",
-	products: [
-		{ productId: 101, quantity: 2 },
-		{ productId: 102, quantity: 1 },
-	],
-	total: 2500,
-};
-
-export const currentUser = {
-    id: 2,
-    name: "hamada",
-    role: "seller",
-    email: "hamada@example.com",
-    password: "hamada123",
-}

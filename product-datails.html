@@ -6,7 +6,10 @@
     <script src="./assests/js/bootstrap.bundle.min.js" defer></script>
     <link rel="stylesheet" href="./assests/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assests/css/products-details.css" />
+    <link rel="stylesheet" href="./components/style.css" />
     <link rel="stylesheet" href="/assests/css/style.css" />
+    <!-- <link rel="stylesheet" href="assests/css/homeStyle.css" /> -->
+
     <link
       rel="stylesheet"
       data-purpose="Layout StyleSheet"
@@ -34,222 +37,53 @@
       href="https://site-assets.fontawesome.com/releases/v6.4.2/css/sharp-light.css"
     />
     <title>details</title>
+    <script type="module">
+      import { loadComponent } from "./assests/js/utils.js";
+      loadComponent("header", "./components/header.html");
+      loadComponent("footer", "./components/footer.html");
+    </script>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#" id="brand"
-          ><img src="/assests/images/LogoMainVector.png" alt=""
-        /></a>
-
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="mx-auto">
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                style="width: 300px"
-              />
-              <button class="btn btn-outline-secondary" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
-          </div>
-
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link main-nav-link active" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="far fa-heart"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="fas fa-shopping-cart"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="far fa-user"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-
-    <!-- Category Navigation -->
-    <nav class="category-nav">
-      <div class="container">
-        <ul class="nav col-12 text-center">
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-mobile-alt"></i>Phones
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-laptop"></i>Computers
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="far fa-clock"></i>Smart Watches
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-camera"></i>Cameras
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-headphones"></i>Headphones
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-gamepad"></i>Gaming
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+    <header id="header"></header>
     <div class="main-container px-3 px-md-4">
-      <section
-        class="d-flex flex-column align-items-center flex-md-row justify-content-center s1"
-      >
-        <div
-          class="left-sec d-flex flex-column-reverse flex-md-row align-items-center justify-content-center"
-        >
-          <div
-            class="sub-cont-morephones d-flex flex-wrap justify-content-around flex-md-column align-items-center"
-          >
-            <div class="cover">
-              <img src="./assests/imgs/phone.png" alt="" />
-            </div>
-            <div class="cover">
-              <img src="./assests/imgs/phone1.png" alt="" />
-            </div>
-            <div class="cover">
-              <img src="./assests/imgs/phone2.png" alt="" />
-            </div>
-            <div class="cover">
-              <img src="./assests/imgs/phone3.png" alt="" />
-            </div>
-          </div>
-          <div class="sub-cont-onephone h-100">
-            <img src="./assests/imgs/phone.png" alt="" />
-          </div>
-        </div>
-        <div class="right-sec">
-          <h1>Apple iPhone 15 Pro Max</h1>
-          <p class="price"><span>$1199</span><del>$1299</del></p>
-          <div class="storage row d-flex flex-wrap justify-md-start">
-            <div class="storage-item col-3 col-sm-6 d-flex align-items-center">
-              <input type="radio" name="storage" id="storage-128" checked />
-              <label for="storage-128">128GB</label>
-            </div>
-            <div class="storage-item col-3 col-sm-6 d-flex align-items-center">
-              <input type="radio" name="storage" id="storage-256" />
-              <label for="storage-256">256GB</label>
-            </div>
-            <div class="storage-item col-3 col-sm-6 d-flex align-items-center">
-              <input type="radio" name="storage" id="storage-512" />
-              <label for="storage-512">512GB</label>
-            </div>
-            <div class="storage-item col-3 col-sm-6 d-flex align-items-center">
-              <input type="radio" name="storage" id="storage-1tb" />
-              <label for="storage-1tb">1TB</label>
-            </div>
-          </div>
-          <div class="specs container">
-            <div class="row">
-              <div class="col-6 col-md-4 spec-item d-flex align-items-center">
-                <i class="fa-solid fa-mobile-screen"></i>
-                <div class="spec-text">
-                  <p>screen size</p>
-                  <p>6.7"</p>
-                </div>
-              </div>
+      <div class="container my-5">
+  <div class="row g-4 align-items-start">
+    
+    <!-- Left Side: Product Image -->
+    <div class="col-12 col-md-6 text-center text-md-start">
+      <img src="assests/images/Products/bigiphone.png" alt="Product" class="img-fluid rounded shadow-sm mx-auto d-block">
+    </div>
 
-              <div class="col-6 col-md-4 spec-item d-flex align-items-center">
-                <i class="fa-solid fa-microchip"></i>
-                <div class="spec-text">
-                  <p>CPU</p>
-                  <p>A17 Bionic</p>
-                </div>
-              </div>
-              <div class="col-6 col-md-4 spec-item d-flex align-items-center">
-                <i class="fa-regular fa-microchip"></i>
-                <div class="spec-text">
-                  <p>No. of Cores</p>
-                  <p>6</p>
-                </div>
-              </div>
-              <div class="col-6 col-md-4 spec-item d-flex align-items-center">
-                <i class="fa-solid fa-camera"></i>
-                <div class="spec-text">
-                  <p>Main Camera</p>
-                  <p>48-12-12 MP</p>
-                </div>
-              </div>
-              <div class="col-6 col-md-4 spec-item d-flex align-items-center">
-                <i class="fa-solid fa-camera-rotate"></i>
-                <div class="spec-text">
-                  <p>Front Camera</p>
-                  <p>12 MP</p>
-                </div>
-              </div>
-              <div class="col-6 col-md-4 spec-item d-flex align-items-center">
-                <i class="fa-solid fa-battery-quarter"></i>
-                <div class="spec-text">
-                  <p>Battery</p>
-                  <p>4500mAh</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <p class="description">
-            Enhanced capabilities thanks toan enlarged display of 6.7 inchesand
-            work without rechargingthroughout the day. Incredible photosas in
-            weak, yesand in bright lightusing the new systemwith two camera
-            <span class="moreBtn">more</span>...
-          </p>
-          <div
-            class="btns d-flex flex-column flex-md-row justify-content-around"
-          >
-            <button class="wishBtn btn">Add to Wishlist</button>
-            <button class="cartBtn btn">Add to Cart</button>
-          </div>
+    <!-- Right Side: Product Details -->
+    <div class="col-12 col-md-6 text-center text-md-start">
+      <!-- Product Name -->
+      <h3 class="fw-bold mb-3">Apple iPhone 14 Pro Max</h3>
 
-          <div class="row features">
+      <!-- Price -->
+      <div class="mb-3">
+        <span class="fs-3 fw-bold">$1399</span>
+        <span class="text-muted text-decoration-line-through ms-2">$1499</span>
+      </div>
+
+      <!-- Description -->
+      <p class="text-muted">
+        Enhanced capabilities thanks to an enlarged display of 6.7 inches and work without recharging throughout 
+        the day. Incredible photos in weak, yeast and bright lighting, the new system with two cameras...
+      </p>
+
+      <!-- Add to Cart Button -->
+      <button class="btn btn-dark w-100 w-md-auto px-4 py-2 mt-3">Add to Cart</button>
+
+      <div class="row features mt-5">
+
+ 
             <div class="col-4 d-flex flex-column align-items-center">
               <div
                 class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
               >
-                <i class="fa-regular fa-truck"></i>
+
+                <i class="fa fa-truck" aria-hidden="true"></i>
+
                 <div>
                   <p>Free Delevery</p>
                   <p>1-2 days</p>
@@ -260,7 +94,9 @@
               <div
                 class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
               >
-                <i class="fa-regular fa-store"></i>
+
+                <i class="fa fa-shopping-cart"></i>
+
                 <div>
                   <p>In Stock</p>
                   <p>always</p>
@@ -271,7 +107,9 @@
               <div
                 class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
               >
-                <i class="fa-regular fa-file-certificate"></i>
+
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+
                 <div>
                   <p>Guaranteed</p>
                   <p>Screen Size</p>
@@ -322,53 +160,14 @@
           <span>No. of Cores</span>
           <span>6</span>
         </p>
-        <button class="btn">View More</button>
+        <button class="btnView">View More</button>
       </section>
-      <footer>
-        <div class="container">
-          <div class="row justify-content-between">
-            <div class="col-lg-4 col-md-6 mb-4">
-              <div class="footer-brand">
-                <img src="/assests/images/Logowhite.png" alt="" />
-              </div>
-              <p class="footer-description">
-                We are a residential interior design firm located in Portland.
-                Our boutique-studio offers more than
-              </p>
-              <div class="social-links">
-                <a href="#"><i class="fab fa-twitter"></i></a>
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-tiktok"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-              </div>
-            </div>
-
-            <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
-              <h6>Services</h6>
-              <ul class="footer-links">
-                <li><a href="#">Bonus program</a></li>
-                <li><a href="#">Gift cards</a></li>
-                <li><a href="#">Credit and payment</a></li>
-                <li><a href="#">Service contracts</a></li>
-                <li><a href="#">Non-cash account</a></li>
-                <li><a href="#">Payment</a></li>
-              </ul>
-            </div>
-
-            <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
-              <h6>Assistance to the buyer</h6>
-              <ul class="footer-links">
-                <li><a href="#">Find an order</a></li>
-                <li><a href="#">Terms of delivery</a></li>
-                <li><a href="#">Exchange and return of goods</a></li>
-                <li><a href="#">Guarantee</a></li>
-                <li><a href="#">Frequently asked questions</a></li>
-                <li><a href="#">Terms of use of the site</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </footer>
     </div>
+    </div>
+  </div>
+</div>
+             
+    <footer id="footer"></footer>
+        
   </body>
 </html>
