@@ -103,10 +103,24 @@
     const container = document.querySelector('#products');
 
     let products = getProducts();
-    products.forEach(element => {
-      container.appendChild(createProductCard(element));
-    });
+    console.log(products);
+    products.forEach(product => {
+	const card = createProductCard({
+		...product,
+		btnAction: (productData) => {
+			// save clicked product in localStorage
+			localStorage.setItem("selectedProduct", JSON.stringify(productData));
 
+			// redirect to details page
+			window.location.href = "product-datails.html";
+		}
+	});
+
+	container.appendChild(card);
+});
+  
+
+    
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>

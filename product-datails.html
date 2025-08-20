@@ -25,25 +25,25 @@
             <img
               src="assests/images/Products/bigiphone.png"
               alt="Product"
-              class="img-fluid rounded shadow-sm mx-auto d-block"
+              class="img-fluid rounded shadow-sm mx-auto d-block img-OfProduct"
             />
           </div>
 
           <!-- Right Side: Product Details -->
           <div class="col-12 col-md-6 text-center text-md-start">
             <!-- Product Name -->
-            <h3 class="fw-bold mb-3">Apple iPhone 14 Pro Max</h3>
+            <h3 class="fw-bold mb-3 product-OfName">Apple iPhone 14 Pro Max</h3>
 
             <!-- Price -->
             <div class="mb-3">
-              <span class="fs-3 fw-bold">$1399</span>
+              <span class="fs-3 fw-bold price-OfProduct">$1399</span>
               <span class="text-muted text-decoration-line-through ms-2"
                 >$1499</span
               >
             </div>
 
             <!-- Description -->
-            <p class="text-muted">
+            <p class="text-muted desk-OfProduct">
               Enhanced capabilities thanks to an enlarged display of 6.7 inches
               and work without recharging throughout the day. Incredible photos
               in weak, yeast and bright lighting, the new system with two
@@ -139,5 +139,25 @@
       </div>
     </div>
     <footer id="footer"></footer>
+    <script>
+      const product = JSON.parse(localStorage.getItem("selectedProduct"));
+
+    if (product) {
+      let imgContainer = document.querySelector('.img-OfProduct');
+      let productName = document.querySelector('.product-OfName');
+      let priceContainer = document.querySelector('.price-OfProduct');
+      let descriptionProduct = document.querySelector('.desk-OfProduct');
+      productName.textContent = product.name;
+      imgContainer.src = product.image;
+      priceContainer.textContent = `$${product.price}`;
+      descriptionProduct.textContent = product.description;
+      console.log(product);
+      
+    } else {
+      document.getElementById("product-details").innerHTML = `
+        <div class="alert alert-danger text-center">No product selected!</div>
+      `;
+    }
+    </script>
   </body>
 </html>
