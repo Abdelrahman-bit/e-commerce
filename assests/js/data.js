@@ -13,6 +13,13 @@ export const users = [
 		email: "hamada@example.com",
 		password: "hamada123",
 	},
+	{
+		id: 3,
+		name: "ali",
+		role: "customer",
+		email: "ali@example.com",
+		password: "ali123",
+	},
 ];
 
 export const products = [
@@ -23,8 +30,10 @@ export const products = [
 		price: 100,
 		description: "Description for laptop",
 		category: "smart devices",
-		image: "url",
+		image: "/assests/images/product.png",
+		fav: false,
 		stock: 50,
+		quantity: 1,
 	},
 	{
 		id: 2,
@@ -33,8 +42,10 @@ export const products = [
 		price: 200,
 		description: "Description for smartphone",
 		category: "smart devices",
-		image: "url",
+		image: "/assests/images/product.png",
+		fav: false,
 		stock: 30,
+		quantity: 1,
 	},
 	{
 		id: 3,
@@ -43,8 +54,10 @@ export const products = [
 		price: 300,
 		description: "Description for tablet",
 		category: "smart devices",
-		image: "url",
+		image: "/assests/images/product.png",
+		fav: false,
 		stock: 20,
+		quantity: 1,
 	},
 	{
 		id: 4,
@@ -53,8 +66,77 @@ export const products = [
 		price: 150,
 		description: "Description for smartwatch",
 		category: "smart devices",
-		image: "url",
+		image: "/assests/images/product.png",
+		fav: false,
 		stock: 25,
+		quantity: 1,
+	},
+	{
+		id: 5,
+		sellerEmail: "hamada@example.com",
+		name: "wireless earbuds",
+		price: 100,
+		description: "Description for wireless earbuds",
+		category: "smart devices",
+		image: "/assests/images/product.png",
+		fav: false,
+		stock: 40,
+		quantity: 1,
+	},
+];
+
+export const orders = [
+	{
+		id: new Date().getTime(),
+		customerEmail: "customer@example.com",
+		cart: [
+			{
+				id: new Date().getTime(),
+				sellerEmail: "hamada@example.com",
+				name: "tablet",
+				price: 300,
+				description: "Description for tablet",
+				category: "smart devices",
+				image: "/assests/images/product.png",
+				fav: false,
+				stock: 20,
+				quantity: 2,
+			},
+			{
+				id: new Date().getTime(),
+				sellerEmail: "hamada@example.com",
+				name: "wireless earbuds",
+				price: 100,
+				description: "Description for wireless earbuds",
+				category: "smart devices",
+				image: "/assests/images/product.png",
+				fav: false,
+				stock: 40,
+				quantity: 1,
+			},
+		],
+		total: 400,
+	},
+];
+
+export const currentUser = {
+	id: 2,
+	name: "hamada",
+	role: "seller",
+	email: "hamada@example.com",
+	password: "hamada123",
+};
+
+export const favorites = [
+	{
+		id: 1,
+		sellerEmail: "hamada@example.com",
+		name: "laptop",
+		price: 100,
+		description: "Description for laptop",
+		category: "smart devices",
+		image: "url",
+		stock: 50,
 	},
 	{
 		id: 5,
@@ -67,21 +149,3 @@ export const products = [
 		stock: 40,
 	},
 ];
-
-export const orders = {
-	id: 1,
-	customerEmail: "customer@example.com",
-	products: [
-		{ productId: 101, quantity: 2 },
-		{ productId: 102, quantity: 1 },
-	],
-	total: 2500,
-};
-
-export const currentUser = {
-    id: 2,
-    name: "hamada",
-    role: "seller",
-    email: "hamada@example.com",
-    password: "hamada123",
-}

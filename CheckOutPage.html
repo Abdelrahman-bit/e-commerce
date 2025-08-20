@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyber - Tech Store</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./components/style.css" />
+    <script type="module">
+      import { loadComponent } from "./assests/js/utils.js";
+      // Load header and footer components
+      // loadComponent(where you want to load the component in the current page, the component file path)
+      loadComponent("header", "./components/header.html");
+      loadComponent("footer", "./components/footer.html");
+      loadComponent("category", "./components/category.html");
+    </script>
+    <style></style>
+  </head>
+  <body>
+    <!-- Header  -->
+    <header id="header"></header>
+    <!-- categorys -->
+    <div id="category"></div>
+
+    <!-- Main Content (Demo) -->
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Shopping Cart</title>
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+        />
+      </head>
+      <body class="bg-light">
+        <div class="container my-4">
+          <div class="row g-4">
+            <!-- Left side - Cart items -->
+            <div class="col-12 col-md-8">
+              <h4 class="fw-bold mb-4">Shopping Cart</h4>
+
+              <!-- Item 1 -->
+              <div class="card mb-3 border-0 border-bottom rounded-0">
+                <div class="row g-0 align-items-center p-3">
+                  <div class="col-3 col-md-2">
+                    <img
+                      src="assests/images/Products/IphoneProduct1.png"
+                      alt="Product"
+                      class="img-fluid rounded"
+                    />
+                  </div>
+                  <div class="col-9 col-md-10">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h6 class="mb-1">
+                          Apple iPhone 14 Pro Max 128Gb Deep Purple
+                        </h6>
+                        <small class="text-muted">#25139526913984</small>
+                        <div class="d-flex align-items-center mt-2">
+                          <button class="btn btn-outline-secondary btn-sm">
+                            -
+                          </button>
+                          <input
+                            type="text"
+                            value="1"
+                            class="form-control form-control-sm text-center mx-2"
+                            style="width: 50px"
+                          />
+                          <button class="btn btn-outline-secondary btn-sm">
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div class="text-end">
+                        <h6>$1399</h6>
+                        <button class="btn btn-sm">&#x2715;</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="card mb-3 border-0 border-bottom rounded-0">
+                <div class="row g-0 align-items-center p-3">
+                  <div class="col-3 col-md-2">
+                    <img
+                      src="assests/images/Products/Airbodsmax.png"
+                      alt="Product"
+                      class="img-fluid rounded"
+                    />
+                  </div>
+                  <div class="col-9 col-md-10">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h6 class="mb-1">AirPods Max Silver</h6>
+                        <small class="text-muted">#543459358345</small>
+                        <div class="d-flex align-items-center mt-2">
+                          <button class="btn btn-outline-secondary btn-sm">
+                            -
+                          </button>
+                          <input
+                            type="text"
+                            value="1"
+                            class="form-control form-control-sm text-center mx-2"
+                            style="width: 50px"
+                          />
+                          <button class="btn btn-outline-secondary btn-sm">
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div class="text-end">
+                        <h6>$549</h6>
+                        <button class="btn btn-sm">&#x2715;</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="card mb-3 border-0 border-bottom rounded-0">
+                <div class="row g-0 align-items-center p-3">
+                  <div class="col-3 col-md-2">
+                    <img
+                      src="assests/images/Products/applewatch.png"
+                      alt="Product"
+                      class="img-fluid rounded"
+                    />
+                  </div>
+                  <div class="col-9 col-md-10">
+                    <div class="d-flex justify-content-between">
+                      <div>
+                        <h6 class="mb-1">
+                          Apple Watch Series 9 GPS 41mm Starlight Aluminium
+                        </h6>
+                        <small class="text-muted">#63632324</small>
+                        <div class="d-flex align-items-center mt-2">
+                          <button class="btn btn-outline-secondary btn-sm">
+                            -
+                          </button>
+                          <input
+                            type="text"
+                            value="1"
+                            class="form-control form-control-sm text-center mx-2"
+                            style="width: 50px"
+                          />
+                          <button class="btn btn-outline-secondary btn-sm">
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div class="text-end">
+                        <h6>$399</h6>
+                        <button class="btn btn-sm">&#x2715;</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right side - Order Summary -->
+            <div class="col-12 col-md-4">
+              <div class="card p-4">
+                <h5 class="fw-bold mb-3">Order Summary</h5>
+
+                <div class="mb-3">
+                  <label class="form-label">Payment Details</label>
+                  <input type="text" class="form-control" />
+                </div>
+
+                <div class="mb-3">
+                  <label class="form-label">Order Date</label>
+                  <div class="input-group">
+                    <input type="date" class="form-control" />
+                  </div>
+                </div>
+
+                <ul class="list-unstyled">
+                  <li class="d-flex justify-content-between">
+                    <strong>Subtotal</strong><strong>$2347</strong>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <span>Estimated Tax</span><span>$50</span>
+                  </li>
+                  <li class="d-flex justify-content-between">
+                    <span>Estimated shipping & Handling</span><span>$29</span>
+                  </li>
+                  <hr />
+                  <li class="d-flex justify-content-between fw-bold">
+                    <strong>Total</strong><strong>$2426</strong>
+                  </li>
+                </ul>
+
+                <button class="btn btn-dark w-100 mt-3">Checkout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+      </body>
+    </html>
+
+    <!-- Footer -->
+    <footer id="footer"></footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

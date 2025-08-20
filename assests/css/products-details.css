@@ -79,17 +79,17 @@ section.s1 > * {
   }
 }
 
-.storage {
+.typeOfProduct {
   gap: 5px;
   width: 100%;
   margin: 0;
   flex-wrap: wrap;
 }
 
-.storage-item {
+div.typeOfProduct-item {
   height: 50px;
-
-  flex-basis: 80px;
+  width: 23%;
+  /* flex-basis: 80px; */
   border-radius: 8px;
   text-align: center;
   cursor: pointer;
@@ -113,7 +113,7 @@ section.s1 > * {
     color: black;
   }
 }
-.specs {
+/* .specsOfProduct {
   margin: 20px auto;
   max-width: 535px;
   gap: 10px;
@@ -134,7 +134,7 @@ section.s1 > * {
   }
   .spec-text {
     width: 100%;
-    /* text-align: center; */
+    
     margin-left: 10px;
 
     p {
@@ -146,8 +146,8 @@ section.s1 > * {
       color: gray;
     }
   }
-}
-.btns {
+} */
+.btnsWish_Cart {
   margin: 20px 0;
   gap: 20px;
   /* .btn {
@@ -159,6 +159,13 @@ section.s1 > * {
   .wishBtn {
     background-color: #fff;
     color: #000;
+    border: 1px solid black;
+    transition: background-color 0.3s ease-in;
+  }
+  .wishBtn:hover {
+    background-color: rgb(240, 240, 240);
+
+    border: 1px solid black;
   }
   .cartBtn {
     background-color: #000;
@@ -166,20 +173,20 @@ section.s1 > * {
   }
   /* height: 130px; */
 }
-.btn {
+.btnView {
   height: 55px;
   border-radius: 8px;
   border: 1px solid black;
   min-width: 165px;
 }
 
-.features {
+.featuresOfProduct {
   margin-top: 10px;
   width: 100%;
   margin: 0 auto;
   /* background-color: aqua; */
 }
-.features > div {
+.featuresOfProduct > div {
   padding: 0;
 
   .feature-item {
