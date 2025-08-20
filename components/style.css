@@ -147,3 +147,11 @@ footer .footer-links a:hover {
 .social-links a:hover {
     color: #fff;
 }
+
+
+.sale-panner{
+    background: linear-gradient(to right, #2E2E2E, #000000);
+    padding: 20px;
+    height: 50vh;
+}
+

@@ -74,7 +74,7 @@ logout(options = { redirect: true }) {
   localStorage.removeItem('cart');
   localStorage.removeItem('sessionData');
   this.currentUser = null;
-
+    
   if (typeof showAlert === 'function') {
     showAlert('Logged out successfully!', 'success');
   }
