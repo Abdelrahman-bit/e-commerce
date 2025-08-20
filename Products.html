@@ -1,84 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyber - Tech Store</title>
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./components/style.css" />
+    <link rel="stylesheet" href="../assests/css/productCard.css" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cyber - Tech Store</title>
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="./components/style.css" />
-  <link rel="stylesheet" href="../assests/css/productCard.css">
+    <script type="module">
+      import { loadComponent } from "./assests/js/utils.js";
+      loadComponent("header", "./components/header.html");
+      loadComponent("footer", "./components/footer.html");
+    </script>
+  </head>
 
-  <script type="module">
-    import { loadComponent } from './assests/js/utils.js';
-    loadComponent('header', './components/header.html');
-    loadComponent('footer', './components/footer.html');
-  </script>
-</head>
+  <body>
+    <!-- Header Navigation -->
+    <header id="header"></header>
 
-<body>
-  <!-- Header Navigation -->
-  <header id="header"></header>
+    <main class="container">
+      <!-- breadcrumb -->
+      <nav
+        class="my-5"
+        style="--bs-breadcrumb-divider: '>'"
+        aria-label="breadcrumb"
+      >
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="/">Home</a></li>
+          <li class="breadcrumb-item active" aria-current="page">
+            smart phones
+          </li>
+        </ol>
+      </nav>
 
-  <main class="container">
+      <!-- Main Content (Demo) -->
+      <div class="container my-4">
+        <div class="row align-items-center mb-4">
+          <!-- Product count -->
+          <div class="col-12 col-lg-6">
+            <h4>Selected Products: <span id="productCount"></span></h4>
+          </div>
 
-    <!-- breadcrumb -->
-    <nav class="my-5" style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">smart phones</li>
-      </ol>
-    </nav>
-
-    <!-- Main Content (Demo) -->
-    <div class="container my-4">
-      <div class="row align-items-center mb-4">
-        <!-- Product count -->
-        <div class="col-12 col-lg-6">
-          <h4>Selected Products: <span id="productCount"></span></h4>
-        </div>
-    
-        <!-- Search bar -->
-        <div class="col-12 col-lg-6">
-          <input id="searchInput" type="text" class="form-control" placeholder="Search products...">
+          <!-- Search bar -->
+          <div class="col-12 col-lg-6">
+            <input
+              id="searchInput"
+              type="text"
+              class="form-control"
+              placeholder="Search products..."
+            />
+          </div>
         </div>
       </div>
-    </div>
 
-    <div class="container mb-4">
-      <div class="row g-4" id="products"></div>
-    </div>
+      <div class="container mb-4">
+        <div class="row g-4" id="products"></div>
+      </div>
+    </main>
 
-  </main>
+    <!-- Footer -->
+    <footer id="footer"></footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 
-  <!-- Footer -->
-  <footer id="footer"> </footer>
+    <script type="module">
+      import { createProductCard } from "./assests/js/card.js";
+      import { getProducts, addToCart } from "./assests/js/storage.js";
+      const container = document.querySelector("#products");
+      const productCount = document.querySelector("#productCount");
+      const searchInput = document.querySelector("#searchInput");
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+      let products = getProducts();
+      console.log(products);
+      productCount.innerText = products.length;
+      products.forEach((product) => {
+        const card = createProductCard({
+          ...product,
+          btnAction: (productData) => {
+            // save clicked product in localStorage
+            localStorage.setItem(
+              "selectedProduct",
+              JSON.stringify(productData)
+            );
 
-  <script type="module">
-    import { createProductCard } from './assests/js/card.js'
-    import { getProducts, addToCart } from './assests/js/storage.js'
-    const container = document.querySelector('#products');
-    const productCount = document.querySelector('#productCount');
-    const searchInput = document.querySelector('#searchInput');
+            // redirect to details page
+            window.location.href = "product-datails.html";
+          },
+        });
 
-    let products = getProducts();
-    productCount.innerText = products.length
-    products.forEach(element => {
-      container.appendChild(createProductCard(element));
-    });
+        container.appendChild(card);
+      });
 
-
-
-    // search feature
-    function renderProducts(filterText = "") {
+      // search feature
+      function renderProducts(filterText = "") {
         container.innerHTML = "";
-        const filtered = products.filter(p =>
-          p.name.toLowerCase().includes(filterText.toLowerCase()) ||
-          p.description.toLowerCase().includes(filterText.toLowerCase())
+        const filtered = products.filter(
+          (p) =>
+            p.name.toLowerCase().includes(filterText.toLowerCase()) ||
+            p.description.toLowerCase().includes(filterText.toLowerCase())
         );
 
         if (filtered.length === 0) {
@@ -86,7 +113,7 @@
           return;
         }
 
-        filtered.forEach(product => {
+        filtered.forEach((product) => {
           container.appendChild(createProductCard(product));
         });
       }
@@ -97,8 +124,7 @@
       });
 
       // ✅ Initial load
-      renderProducts();
-  </script>
-</body>
-
+      // renderProducts();
+    </script>
+  </body>
 </html>
