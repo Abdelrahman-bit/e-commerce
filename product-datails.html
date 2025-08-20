@@ -36,8 +36,8 @@
 
             <!-- Price -->
             <div class="mb-3">
-              <span class="fs-3 fw-bold price-OfProduct">$1399</span>
-              <span class="text-muted text-decoration-line-through ms-2"
+              <span class="fs-3 fw-bold priceDiscounted">$1399</span>
+              <span class="text-muted text-decoration-line-through ms-2 price-OfProduct"
                 >$1499</span
               >
             </div>
@@ -147,10 +147,12 @@
       let productName = document.querySelector('.product-OfName');
       let priceContainer = document.querySelector('.price-OfProduct');
       let descriptionProduct = document.querySelector('.desk-OfProduct');
+      let priceDiscounted = document.querySelector('.priceDiscounted');
       productName.textContent = product.name;
       imgContainer.src = product.image;
       priceContainer.textContent = `$${product.price}`;
       descriptionProduct.textContent = product.description;
+      priceDiscounted.textContent = `$${product.price *= 0.8}`; // Assuming a discount of $100 for display purposes
       console.log(product);
       
     } else {
