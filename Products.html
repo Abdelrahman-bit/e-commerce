@@ -8,7 +8,8 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./components/style.css" />
-  <link rel="stylesheet" href="../assests/css/productCard.css" />
+  <link rel="stylesheet" href="./assests/css/productCard.css" />
+  <link rel="stylesheet" href="./assests/css/paginationStyle.css">
 
   <script type="module">
     import { loadComponent } from "./assests/js/utils.js";
@@ -183,7 +184,7 @@
     const prevLi = document.createElement('li');
     prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
     prevLi.innerHTML = `
-    <a class="page-link py-2 px-3 text-decoration-none" href="#" data-page="${currentPage - 1}" 
+    <a class="page-link py-2 px-3 text-dark text-decoration-none" href="#" data-page="${currentPage - 1}" 
        data-bs-toggle="tooltip" title="Go to previous page">
       <i class="fas fa-chevron-left"></i> Previous
     </a>
@@ -225,9 +226,9 @@
     // Page numbers
     for (let i = startPage; i <= endPage; i++) {
       const li = document.createElement('li');
-      li.className = `page-item ${i === currentPage ? 'active' : ''}`;
+      li.className = `page-item  ${i === currentPage ? 'active' : ''}`;
       li.innerHTML = `
-      <a class="page-link py-2 px-3 text-decoration-none ${i === currentPage ? 'fw-bold' : ''}" 
+      <a class="page-link py-2 px-3 text-dark text-decoration-none ${i === currentPage ? 'fw-bold' : ''}" 
          href="#" data-page="${i}" data-bs-toggle="tooltip" title="Go to page ${i}">${i}</a>
     `;
       pagination.appendChild(li);
@@ -257,21 +258,14 @@
     const nextLi = document.createElement('li');
     nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
     nextLi.innerHTML = `
-    <a class="page-link py-2 px-3 text-decoration-none" href="#" data-page="${currentPage + 1}" 
+    <a class="page-link py-2 px-3 text-dark text-decoration-none" href="#" data-page="${currentPage + 1}" 
        data-bs-toggle="tooltip" title="Go to next page">
       Next <i class="fas fa-chevron-right"></i>
     </a>
   `;
     pagination.appendChild(nextLi);
   }
-
-  // Initialize tooltips (required for Bootstrap tooltips to work)
-  document.addEventListener('DOMContentLoaded', () => {
-    const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-    tooltipTriggerList.map(function (tooltipTriggerEl) {
-      return new bootstrap.Tooltip(tooltipTriggerEl);
-    });
-  });
+  
     // Handle pagination clicks
     pagination.addEventListener('click', (e) => {
       e.preventDefault();
@@ -282,6 +276,8 @@
           currentPage = page;
           renderCurrentPage();
           renderPagination();
+          // Smooth scroll to top of products
+          searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
         }
       }
     });
