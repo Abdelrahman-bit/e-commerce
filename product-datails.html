@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="./assests/css/bootstrap.min.css" />
     <link rel="stylesheet" href="./assests/css/products-details.css" />
     <link rel="stylesheet" href="./components/style.css" />
-    <link rel="stylesheet" href="/assests/css/style.css" />   
+    <link rel="stylesheet" href="/assests/css/style.css" />  
+    <link rel="stylesheet" href="./assests/css/cartBadge.css" />
     <title>details</title>
     <script type="module">
       import { loadComponent } from "./assests/js/utils.js";
@@ -165,24 +166,68 @@
 
     //check if user is logged while adding to cart
     const AddToCart = document.getElementById("AddToCart-Btn");
-    const currentUser = localStorage.getItem("currentUser");
-    AddToCart.addEventListener("click",()=>{
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+    
+    AddToCart.addEventListener("click", async () => {
         if (currentUser) {
-          window.location.href = "../customer/cart.html";
-        } else {
-          document.body.insertAdjacentHTML(
-            "afterbegin",
-            `<div id="login-alert" class="alert alert-warning text-center" 
-              style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
-          ! يجب عليك أولاً تسجيل الدخول إلى حسابك
-        </div>`
-          );
+            // Add product to cart
+            const cart = JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [];
+            
+            // Check if product already exists in cart
+            const existingItem = cart.find(item => item.id === product.id);
+            
+            if (existingItem) {
+                // Update quantity if product exists
+                existingItem.quantity += 1;
+                if (existingItem.quantity > existingItem.stock) {
+                    existingItem.quantity = existingItem.stock;
+                }
+            } else {
+                // Add new product to cart
+                cart.push({
+                    ...product,
+                    quantity: 1
+                });
+            }
+            
+            			// Save updated cart
+			localStorage.setItem(`cart_${currentUser.id}`, JSON.stringify(cart));
+			
+			// Update cart badge
+			try {
+				const { cartBadgeManager } = await import('./assests/js/cartBadge.js');
+				cartBadgeManager.addItemToCart();
+			} catch (error) {
+				console.log('Cart badge manager not available');
+			}
+			
+			// Show success message
+			document.body.insertAdjacentHTML(
+				"afterbegin",
+				`<div id="success-alert" class="alert alert-success text-center" 
+				  style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
+					<i class="fas fa-check-circle me-2"></i>Product added to cart successfully!
+				</div>`
+			);
 
-          setTimeout(() => {
-            document.getElementById("login-alert")?.remove();
-          }, 3000);
+			setTimeout(() => {
+				document.getElementById("success-alert")?.remove();
+			}, 2000);
+            
+        } else {
+            document.body.insertAdjacentHTML(
+                "afterbegin",
+                `<div id="login-alert" class="alert alert-warning text-center" 
+                  style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
+                    <i class="fas fa-exclamation-triangle me-2"></i>يجب عليك أولاً تسجيل الدخول إلى حسابك
+                </div>`
+            );
+
+            setTimeout(() => {
+                document.getElementById("login-alert")?.remove();
+            }, 3000);
         }
-    })
+    });
 
     </script>
   </body>

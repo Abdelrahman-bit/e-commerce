@@ -51,7 +51,10 @@
               <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
             </li>
             <li class="nav-item">
-              <a id="cart-icon" class="nav-link" href="#"><i class="fas fa-shopping-cart"></i></a>
+              <a id="cart-icon" class="nav-link cart-icon-container" href="#">
+                <i class="fas fa-shopping-cart"></i>
+                <span id="cart-badge" class="cart-badge hidden">0</span>
+              </a>
             </li>
             <li id="authPlaceholder" class="nav-item"></li>
           </ul>
@@ -59,21 +62,29 @@
       </div>
     </nav>
   </header>
-  <script>
+  <script type="module">
+    import { cartBadgeManager } from '../assests/js/cartBadge.js';
+    
     const cart = document.getElementById("cart-icon");
     if (cart) {
       cart.addEventListener("click", (e) => {
         e.preventDefault();
-        const currentUser = localStorage.getItem("currentUser");
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
         if (currentUser) {
-          window.location.href = "../customer/cart.html";
+          // Determine the correct path based on current page
+          const currentPath = window.location.pathname;
+          if (currentPath.includes('/admin/') || currentPath.includes('/seller/') || currentPath.includes('/customer/')) {
+            window.location.href = "../customer/cart.html";
+          } else {
+            window.location.href = "./customer/cart.html";
+          }
         } else {
           document.body.insertAdjacentHTML(
             "afterbegin",
             `<div id="login-alert" class="alert alert-warning text-center" 
               style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
-          ! يجب عليك أولاً تسجيل الدخول إلى حسابك
-        </div>`
+              <i class="fas fa-exclamation-triangle me-2"></i>يجب عليك أولاً تسجيل الدخول إلى حسابك
+            </div>`
           );
 
           setTimeout(() => {
