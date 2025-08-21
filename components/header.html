@@ -1,37 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Navbar with Auth</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Navbar with Auth</title>
+    <!-- Bootstrap -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet" />
+    <!-- FontAwesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet" />
+  </head>
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
-  <!-- FontAwesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-</head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+          <a class="navbar-brand" href="../index.html" id="brand">
+            <img src="/assests/images/LogoMainVector.png" alt="Logo" />
+          </a>
 
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#" id="brand">
-          <img src="/assests/images/LogoMainVector.png" alt="Logo" />
-        </a>
-
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
         <div class="collapse navbar-collapse" id="navbarNav">
           <div class="mx-auto">
-            <!-- <form class="d-flex">
+            <form class="d-flex">
               <input class="form-control me-2" type="search" placeholder="Search" style="width: 300px" />
               <button class="btn btn-outline-secondary" type="submit">
                 <i class="fas fa-search"></i>
               </button>
-            </form> -->
+            </form>
           </div>
 
           <ul class="navbar-nav ms-auto">
@@ -44,9 +51,9 @@
             <li class="nav-item">
               <a class="nav-link main-nav-link" href="#footer">Contact Us</a>
             </li>
-            <!-- <li class="nav-item">
+            <li class="nav-item">
               <a class="nav-link main-nav-link" href="#">Blog</a>
-            </li> -->
+            </li>
             <li class="nav-item">
               <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
             </li>
@@ -74,33 +81,77 @@
               style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
           ! يجب عليك أولاً تسجيل الدخول إلى حسابك
         </div>`
-          );
+            );
 
-          setTimeout(() => {
-            document.getElementById("login-alert")?.remove();
-          }, 3000);
+            setTimeout(() => {
+              document.getElementById("login-alert")?.remove();
+            }, 3000);
+          }
+        });
+      }
+
+      const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+      const currentPage = window.location.pathname.split("/").pop();
+
+      navLinks.forEach((link) => {
+        const linkPage = link.getAttribute("href").split("/").pop();
+
+        if (linkPage === currentPage) {
+          link.classList.add("active");
+        } else {
+          link.classList.remove("active");
         }
       });
-    }
-    
-  const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
-  const currentPage = window.location.pathname.split("/").pop();
 
-  navLinks.forEach(link => {
-    const linkPage = link.getAttribute("href").split("/").pop();
 
-    if (linkPage === currentPage) {
-      link.classList.add("active");
+      function renderAuthButtons() {
+    const authPlaceholder = document.getElementById("authPlaceholder");
+    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+    if (!authPlaceholder) return;
+
+    if (currentUser) {
+      // Dropdown لو فيه يوزر عامل لوجين
+      authPlaceholder.innerHTML = `
+        <li class="nav-item dropdown">
+          <a 
+            class="nav-link dropdown-toggle" 
+            href="#" 
+            role="button" 
+            data-bs-toggle="dropdown" 
+            aria-expanded="false">
+            ${currentUser.name || "User"}
+          </a>
+          <ul class="dropdown-menu dropdown-menu-end">
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a id="logoutBtn" class="dropdown-item" href="#">Logout</a></li>
+          </ul>
+        </li>
+      `;
+
+      // زرار اللوج اوت
+      document.getElementById("logoutBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        localStorage.removeItem("currentUser");
+        location.reload(); // ريفريش للصفحة بعد اللوج اوت
+      });
     } else {
-      link.classList.remove("active");
+      // لو مفيش يوزر: Login/Register
+      authPlaceholder.innerHTML = `
+        <li class="nav-item">
+          <a class="nav-link btn btn-light" href="../login.html">Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link btn bg-dark text-light" href="../login.html">Register</a>
+        </li>
+      `;
     }
-  });
-  
+  }
 
-
-  </script>
-
-
-</body>
-
+  // اول ما الصفحة تفتح
+  renderAuthButtons();
+    </script>
+    
+  </body>
 </html>
