@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cyber - Tech Store</title>
+
+    <!-- Bootstrap & FontAwesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
       rel="stylesheet"
@@ -12,313 +14,264 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
       rel="stylesheet"
     />
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./components/style.css" />
+    <link rel="stylesheet" href="assests/css/homeStyle.css" />
+    <link rel="stylesheet" href="../assests/css/productCard.css" />
+
+    <!-- Auth & Navbar logic -->
+    <script src="./assests/js/auth.js" defer></script>
+    <script src="./assests/js/navbar.js" defer></script>
+    <!-- load data to local storage on load -->
+    <script src="./assests/js/initLocalStorage.js" type="module"></script>
+    <!-- تحميل المكونات -->
+    <script type="module">
+      import { loadComponent } from "./assests/js/utils.js";
+      // تحميل الـ header / footer / category / mainCategories
+      loadComponent("header", "./components/header.html");
+      loadComponent("footer", "./components/footer.html");
+      loadComponent("category", "./components/category.html");
+      loadComponent("mainCategories", "./components/mainCategories.html");
+      loadComponent("panner", "./components/panner.html");
+    </script>
+
+    <!-- Model Viewer -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
     <link rel="stylesheet" href="/assests/css/paymentStyle.css" />
+    <style>
+
+</style>
   </head>
   <body>
     <!-- Header Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <div class="container">
-        <a class="navbar-brand" href="#" id="brand"
-          ><img src="/assests/images/LogoMainVector.png" alt=""
-        /></a>
+    <header id="header"></header>
 
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-bs-toggle="collapse"
-          data-bs-target="#navbarNav"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <div class="container my-5">
+      <div class="container my-5">
+  <div class="d-flex align-items-center justify-content-between flex-nowrap">
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="mx-auto">
-            <form class="d-flex">
-              <input
-                class="form-control me-2"
-                type="search"
-                placeholder="Search"
-                style="width: 300px"
-              />
-              <button class="btn btn-outline-secondary" type="submit">
-                <i class="fas fa-search"></i>
+    <div class="d-flex align-items-center gap-2 flex-shrink-1">
+      <span class="badge text-bg-secondary p-3">
+        <i class="fas fa-map-marker-alt"></i>
+      </span>
+      <div class="ms-1">
+        <div class="small text-muted">Step 1</div>
+        <div class="fw-semibold">Address</div>
+      </div>
+    </div>
+
+    <div class="connector mx-3 flex-grow-1"></div>
+
+    <div class="d-flex align-items-center gap-2 flex-shrink-1">
+      <span class="badge text-bg-dark p-3">
+        <i class="fa fa-credit-card"></i>
+      </span>
+      <div class="ms-1">
+        <div class="small text-muted">Step 3</div>
+        <div class="fw-semibold">Payment</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+      <div class="row">
+        <div class="col-lg-5 mb-4">
+          <div class="card p-3">
+            <h5>Summary</h5>
+
+            <div class="d-flex align-items-center border rounded p-2 mb-2">
+              <div class="me-3">
+                <img
+                  src="assests/images/Products/IphoneProduct1.png"
+                  alt="Product Image"
+                  class="img-fluid"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div class="flex-grow-1">
+                <p class="mb-0">Apple iPhone 14 Pro Max 128Gb</p>
+              </div>
+              <div>
+                <strong>$1399</strong>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center border rounded p-2 mb-2">
+              <div class="me-3">
+                <img
+                  src="assests/images/Products/Airbodsmax.png"
+                  alt="Product Image"
+                  class="img-fluid"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div class="flex-grow-1">
+                <p class="mb-0">AirPods Max Silver</p>
+              </div>
+              <div>
+                <strong>$549</strong>
+              </div>
+            </div>
+
+            <div class="d-flex align-items-center border rounded p-2 mb-2">
+              <div class="me-3">
+                <img
+                  src="assests/images/Products/applewatch.png"
+                  alt="Product Image"
+                  class="img-fluid"
+                  style="width: 50px; height: 50px"
+                />
+              </div>
+              <div class="flex-grow-1">
+                <p class="mb-0">Apple Watch Series 9 GPS 41mm</p>
+              </div>
+              <div>
+                <strong>$399</strong>
+              </div>
+            </div>
+
+            <p class="mt-3 mb-1"><strong>Address</strong></p>
+            <p>1131 Dusty Townline, Jacksonville, TX 40322</p>
+
+            <p class="mb-1"><strong>Shipment method</strong></p>
+            <p>Free</p>
+
+            <div class="d-flex justify-content-between">
+              <span>Subtotal</span>
+              <strong>$2347</strong>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span>Estimated Tax</span>
+              <strong>$50</strong>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span>Estimated shipping & Handling</span>
+              <strong>$29</strong>
+            </div>
+            <div class="d-flex justify-content-between">
+              <span><strong>Total</strong></span>
+              <strong>$2426</strong>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-7">
+          <h5>Payment</h5>
+
+          <ul class="nav nav-tabs mb-3" id="paymentTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link active"
+                id="credit-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#credit"
+                type="button"
+                role="tab"
+              >
+                Credit Card
               </button>
-            </form>
-          </div>
-
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link main-nav-link active" href="#">Home</a>
             </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">About</a>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link te"
+                id="paypal-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#paypal"
+                type="button"
+                role="tab"
+              >
+                PayPal
+              </button>
             </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">Contact Us</a>
+            <li class="nav-item" role="presentation">
+              <button
+                class="nav-link"
+                id="paypal-credit-tab"
+                data-bs-toggle="tab"
+                data-bs-target="#paypal-credit"
+                type="button"
+                role="tab"
+              >
+                PayPal Credit
+              </button>
             </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="far fa-heart"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="fas fa-shopping-cart"></i>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">
-                <i class="far fa-user"></i>
-              </a>
-            </li>   
           </ul>
-        </div>
-      </div>
-    </nav>
 
-    <!-- Category Navigation -->
-    <!-- <nav class="category-nav">
-      <div class="container">
-        <ul class="nav col-12 text-center">
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-mobile-alt "></i>Phones
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-laptop"></i>Computers
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="far fa-clock"></i>Smart Watches
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-camera"></i>Cameras
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-headphones"></i>Headphones
-            </a>
-          </li>
-          <li class="nav-item col-6 col-lg-2 col-md-4">
-            <a class="nav-link" href="#">
-              <i class="fas fa-gamepad"></i>Gaming
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav> -->
+          <div class="tab-content">
+            <div class="tab-pane fade show active" id="credit" role="tabpanel">
+              <div class="mb-3">
+                <img
+                  src="assests/images/card.jpg"
+                  alt="Credit Card"
+                  class="img-fluid rounded w-50"
+                />
+              </div>
 
-    <!-- Main Content (Demo) -->
-    <main class="main-content">
-      <div class="container">
-  <div class="row">
-    
-    <div class="col-3 col-lg-3 col-md-4 col-sm-6 my-5 d-flex align-items-center Shipping-cart1">
-      <img src="assests/images/Locationss.svg" alt="" class="location-icon">
-      <div class="d-flex flex-column">
-        <h6>Step 1</h6>
-        <h5>Address </h5>
-      </div>
-    </div>
-
-    <div class="col-3  col-lg-1 col-md-4 col-sm-6 my-5 clear-dash">
-<span class="loading-dashes1">-------</span>
-    </div>
-     <div class="col-3  col-lg-3 col-md-4 col-sm-6 my-5 d-flex align-items-center Shipping-cart">
-      <img src="assests/images/Vector.svg" alt="" class="cart">
-      <div class="d-flex flex-column">
-        <h6>step 1</h6>
-        <h5>Shipping</h5>
-      </div>
-    </div>
-        <div class="col-3  col-lg-1 col-md-4 col-sm-6 my-5">
-<span class="loading-dashes">-------</span>
-    </div>
-
-     <div class="col-3  col-lg-3  col-md-4 col-sm-6 my-5 d-flex align-items-center">
-      <img src="assests/images/Payment.svg" alt="" class="Payment-icon">
-      <div class="d-flex flex-column ">
-        <h6>step 3</h6>
-        <h5>payment</h5>
-      </div>
-    </div>
-    
-   
-  </div>
-</div>
-<div class="container">
-    <div class="row">
-            <div class="col-12 col-lg-6 col-mb-12 wrapper" >
-                <h2>Summary</h2>
-                <div class="img-container">
-<img src="assests/images/Phone mini.png" alt="">
-<h6>Apple iphone 14 pro max</h6>
-<h6>1400$</h6>
-</div>
-<div class="img-container">
-<img src="assests/images/Phone mini.png" alt="">
-<h6>Apple iphone 14 pro max</h6>
-<h6>1400$</h6>
-</div>
-<div class="img-container">
-<img src="assests/images/Phone mini.png" alt="">
-<h6>Apple iphone 14 pro max</h6>
-<h6>1400$</h6>
+              <form>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Cardholder Name"
+                  />
                 </div>
-
-                <div class="col-12 col-lg-12 col-md-12">
-  <p>Address</p>
-<h6>1131 Dusty Townline, Jacksonville, TX 40322</h6>
-<p>Shipment method</p>
-<h6 class="mb-3">Free</h6>
-<div class="d-flex justify-content-between mb-2">
-  <h6>Subtotal </h6>
-<h6>2300$</h6>
-</div>
-<div class="d-flex justify-content-between mb-2">
-  <h6>Estimated tax </h6>
-<h6>50$</h6>
-</div>
-<div class="d-flex justify-content-between mb-2">
-  <h6>Estimated shipping & Handling </h6>
-<h6>29$</h6>
-</div>
-<div class="d-flex justify-content-between mb-2">
-  <h6>Total</h6>
-<h6>  2426$</h6>
-</div>
-
-</div>
+                <div class="mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Card Number"
+                  />
+                </div>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="Exp.Date"
+                    />
+                  </div>
+                  <div class="col-md-6 mb-3">
+                    <input type="text" class="form-control" placeholder="CVV" />
+                  </div>
+                </div>
+                <div class="form-check mb-3">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    value=""
+                    id="sameAddress"
+                  />
+                  <label class="form-check-label" for="sameAddress">
+                    Same as billing address
+                  </label>
+                </div>
+                <div class="d-flex justify-content-between">
+                  <button type="button" class="btn btn-outline-dark">
+                    Back
+                  </button>
+                  <button type="submit" class="btn btn-dark">Pay</button>
+                </div>
+              </form>
             </div>
 
-             <div class="col-12 col-lg-6 px-4">
-  <h2>Payment</h2>
-
-  <!-- Tabs -->
-  <ul class="nav nav-tabs d-flex justify-content-around" id="paymentTab" role="tablist">
-    <li class="nav-item" role="presentation">
-      <h6 class=" active" id="credit-tab" data-bs-toggle="tab" data-bs-target="#credit" type="h6" role="tab">
-        Credit Cards
-      </h6>
-    </li>
-    <li class="nav-item" role="presentation">
-      <h6 class="" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal" type="h6" role="tab">
-        PayPal
-      </h6>
-    </li>
-    <li class="nav-item" role="presentation">
-      <h6 class="" id="paypal-credit-tab" data-bs-toggle="tab" data-bs-target="#paypal-credit" type="h6" role="tab">
-        PayPal Credit
-      </h6>
-    </li>
-  </ul>
-
-  <!-- Tab Content -->
-  <div class="tab-content mt-3" id="paymentTabContent">
-    <div class="tab-pane fade show active Visa" id="credit" role="tabpanel">
-      <img src="assests/images/card.jpg" alt="" class="">
-      <form>
-  <div class="mt-4">
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Cardholder Name">
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label"></label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="card Number">
-  </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label"></label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Exp.Date">
-  </div>
-  </div>
-  <div class="col-lg-6">
-  <div class="">
-    <label for="exampleInputPassword1" class="form-label"></label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="CVV">
-  </div>
-  </div>
- 
-
-  <div class="m-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Same as billing address</label>
-  </div>
-  <div class="d-flex justify-content-around">
-    <button class="btn0">Back</button>
-    <button type="submit" class="btn1">Pay</button>
-  </div>
-</form>
-    </div>
-    <div class="tab-pane fade" id="paypal" role="tabpanel">
-      <p>Here you can log in with your PayPal account...</p>
-    </div>
-    <div class="tab-pane fade" id="paypal-credit" role="tabpanel">
-      <p>Here you can pay using PayPal Credit...</p>
-    </div>
-  </div>
-</div>
-
-    </div>
-
-</div>
-    </main>
-
-    <!-- Footer -->
-    <footer>
-      <div class="container">
-        <div class="row justify-content-between">
-          <div class="col-lg-4 col-md-6 mb-4">
-            <div class="footer-brand">
-              <img src="/assests/images/Logowhite.png" alt="" />
+            <div class="tab-pane fade" id="paypal" role="tabpanel">
+              <p>Pay with PayPal option here.</p>
             </div>
-            <p class="footer-description ">
-              We are a residential interior design firm located in Portland. Our
-              boutique-studio offers more than
-            </p>
-            <div class="social-links ">
-              <a href="#"><i class="fab fa-twitter"></i></a>
-              <a href="#"><i class="fab fa-facebook-f"></i></a>
-              <a href="#"><i class="fab fa-tiktok"></i></a>
-              <a href="#"><i class="fab fa-instagram"></i></a>
+
+            <div class="tab-pane fade" id="paypal-credit" role="tabpanel">
+              <p>Pay with PayPal Credit option here.</p>
             </div>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
-            <h6>Services</h6>
-            <ul class="footer-links">
-              <li><a href="#">Bonus program</a></li>
-              <li><a href="#">Gift cards</a></li>
-              <li><a href="#">Credit and payment</a></li>
-              <li><a href="#">Service contracts</a></li>
-              <li><a href="#">Non-cash account</a></li>
-              <li><a href="#">Payment</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-3 col-sm-6 mb-4">
-            <h6>Assistance to the buyer</h6>
-            <ul class="footer-links">
-              <li><a href="#">Find an order</a></li>
-              <li><a href="#">Terms of delivery</a></li>
-              <li><a href="#">Exchange and return of goods</a></li>
-              <li><a href="#">Guarantee</a></li>
-              <li><a href="#">Frequently asked questions</a></li>
-              <li><a href="#">Terms of use of the site</a></li>
-            </ul>
           </div>
         </div>
       </div>
-    </footer>
+    </div>
+
+
+    <footer id="footer"></footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   </body>

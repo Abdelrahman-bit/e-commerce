@@ -7,6 +7,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="assests/css/login.css"/>
   <script src="./assests/js/auth.js" defer></script>
+
 </head>
 <body>
   <div class="container">
@@ -42,7 +43,9 @@
             <div class="invalid-feedback">Please enter a valid email.</div>
           </div>
           <div class="mb-3">
-            <input type="password" id="login-password" class="form-control" placeholder="Password" required minlength="6">
+            <input type="password" id="login-password" class="form-control" placeholder="Password" required
+              pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])\S{8,16}$">
+
             <div class="invalid-feedback">Incorrect email or password.</div>
           </div>
           <div class="d-flex justify-content-between mb-3">
@@ -72,9 +75,13 @@
           </div>
           <div class="mb-3">
             <input type="password" id="reg-password" class="form-control" placeholder="Password" required minlength="6">
+            <div class="invalid-feedback">
+              Password must be 8-16 chars with uppercase, lowercase, number, and special char.
+            </div>
           </div>
           <div class="mb-3">
             <input type="password" id="reg-confirm" class="form-control" placeholder="Confirm Password" required>
+            <div class="invalid-feedback">Please confirm your password.</div>
           </div>
           <button type="submit" class="btn btn-login w-100">Signup</button>
         </form>
@@ -86,74 +93,8 @@
     </div>
   </div>
 
-  <script>
-    const loginForm = document.getElementById('login-form');
-    const registerForm = document.getElementById('register-form');
-    const toggleLink = document.getElementById('toggle-link');
-    const toggleText = document.getElementById('toggle-text');
-    const alertBox = document.getElementById('form-alert');
+  <script src="./assests/js/logAndRegForm.js"></script>
 
-    function showAlert(message, type = 'danger') {
-      alertBox.innerHTML = `
-        <div class="alert alert-${type} alert-dismissible fade show" role="alert">
-          ${message}
-          <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
-        </div>`;
-    }
-
-    // Toggle forms
-    toggleLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      loginForm.classList.toggle('d-none');
-      registerForm.classList.toggle('d-none');
-      if (loginForm.classList.contains('d-none')) {
-        toggleText.innerHTML = 'Already have an account? <a href="#" id="toggle-link">Login</a>';
-      } else {
-        toggleText.innerHTML = 'Don’t have an account? <a href="#" id="toggle-link">Signup</a>';
-      }
-    });
-
-    // Handle login
-    loginForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const email = document.getElementById('login-email').value.trim().toLowerCase();
-      const password = document.getElementById('login-password').value;
-
-      try {
-        authManager.login(email, password);
-        showAlert('Login successful! Redirecting...', 'success');
-        setTimeout(() => authManager.redirectToRolePage(), 1500);
-      } catch (err) {
-        showAlert(err.message);
-      }
-    });
-
-    // Handle register
-    registerForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const name = document.getElementById('reg-name').value.trim();
-      const email = document.getElementById('reg-email').value.trim().toLowerCase();
-      const phone = document.getElementById('reg-phone').value.trim();
-      const role = document.getElementById('reg-role').value;
-      const password = document.getElementById('reg-password').value;
-      const confirm = document.getElementById('reg-confirm').value;
-
-      if (password !== confirm) {
-        showAlert('Passwords do not match');
-        return;
-      }
-
-      try {
-        authManager.register({ name, email, phone, role, password });
-        showAlert('Account created successfully! You can now login.', 'success');
-        setTimeout(() => {
-          registerForm.classList.add('d-none');
-          loginForm.classList.remove('d-none');
-        }, 1500);
-      } catch (err) {
-        showAlert(err.message);
-      }
-    });
-  </script>
 </body>
+
 </html>
