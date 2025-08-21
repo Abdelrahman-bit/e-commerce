@@ -16,6 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
     nav.querySelectorAll('[data-dynamic="auth"]').forEach(el => el.remove());
 
     const user = getCurrentUserSafe();
+    console.log('Current User:', user);
+    if(user.role == 'customer'){
+        let li = document.createElement('li');
+        li.className = 'nav-item';
+        li.setAttribute('data-dynamic', 'auth');
+        li.innerHTML = `<a class="nav-link" href="/seller/seller-dashboard.html">Dashboard</a>`;
+        placeholder.insertAdjacentElement('afterend', li);
+    }
+      if(user.role == 'admin'){
+        let li = document.createElement('li');
+        li.className = 'nav-item';
+        li.setAttribute('data-dynamic', 'auth');
+        li.innerHTML = `<a class="nav-link" href="/admin/admin-Dashboard.html">Dashboard</a>`;
+        placeholder.insertAdjacentElement('afterend', li);
+    }
     if (user) {
       // Dropdown user
         const li = document.createElement('li');
