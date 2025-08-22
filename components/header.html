@@ -47,35 +47,6 @@
                 <span id="cart-badge" class="cart-badge hidden">0</span>
               </a>
             </li>
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <div class="mx-auto">
-          
-            </div>
-
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link main-nav-link active" href="/">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link main-nav-link" href="./../about.html"
-                  >About</a
-                >
-              </li>
-              <li class="nav-item">
-                <a class="nav-link main-nav-link" href="#footer">Contact Us</a>
-              </li>
-              <li class="nav-item d-none" id="dashboard">
-                <a class="btn btn-dark" href="">dashboard</a>
-              </li>
-            
-              <li class="nav-item">
-                <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
-              </li>
-              <li class="nav-item">
-                <a id="cart-icon" class="nav-link" href="#"
-                  ><i class="fas fa-shopping-cart"></i
-                ></a>
-              </li>
 
             <li id="authPlaceholder" class="nav-item d-flex align-items-center justify-content-center gap-1"></li>
           </ul>
@@ -156,9 +127,9 @@
         if (currentUser.role === 'seller') {
           dashboardBtn.firstElementChild.href = '/seller/seller-dashboard.html'
           dashboardBtn.classList.remove('d-none');
-          
+
         } else if (currentUser.role === 'admin') {
-         dashboardBtn.firstElementChild.href = '/admin/admin-dashboard.html'
+          dashboardBtn.firstElementChild.href = '/admin/admin-dashboard.html'
           dashboardBtn.classList.remove('d-none');
         }
         // زرار اللوج اوت
