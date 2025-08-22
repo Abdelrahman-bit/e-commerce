@@ -1,38 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Navbar with Auth</title>
 
-    <!-- Bootstrap -->
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <!-- FontAwesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
-  </head>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Navbar with Auth</title>
 
-  <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-          <a class="navbar-brand" href="../index.html" id="brand">
-            <img src="/assests/images/LogoMainVector.png" alt="Logo" />
-          </a>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+</head>
 
-          <button
-            class="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarNav"
-          >
-            <span class="navbar-toggler-icon"></span>
-          </button>
+<body>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html" id="brand">
+          <img src="/assests/images/LogoMainVector.png" alt="Logo" />
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
           <div class="collapse navbar-collapse" id="navbarNav">
             <div class="mx-auto">
@@ -97,37 +87,37 @@
               style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
           ! يجب عليك أولاً تسجيل الدخول إلى حسابك
         </div>`
-            );
+          );
 
-            setTimeout(() => {
-              document.getElementById("login-alert")?.remove();
-            }, 3000);
-          }
-        });
-      }
-
-      const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
-      const currentPage = window.location.pathname.split("/").pop();
-
-      navLinks.forEach((link) => {
-        const linkPage = link.getAttribute("href").split("/").pop();
-
-        if (linkPage === currentPage) {
-          link.classList.add("active");
-        } else {
-          link.classList.remove("active");
+          setTimeout(() => {
+            document.getElementById("login-alert")?.remove();
+          }, 3000);
         }
       });
+    }
+
+    const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+    const currentPage = window.location.pathname.split("/").pop();
+
+    navLinks.forEach((link) => {
+      const linkPage = link.getAttribute("href").split("/").pop();
+
+      if (linkPage === currentPage) {
+        link.classList.add("active");
+      } else {
+        link.classList.remove("active");
+      }
+    });
 
       function renderAuthButtons() {
         const authPlaceholder = document.getElementById("authPlaceholder");
         const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
-        if (!authPlaceholder) return;
+      if (!authPlaceholder) return;
 
-        if (currentUser) {
-          // Dropdown لو فيه يوزر عامل لوجين
-          authPlaceholder.innerHTML = `
+      if (currentUser) {
+        // Dropdown لو فيه يوزر عامل لوجين
+        authPlaceholder.innerHTML = `
         <li class="nav-item dropdown">
           <a 
             class="nav-link dropdown-toggle" 
@@ -145,17 +135,15 @@
         </li>
       `;
 
-          // زرار اللوج اوت
-          document
-            .getElementById("logoutBtn")
-            .addEventListener("click", (e) => {
-              e.preventDefault();
-              localStorage.removeItem("currentUser");
-              location.reload(); // ريفريش للصفحة بعد اللوج اوت
-            });
-        } else {
-          // لو مفيش يوزر: Login/Register
-          authPlaceholder.innerHTML = `
+        // زرار اللوج اوت
+        document.getElementById("logoutBtn").addEventListener("click", (e) => {
+          e.preventDefault();
+          localStorage.removeItem("currentUser");
+          location.reload(); // ريفريش للصفحة بعد اللوج اوت
+        });
+      } else {
+        // لو مفيش يوزر: Login/Register
+        authPlaceholder.innerHTML = `
         <li class="nav-item">
           <a class="nav-link btn btn-light" href="../login.html">Login</a>
         </li>
@@ -166,8 +154,10 @@
         }
       }
 
-      // اول ما الصفحة تفتح
-      renderAuthButtons();
-    </script>
-  </body>
+    // اول ما الصفحة تفتح
+    renderAuthButtons();
+  </script>
+
+</body>
+
 </html>

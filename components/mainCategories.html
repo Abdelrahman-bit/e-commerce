@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Browse Categories</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="../assests/css/categories.css">
 </head>
 
@@ -20,28 +22,40 @@
 
         <div class="categories-container">
             <div class="categories" id="categoryList">
-                <div class="category"><img src="https://img.icons8.com/ios/50/000000/iphone.png" /><span>Phones</span>
+                <div class="category border-light" data-category="phones">
+                    <img src="https://img.icons8.com/ios/50/000000/iphone.png" /><span>Phones</span>
                 </div>
-                <div class="category"><img
-                        src="https://img.icons8.com/?size=100&id=22193&format=png&color=000000" /><span><br>Smart
-                        Watches</span></div>
-                <div class="category"><img src="https://img.icons8.com/ios/50/000000/camera.png" /><span>Cameras</span>
+                <div class="category border-light" data-category="smartwatch">
+                    <img
+                        src="https://img.icons8.com/?size=100&id=22193&format=png&color=000000" /><span>SmartWatches</span>
                 </div>
-                <div class="category"><img
-                        src="https://img.icons8.com/ios/50/000000/headphones.png" /><span>Headphones</span></div>
-                <div class="category"><img src="https://img.icons8.com/ios/50/000000/imac.png" /><span>Computers</span>
+                <div class="category border-light" data-category="cameras">
+                    <img src="https://img.icons8.com/ios/50/000000/camera.png" /><span>Cameras</span>
                 </div>
-                <div class="category"><img
-                        src="https://img.icons8.com/ios/50/000000/controller.png" /><span>Gaming</span></div>
+                <div class="category border-light" data-category="headphones">
+                    <img src="https://img.icons8.com/ios/50/000000/headphones.png" /><span>Headphones</span>
+                </div>
+                <div class="category border-light" data-category="computers">
+                    <img src="https://img.icons8.com/ios/50/000000/imac.png" /><span>Computers</span>
+                </div>
+                <div class="category border-light" data-category="gaming">
+                    <img src="https://img.icons8.com/ios/50/000000/controller.png" /><span>Gaming</span>
+                </div>
             </div>
         </div>
+        <!-- Toast container for notifications -->
+        <div class="toast-container position-fixed top-0 end-0 p-3" style="z-index: 9999"></div>
     </div>
 
     <script>
         const categoryList = document.getElementById('categoryList');
         const prevBtn = document.getElementById('prevBtn');
         const nextBtn = document.getElementById('nextBtn');
+        const categoryItems = document.querySelectorAll('[data-category]');
 
+        // No styling based on selected category from localStorage
+
+        // Scroll navigation
         nextBtn.addEventListener('click', () => {
             categoryList.scrollBy({ left: 200, behavior: 'smooth' });
         });
@@ -50,7 +64,59 @@
             categoryList.scrollBy({ left: -200, behavior: 'smooth' });
         });
 
-    </script>
+        // Category selection (no visual state update)
+        categoryItems.forEach(category => {
+            category.addEventListener('click', function () {
+                const selectedCategory = this.getAttribute('data-category');
+                // Store in localStorage
+                localStorage.setItem('selected-category', selectedCategory);
+                // Show feedback
+                const categoryName = this.querySelector('span').textContent.trim();
+                showToast(categoryName + ' category selected!', 'success');
+                // Optional: Redirect to products page after delay
+                setTimeout(() => {
+                    window.location.href = 'Products.html';
+                }, 1000);
+            });
+        });
+
+        // Removed updateActiveCategory and all visual state logic
+
+        // Function to show toast notifications
+        function showToast(message, type = 'info') {
+            const toastContainer = document.querySelector('.toast-container');
+            const toastId = 'toast-' + Date.now();
+
+            const toastHtml = `
+                    <div id="${toastId}" class="toast align-items-center text-white bg-${type} border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="d-flex">
+                            <div class="toast-body">
+                                <i class="fas fa-check-circle me-2"></i>
+                                ${message}
+                            </div>
+                            <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                        </div>
+                    </div>
+                `;
+
+            toastContainer.insertAdjacentHTML('beforeend', toastHtml);
+
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, {
+                autohide: true,
+                delay: 3000
+            });
+
+            toast.show();
+
+            toastElement.addEventListener('hidden.bs.toast', function () {
+                this.remove();
+            });
+        }
+
+        // Bootstrap JS (required for Toast)
+        </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
