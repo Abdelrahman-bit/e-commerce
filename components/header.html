@@ -31,7 +31,8 @@
                   class="form-control me-2"
                   type="search"
                   placeholder="Search"
-                  style="width: 300px" />
+                  style="width: 300px"
+                />
                 <button class="btn btn-outline-secondary" type="submit">
                   <i class="fas fa-search"></i>
                 </button>
@@ -62,9 +63,10 @@
                 ></a>
               </li>
 
-<li id="authPlaceholder" class="nav-item d-flex align-items-center justify-content-center gap-1"></li>
-
-
+              <li
+                id="authPlaceholder"
+                class="nav-item d-flex align-items-center justify-content-center gap-1"
+              ></li>
             </ul>
           </div>
         </div>
@@ -107,10 +109,9 @@
       }
     });
 
-
       function renderAuthButtons() {
-    const authPlaceholder = document.getElementById("authPlaceholder");
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+        const authPlaceholder = document.getElementById("authPlaceholder");
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
       if (!authPlaceholder) return;
 
@@ -150,8 +151,8 @@
           <a class="nav-link btn bg-dark text-light" href="../login.html">Register</a>
         </li>
       `;
-    }
-  }
+        }
+      }
 
     // اول ما الصفحة تفتح
     renderAuthButtons();
