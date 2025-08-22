@@ -13,6 +13,8 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./components/style.css" />
+    <link rel="stylesheet" href="assests/css/cartBadge.css" />
+
     <script type="module">
       import { loadComponent } from "./assests/js/utils.js";
       // Load header and footer components
@@ -20,6 +22,9 @@
       loadComponent("header", "./components/header.html");
       loadComponent("footer", "./components/footer.html");
       loadComponent("category", "./components/category.html");
+       setTimeout(() => {
+          import("./assests/js/cartBadge.js");
+        }, 1000);
     </script>
     <style></style>
   </head>
