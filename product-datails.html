@@ -14,6 +14,9 @@
       import { loadComponent } from "./assests/js/utils.js";
       loadComponent("header", "./components/header.html");
       loadComponent("footer", "./components/footer.html");
+      setTimeout(() => {
+          import("./assests/js/cartBadge.js");
+        }, 1000);
     </script>
   </head>
   <body>
