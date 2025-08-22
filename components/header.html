@@ -24,59 +24,66 @@
           <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarNav">
-          <div class="mx-auto">
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" style="width: 300px" />
-              <button class="btn btn-outline-secondary" type="submit">
-                <i class="fas fa-search"></i>
-              </button>
-            </form>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="mx-auto">
+              <form class="d-flex">
+                <input
+                  class="form-control me-2"
+                  type="search"
+                  placeholder="Search"
+                  style="width: 300px"
+                />
+                <button class="btn btn-outline-secondary" type="submit">
+                  <i class="fas fa-search"></i>
+                </button>
+              </form>
+            </div>
+
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link main-nav-link active" href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link main-nav-link" href="./../about.html"
+                  >About</a
+                >
+              </li>
+              <li class="nav-item">
+                <a class="nav-link main-nav-link" href="#footer">Contact Us</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link main-nav-link" href="#">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
+              </li>
+              <li class="nav-item">
+                <a id="cart-icon" class="nav-link" href="#"
+                  ><i class="fas fa-shopping-cart"></i
+                ></a>
+              </li>
+
+              <li
+                id="authPlaceholder"
+                class="nav-item d-flex align-items-center justify-content-center gap-1"
+              ></li>
+            </ul>
           </div>
-
-          <ul class="navbar-nav ms-auto">
-            <li class="nav-item">
-              <a class="nav-link main-nav-link active" href="/">Home</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="./../about.html">About</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#footer">Contact Us</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link main-nav-link" href="#">Blog</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
-            </li>
-            <li class="nav-item">
-              <a id="cart-icon" class="nav-link cart-icon-container" href="#">
-                <i class="fas fa-shopping-cart"></i>
-                <span id="cart-badge" class="cart-badge hidden">0</span>
-              </a>
-            </li>
-
-            <li id="authPlaceholder" class="nav-item d-flex align-items-center justify-content-center gap-1"></li>
-          </ul>
         </div>
-      </div>
-    </nav>
-  </header>
-
-  <script>
-    
-    const cart = document.getElementById("cart-icon");
-    if (cart) {
-      cart.addEventListener("click", (e) => {
-        e.preventDefault();
-        const currentUser = localStorage.getItem("currentUser");
-        if (currentUser) {
-          window.location.href = "../customer/cart.html";
-        } else {
-          document.body.insertAdjacentHTML(
-            "afterbegin",
-            `<div id="login-alert" class="alert alert-warning text-center" 
+      </nav>
+    </header>
+    <script>
+      const cart = document.getElementById("cart-icon");
+      if (cart) {
+        cart.addEventListener("click", (e) => {
+          e.preventDefault();
+          const currentUser = localStorage.getItem("currentUser");
+          if (currentUser) {
+            window.location.href = "../customer/cart.html";
+          } else {
+            document.body.insertAdjacentHTML(
+              "afterbegin",
+              `<div id="login-alert" class="alert alert-warning text-center" 
               style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
           ! يجب عليك أولاً تسجيل الدخول إلى حسابك
         </div>`
@@ -102,10 +109,9 @@
       }
     });
 
-
-    function renderAuthButtons() {
-      const authPlaceholder = document.getElementById("authPlaceholder");
-      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      function renderAuthButtons() {
+        const authPlaceholder = document.getElementById("authPlaceholder");
+        const currentUser = JSON.parse(localStorage.getItem("currentUser"));
 
       if (!authPlaceholder) return;
 
@@ -145,8 +151,8 @@
           <a class="nav-link btn bg-dark text-light" href="../login.html">Register</a>
         </li>
       `;
+        }
       }
-    }
 
     // اول ما الصفحة تفتح
     renderAuthButtons();
