@@ -35,7 +35,7 @@
             <li class="nav-item">
               <a class="nav-link main-nav-link" href="#footer">Contact Us</a>
             </li>
-            <li class="nav-item d-none dashboard" >
+            <li class="nav-item d-none" id="dashboard">
               <a class="btn btn-dark" href="">dashboard</a>
             </li>
             <li class="nav-item">
@@ -116,25 +116,21 @@
           <ul class="dropdown-menu dropdown-menu-end">
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li class="nav-item d-none text-center dashboard"><a class="btn btn-dark" href="">dashboard</a> </li>
             <li><a id="logoutBtn" class="dropdown-item" href="#">Logout</a></li>
 
           </ul>
         </li>
       `;
 
-      // 
-        const dashboardBtn = document.querySelectorAll('.dashboard');
+        // conditionally render the dahsboard button depending on the current user role 
+        const dashboardBtn = document.querySelector('#dashboard');
         if (currentUser.role === 'seller') {
-          dashboardBtn.forEach(btn => {
-            btn.firstElementChild.href = '/seller/seller-dashboard.html'
-            btn.classList.remove('d-none');
-          })
+          dashboardBtn.firstElementChild.href = '/seller/seller-dashboard.html'
+          dashboardBtn.classList.remove('d-none');
+          
         } else if (currentUser.role === 'admin') {
-          dashboardBtn.forEach(btn => {
-            btn.firstElementChild.href = '/admin/admin-dashboard.html'
-            btn.classList.remove('d-none');
-          })
+         dashboardBtn.firstElementChild.href = '/admin/admin-dashboard.html'
+          dashboardBtn.classList.remove('d-none');
         }
         // زرار اللوج اوت
         document.getElementById("logoutBtn").addEventListener("click", (e) => {
