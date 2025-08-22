@@ -8,13 +8,20 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./components/style.css" />
+
+  <link rel="stylesheet" href="../assests/css/productCard.css" />
   <link rel="stylesheet" href="./assests/css/productCard.css" />
   <link rel="stylesheet" href="./assests/css/paginationStyle.css">
+  <link rel="stylesheet" href="assests/css/cartBadge.css" />
+
 
   <script type="module">
     import { loadComponent } from "./assests/js/utils.js";
     loadComponent("header", "./components/header.html");
     loadComponent("footer", "./components/footer.html");
+    setTimeout(() => {
+        import("./assests/js/cartBadge.js");
+      }, 1000);
   </script>
 </head>
 
