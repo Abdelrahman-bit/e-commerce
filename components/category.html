@@ -1,44 +1,127 @@
 <html>
-    <head>
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-    </head>
-    <body>
-        <!-- Category Navigation -->
-        <nav class="category-nav">
-            <div class="container">
-                <ul class="nav col-12 text-center">
-                    <li class="nav-item col-6 col-lg-2 col-md-4">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-mobile-alt"></i>Phones
-                        </a>
-                    </li>
-                    <li class="nav-item col-6 col-lg-2 col-md-4">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-laptop"></i>Computers
-                        </a>
-                    </li>
-                    <li class="nav-item col-6 col-lg-2 col-md-4">
-                        <a class="nav-link" href="#">
-                            <i class="far fa-clock"></i>Smart Watches
-                        </a>
-                    </li>
-                    <li class="nav-item col-6 col-lg-2 col-md-4">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-camera"></i>Cameras
-                        </a>
-                    </li>
-                    <li class="nav-item col-6 col-lg-2 col-md-4">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-headphones"></i>Headphones
-                        </a>
-                    </li>
-                    <li class="nav-item col-6 col-lg-2 col-md-4">
-                        <a class="nav-link" href="#">
-                            <i class="fas fa-gamepad"></i>Gaming
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-    </body>
+
+<head>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+</head>
+
+<body>
+    <!-- Category Navigation -->
+    <nav class="category-nav">
+        <div class="container">
+            <ul class="nav col-12 text-center">
+                <li class="nav-item col-6 col-lg-2 col-md-4" data-category="phones">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-mobile-alt"></i>Phones
+                    </a>
+                </li>
+                <li class="nav-item col-6 col-lg-2 col-md-4" data-category="computers">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-laptop"></i>Computers
+                    </a>
+                </li>
+                <li class="nav-item col-6 col-lg-2 col-md-4" data-category="smartwatch">
+                    <a class="nav-link" href="#">
+                        <i class="far fa-clock"></i>Smart Watches
+                    </a>
+                </li>
+                <li class="nav-item col-6 col-lg-2 col-md-4" data-category="cameras">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-camera"></i>Cameras
+                    </a>
+                </li>
+                <li class="nav-item col-6 col-lg-2 col-md-4" data-category="headphones">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-headphones"></i>Headphones
+                    </a>
+                </li>
+                <li class="nav-item col-6 col-lg-2 col-md-4" data-category="gaming">
+                    <a class="nav-link" href="#">
+                        <i class="fas fa-gamepad"></i>Gaming
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</body>
+<script>
+
+    const categoryLinks = document.querySelectorAll('[data-category]');
+
+    // Load active category from localStorage on page load
+    const savedCategory = localStorage.getItem('selected-category');
+    if (savedCategory) {
+        updateActiveCategory(savedCategory);
+    }
+
+    // Add click event listeners to all category links
+    categoryLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+
+            const category = this.getAttribute('data-category');
+
+            // Store the selected category in localStorage
+            localStorage.setItem('selected-category', category);
+
+            // Update visual active state
+            updateActiveCategory(category);
+
+            // Optional: Show feedback to user
+            showCategoryFeedback(this.textContent.trim());
+
+            // Optional: Redirect to products page after a short delay
+            setTimeout(() => {
+                // Replace with your actual products page URL
+                window.location.href = 'products.html';
+            }, 500);
+        });
+    });
+
+    // Function to update active category visual state
+    function updateActiveCategory(activeCategory) {
+        // Remove active class from all links
+        categoryLinks.forEach(link => {
+            link.classList.add('text-primary');
+        });
+
+        // Add active class to selected category
+        const activeLink = document.querySelector(`[data-category="${activeCategory}"]`);
+        if (activeLink) {
+            activeLink.classList.remove('text-primary');
+        }
+    }
+
+    // Function to show user feedback
+    function showCategoryFeedback(categoryName) {
+        // Create a simple toast notification
+        const toastHtml = `
+                            <div class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0 m-3" 
+                                 role="alert" aria-live="assertive" aria-atomic="true" style="z-index: 9999;">
+                                <div class="d-flex">
+                                    <div class="toast-body">
+                                        <i class="fas fa-check-circle me-2"></i>
+                                        ${categoryName} category selected!
+                                    </div>
+                                    <button type="button" class="btn-close btn-close-white me-2 m-auto" 
+                                            data-bs-dismiss="toast" aria-label="Close"></button>
+                                </div>
+                            </div>
+                        `;
+
+        // Add toast to body
+        document.body.insertAdjacentHTML('beforeend', toastHtml);
+
+        // Show the toast
+        const toastElement = document.querySelector('.toast:last-child');
+        const toast = new bootstrap.Toast(toastElement);
+        toast.show();
+
+        // Remove toast element after it's hidden
+        toastElement.addEventListener('hidden.bs.toast', function () {
+            this.remove();
+        });
+    }
+
+</script>
+
 </html>
