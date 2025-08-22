@@ -26,17 +26,7 @@
 
           <div class="collapse navbar-collapse" id="navbarNav">
             <div class="mx-auto">
-              <form class="d-flex">
-                <input
-                  class="form-control me-2"
-                  type="search"
-                  placeholder="Search"
-                  style="width: 300px"
-                />
-                <button class="btn btn-outline-secondary" type="submit">
-                  <i class="fas fa-search"></i>
-                </button>
-              </form>
+          
             </div>
 
             <ul class="navbar-nav ms-auto">
@@ -51,9 +41,7 @@
               <li class="nav-item">
                 <a class="nav-link main-nav-link" href="#footer">Contact Us</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link main-nav-link" href="#">Blog</a>
-              </li>
+            
               <li class="nav-item">
                 <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
               </li>
@@ -116,6 +104,19 @@
       if (!authPlaceholder) return;
 
       if (currentUser) {
+        if(currentUser.role == 'seller'){
+          let li = document.createElement('li');
+        li.className = 'nav-item';
+        li.setAttribute('data-dynamic', 'auth');
+        li.innerHTML = `<a class="nav-link" href="/seller/seller-dashboard.html">Dashboard</a>`;
+        authPlaceholder.insertAdjacentElement('afterend', li);
+        }else if(currentUser.role == 'admin'){
+          let li = document.createElement('li');
+          li.className = 'nav-item';
+          li.setAttribute('data-dynamic', 'auth');
+          li.innerHTML = `<a class="nav-link" href="/admin/admin-dashboard.html">Dashboard</a>`;
+          authPlaceholder.insertAdjacentElement('afterend', li);
+        }
         // Dropdown لو فيه يوزر عامل لوجين
         authPlaceholder.innerHTML = `
         <li class="nav-item dropdown">
