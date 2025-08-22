@@ -1,152 +1,143 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="./assests/js/bootstrap.bundle.min.js" defer></script>
-    <link rel="stylesheet" href="./assests/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="./assests/css/products-details.css" />
-    <link rel="stylesheet" href="./components/style.css" />
-    <link rel="stylesheet" href="/assests/css/style.css" />  
-    <link rel="stylesheet" href="./assests/css/cartBadge.css" />
-    <title>details</title>
-    <script type="module">
-      import { loadComponent } from "./assests/js/utils.js";
-      loadComponent("header", "./components/header.html");
-      loadComponent("footer", "./components/footer.html");
-      setTimeout(() => {
-          import("./assests/js/cartBadge.js");
-        }, 1000);
-    </script>
-  </head>
-  <body>
-    <header id="header"></header>
-    <div class="main-container px-3 px-md-4">
-      <div class="container my-5">
-        <div class="row g-4 align-items-start">
-          <!-- Left Side: Product Image -->
-          <div class="col-12 col-md-6 text-center text-md-start">
-            <img
-              src="assests/images/Products/bigiphone.png"
-              alt="Product"
-              class="img-fluid rounded shadow-sm mx-auto d-block img-OfProduct"
-            />
-          </div>
 
-          <!-- Right Side: Product Details -->
-          <div class="col-12 col-md-6 text-center text-md-start">
-            <!-- Product Name -->
-            <h3 class="fw-bold mb-3 product-OfName">Apple iPhone 14 Pro Max</h3>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="./assests/js/bootstrap.bundle.min.js" defer></script>
+  <link rel="stylesheet" href="./assests/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./assests/css/products-details.css" />
+  <link rel="stylesheet" href="./components/style.css" />
+  <link rel="stylesheet" href="/assests/css/style.css" />
+  <link rel="stylesheet" href="./assests/css/cartBadge.css" />
+  <title>details</title>
+  <script type="module">
+    import { loadComponent } from "./assests/js/utils.js";
+    loadComponent("header", "./components/header.html");
+    loadComponent("footer", "./components/footer.html");
+    setTimeout(() => {
+      import("./assests/js/cartBadge.js");
+    }, 1000);
+  </script>
+</head>
 
-            <!-- Price -->
-            <div class="mb-3">
-              <span class="fs-3 fw-bold priceDiscounted">$1399</span>
-              <span class="text-muted text-decoration-line-through ms-2 price-OfProduct"
-                >$1499</span
-              >
-            </div>
-
-            <!-- Description -->
-            <p class="text-muted desk-OfProduct">
-              Enhanced capabilities thanks to an enlarged display of 6.7 inches
-              and work without recharging throughout the day. Incredible photos
-              in weak, yeast and bright lighting, the new system with two
-              cameras...
-            </p>
-
-            <!-- Add to Cart Button -->
-            <button id="AddToCart-Btn" class="btn btn-dark w-100 w-md-auto px-4 py-2 mt-3">
-              Add to Cart
-            </button>
-
-            <div class="row features mt-5">
-              <div class="col-4 d-flex flex-column align-items-center">
-                <div
-                  class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
-                >
-                  <i class="fa fa-truck" aria-hidden="true"></i>
-                  <div>
-                    <p>Free Delevery</p>
-                    <p>1-2 days</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4 d-flex flex-column align-items-center">
-                <div
-                  class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
-                >
-                  <i class="fa fa-shopping-cart"></i>
-
-                  <div>
-                    <p>In Stock</p>
-                    <p>always</p>
-                  </div>
-                </div>
-              </div>
-              <div class="col-4 d-flex flex-column align-items-center">
-                <div
-                  class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center"
-                >
-                  <i class="fa fa-mobile" aria-hidden="true"></i>
-                  <div>
-                    <p>Guaranteed</p>
-                    <p>Screen Size</p>
-                  </div>
-
-                </div>
-              </div>
-            </div>
-          </div>
-          <section class="s2">
-            <h5>Details</h5>
-            <p>
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero
-              vitae aperiam minima quisquam ratione quibusdam laborum corrupti
-              atque doloremque consequuntur!
-            </p>
-            <h5>Screen</h5>
-            <p class="d-flex justify-content-between">
-              <span>Screen Diagonal</span>
-              <span>6.7"</span>
-            </p>
-            <p class="d-flex justify-content-between">
-              <span>Screen resolution</span>
-              <span>2532 x 1170</span>
-            </p>
-            <p class="d-flex justify-content-between">
-              <span>Screen refresh rate</span>
-              <span>60Hz</span>
-            </p>
-            <p class="d-flex justify-content-between">
-              <span>Pixel density</span>
-              <span>460 ppi</span>
-            </p>
-            <p class="d-flex justify-content-between">
-              <span>Screen type</span>
-              <span> OLED</span>
-            </p>
-            <p class="d-flex justify-content-between">
-              <span>Screen Diagonal</span>
-              <span>6.7"</span>
-            </p>
-            <h5>CPU</h5>
-            <p class="d-flex justify-content-between">
-              <span>CPU</span>
-              <span>A17 Bionic</span>
-            </p>
-            <p class="d-flex justify-content-between">
-              <span>No. of Cores</span>
-              <span>6</span>
-            </p>
-            <button class="btnView">View More</button>
-          </section>
+<body>
+  <header id="header"></header>
+  <div class="main-container px-3 px-md-4">
+    <div class="container my-5">
+      <div class="row g-4 align-items-start">
+        <!-- Left Side: Product Image -->
+        <div class="col-12 col-md-6 text-center text-md-start">
+          <img src="assests/images/Products/bigiphone.png" alt="Product"
+            class="img-fluid rounded shadow-sm mx-auto d-block img-OfProduct" />
         </div>
+
+        <!-- Right Side: Product Details -->
+        <div class="col-12 col-md-6 text-center text-md-start">
+          <!-- Product Name -->
+          <h3 class="fw-bold mb-3 product-OfName">Apple iPhone 14 Pro Max</h3>
+
+          <!-- Price -->
+          <div class="mb-3">
+            <span class="fs-3 fw-bold priceDiscounted">$1399</span>
+            <span class="text-muted text-decoration-line-through ms-2 price-OfProduct">$1499</span>
+          </div>
+
+          <!-- Description -->
+          <p class="text-muted desk-OfProduct">
+            Enhanced capabilities thanks to an enlarged display of 6.7 inches
+            and work without recharging throughout the day. Incredible photos
+            in weak, yeast and bright lighting, the new system with two
+            cameras...
+          </p>
+
+          <!-- Add to Cart Button -->
+          <button id="AddToCart-Btn" class="btn btn-dark w-100 w-md-auto px-4 py-2 mt-3">
+            Add to Cart
+          </button>
+
+          <div class="row features mt-5">
+            <div class="col-4 d-flex flex-column align-items-center">
+              <div class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                <div>
+                  <p>Free Delevery</p>
+                  <p>1-2 days</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 d-flex flex-column align-items-center">
+              <div class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center">
+                <i class="fa fa-shopping-cart"></i>
+
+                <div>
+                  <p>In Stock</p>
+                  <p>always</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-4 d-flex flex-column align-items-center">
+              <div class="feature-item d-flex flex-column flex-md-row justify-content-center align-items-center">
+                <i class="fa fa-mobile" aria-hidden="true"></i>
+                <div>
+                  <p>Guaranteed</p>
+                  <p>Screen Size</p>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <section class="s2">
+          <h5>Details</h5>
+          <p>
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero
+            vitae aperiam minima quisquam ratione quibusdam laborum corrupti
+            atque doloremque consequuntur!
+          </p>
+          <h5>Screen</h5>
+          <p class="d-flex justify-content-between">
+            <span>Screen Diagonal</span>
+            <span>6.7"</span>
+          </p>
+          <p class="d-flex justify-content-between">
+            <span>Screen resolution</span>
+            <span>2532 x 1170</span>
+          </p>
+          <p class="d-flex justify-content-between">
+            <span>Screen refresh rate</span>
+            <span>60Hz</span>
+          </p>
+          <p class="d-flex justify-content-between">
+            <span>Pixel density</span>
+            <span>460 ppi</span>
+          </p>
+          <p class="d-flex justify-content-between">
+            <span>Screen type</span>
+            <span> OLED</span>
+          </p>
+          <p class="d-flex justify-content-between">
+            <span>Screen Diagonal</span>
+            <span>6.7"</span>
+          </p>
+          <h5>CPU</h5>
+          <p class="d-flex justify-content-between">
+            <span>CPU</span>
+            <span>A17 Bionic</span>
+          </p>
+          <p class="d-flex justify-content-between">
+            <span>No. of Cores</span>
+            <span>6</span>
+          </p>
+          <button class="btnView">View More</button>
+        </section>
       </div>
     </div>
-    
-    <footer id="footer"></footer>
-    <script>
-      const product = JSON.parse(localStorage.getItem("selectedProduct"));
+  </div>
+
+  <footer id="footer"></footer>
+  <script>
+    const product = JSON.parse(localStorage.getItem("selectedProduct"));
 
     if (product) {
       let imgContainer = document.querySelector('.img-OfProduct');
@@ -160,7 +151,7 @@
       descriptionProduct.textContent = product.description;
       priceDiscounted.textContent = `$${product.price *= 0.8}`; // Assuming a discount of $100 for display purposes
       console.log(product);
-      
+
     } else {
       document.getElementById("product-details").innerHTML = `
         <div class="alert alert-danger text-center">No product selected!</div>
@@ -170,68 +161,69 @@
     //check if user is logged while adding to cart
     const AddToCart = document.getElementById("AddToCart-Btn");
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    
+
     AddToCart.addEventListener("click", async () => {
-        if (currentUser) {
-            // Add product to cart
-            const cart = JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [];
-            
-            // Check if product already exists in cart
-            const existingItem = cart.find(item => item.id === product.id);
-            
-            if (existingItem) {
-                // Update quantity if product exists
-                existingItem.quantity += 1;
-                if (existingItem.quantity > existingItem.stock) {
-                    existingItem.quantity = existingItem.stock;
-                }
-            } else {
-                // Add new product to cart
-                cart.push({
-                    ...product,
-                    quantity: 1
-                });
-            }
-            
-            			// Save updated cart
-			localStorage.setItem(`cart_${currentUser.id}`, JSON.stringify(cart));
-			
-			// Update cart badge
-			try {
-				const { cartBadgeManager } = await import('./assests/js/cartBadge.js');
-				cartBadgeManager.addItemToCart();
-			} catch (error) {
-				console.log('Cart badge manager not available');
-			}
-			
-			// Show success message
-			document.body.insertAdjacentHTML(
-				"afterbegin",
-				`<div id="success-alert" class="alert alert-success text-center" 
+      if (currentUser) {
+        // Add product to cart
+        const cart = JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [];
+
+        // Check if product already exists in cart
+        const existingItem = cart.find(item => item.id === product.id);
+
+        if (existingItem) {
+          // Update quantity if product exists
+          existingItem.quantity += 1;
+          if (existingItem.quantity > existingItem.stock) {
+            existingItem.quantity = existingItem.stock;
+          }
+        } else {
+          // Add new product to cart
+          cart.push({
+            ...product,
+            quantity: 1
+          });
+        }
+
+        // Save updated cart
+        localStorage.setItem(`cart_${currentUser.id}`, JSON.stringify(cart));
+
+        // Update cart badge
+        try {
+          const { cartBadgeManager } = await import('./assests/js/cartBadge.js');
+          cartBadgeManager.addItemToCart();
+        } catch (error) {
+          console.log('Cart badge manager not available');
+        }
+
+        // Show success message
+        document.body.insertAdjacentHTML(
+          "afterbegin",
+          `<div id="success-alert" class="alert alert-success text-center" 
 				  style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
 					<i class="fas fa-check-circle me-2"></i>Product added to cart successfully!
 				</div>`
-			);
+        );
 
-			setTimeout(() => {
-				document.getElementById("success-alert")?.remove();
-			}, 2000);
-            
-        } else {
-            document.body.insertAdjacentHTML(
-                "afterbegin",
-                `<div id="login-alert" class="alert alert-warning text-center" 
+        setTimeout(() => {
+          document.getElementById("success-alert")?.remove();
+        }, 2000);
+
+      } else {
+        document.body.insertAdjacentHTML(
+          "afterbegin",
+          `<div id="login-alert" class="alert alert-warning text-center" 
                   style="position:fixed;top:20px;left:50%;transform:translateX(-50%);z-index:9999;">
                     <i class="fas fa-exclamation-triangle me-2"></i>يجب عليك أولاً تسجيل الدخول إلى حسابك
                 </div>`
-            );
+        );
 
-            setTimeout(() => {
-                document.getElementById("login-alert")?.remove();
-            }, 3000);
-        }
+        setTimeout(() => {
+          document.getElementById("login-alert")?.remove();
+        }, 3000);
+      }
     });
 
-    </script>
-  </body>
+  </script>
+</body>
+
 </html>
