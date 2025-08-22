@@ -25,6 +25,8 @@
     <script src="./assests/js/navbar.js" defer></script>
     <!-- load data to local storage on load -->
     <script src="./assests/js/initLocalStorage.js" type="module"></script>
+    <link rel="stylesheet" href="assests/css/cartBadge.css" />
+
     <!-- تحميل المكونات -->
     <script type="module">
       import { loadComponent } from "./assests/js/utils.js";
@@ -34,6 +36,10 @@
       loadComponent("category", "./components/category.html");
       loadComponent("mainCategories", "./components/mainCategories.html");
       loadComponent("panner", "./components/panner.html");
+
+      setTimeout(() => {
+          import("./assests/js/cartBadge.js");
+        }, 1000);
     </script>
 
     <!-- Model Viewer -->

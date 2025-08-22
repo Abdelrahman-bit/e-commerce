@@ -8,12 +8,20 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="./components/style.css" />
+
   <link rel="stylesheet" href="../assests/css/productCard.css" />
+  <link rel="stylesheet" href="./assests/css/productCard.css" />
+  <link rel="stylesheet" href="./assests/css/paginationStyle.css">
+  <link rel="stylesheet" href="assests/css/cartBadge.css" />
+
 
   <script type="module">
     import { loadComponent } from "./assests/js/utils.js";
     loadComponent("header", "./components/header.html");
     loadComponent("footer", "./components/footer.html");
+    setTimeout(() => {
+        import("./assests/js/cartBadge.js");
+      }, 1000);
   </script>
 </head>
 
@@ -26,29 +34,59 @@
     <nav class="my-5" style="--bs-breadcrumb-divider: '>'" aria-label="breadcrumb">
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">
-          smart phones
-        </li>
+        <li class="breadcrumb-item active" aria-current="page"> products </li> 
       </ol>
     </nav>
 
     <!-- Main Content (Demo) -->
-    <div class="container my-4">
-      <div class="row align-items-center mb-4">
-        <!-- Product count -->
-        <div class="col-12 col-lg-6">
-          <h4>Selected Products: <span id="productCount"></span></h4>
-        </div>
 
-        <!-- Search bar -->
-        <div class="col-12 col-lg-6">
-          <input id="searchInput" type="text" class="form-control" placeholder="Search products..." />
+        <!-- Sort dropdown -->
+        <div class="container my-4">
+          <div class="row align-items-center mb-4">
+            <!-- Product count (unchanged for reference) -->
+            <div class="col-12 col-lg-4">
+              <h4>Selected Products: <span id="productCount"></span></h4>
+            </div>
+        
+            <!-- Sort dropdown -->
+            <div class="col-12 col-lg-4">
+              <select id="sortSelect" class="form-select form-select-lg border-primary shadow-sm rounded-3 py-2"
+                style="background-color: #f8f9fa;">
+                <option value="all" class="fw-semibold">All Categories</option>
+                <option value="phones" class="fw-semibold">Phones</option>
+                <option value="smartwatch" class="fw-semibold">Smart Watches</option>
+                <option value="cameras" class="fw-semibold">Cameras</option>
+                <option value="headphones" class="fw-semibold">Headphones</option>
+                <option value="computers" class="fw-semibold">Computers</option>
+                <option value="gaming" class="fw-semibold">Gaming</option>
+              </select>
+            </div>
+        
+            <!-- Search bar -->
+            <div class="col-12 col-lg-4">
+              <div class="input-group">
+                <input id="searchInput" type="text"
+                  class="form-control form-control-lg border-secondary shadow-sm rounded-start-3 py-2"
+                  placeholder="Search products..." style="background-color: #f8f9fa;" />
+                <button class="btn btn-outline-secondary rounded-end-3" type="button" id="searchButton">
+                  <i class="fas fa-search"></i>
+                </button>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
-    </div>
 
     <div class="container mb-4">
       <div class="row g-4" id="products"></div>
+    </div>
+
+    <!-- Pagination -->
+    <div class="container mb-4">
+      <nav aria-label="Products pagination">
+        <ul class="pagination pagination-lg justify-content-center shadow-sm" id="pagination">
+          <!-- Pagination will be generated here -->
+        </ul>
+      </nav>
     </div>
   </main>
 
@@ -60,67 +98,223 @@
   <script type="module">
     import { createProductCard } from "./assests/js/card.js";
     import { getProducts, addToCart } from "./assests/js/storage.js";
+
     const container = document.querySelector("#products");
     const productCount = document.querySelector("#productCount");
     const searchInput = document.querySelector("#searchInput");
+    const sortSelect = document.querySelector("#sortSelect");
+    const pagination = document.querySelector("#pagination");
 
     let products = getProducts();
+    let filteredProducts = [];
+    let currentPage = 1;
+    const productsPerPage = 12; // Number of products per page
+
     console.log(products);
-    productCount.innerText = products.length;
-    products.forEach((product) => {
-      container.appendChild(createProductCard({
-        ...product,
-        btnAction: (productData) => {
-          // save clicked product in localStorage
-          localStorage.setItem(
-            "selectedProduct",
-            JSON.stringify(productData)
-          );
 
-          // redirect to details page
-          window.location.href = "product-datails.html";
-        },
-      }));
-    });
+    // Initialize page with localStorage category
+    function initializePage() {
+      const selectedCategory = localStorage.getItem('selected-category') || 'all';
+      sortSelect.value = selectedCategory;
+      renderProducts("", selectedCategory);
+    }
 
-    // search feature
-    function renderProducts(filterText = "") {
-      container.innerHTML = "";
-      const filtered = products.filter(
+    // Render products with optional filter text and category
+    function renderProducts(filterText = "", category = "all") {
+      // Filter products
+      filteredProducts = products.filter(
         (p) =>
-          p.name.toLowerCase().includes(filterText.toLowerCase()) ||
-          p.description.toLowerCase().includes(filterText.toLowerCase())
+          (p.name.toLowerCase().includes(filterText.toLowerCase()) ||
+            p.description.toLowerCase().includes(filterText.toLowerCase())) &&
+          (category === "all" || p.category.toLowerCase() === category.toLowerCase())
       );
 
-      if (filtered.length === 0) {
-        container.innerHTML = `<p class="text-muted">No products found.</p>`;
+      // Update product count
+      productCount.innerText = filteredProducts.length;
+
+      // Reset to first page when filtering
+      currentPage = 1;
+
+      // Render current page
+      renderCurrentPage();
+
+      // Render pagination
+      renderPagination();
+    }
+
+    // Render current page products
+    function renderCurrentPage() {
+      container.innerHTML = "";
+
+      // Calculate start and end indices
+      const startIndex = (currentPage - 1) * productsPerPage;
+      const endIndex = startIndex + productsPerPage;
+      const currentProducts = filteredProducts.slice(startIndex, endIndex);
+
+      if (currentProducts.length === 0) {
+        container.innerHTML = `
+          <div class="col-12">
+            <div class="alert alert-info text-center p-4">
+              <i class="fas fa-search fa-3x mb-3"></i>
+              <h4>No products found</h4>
+              <p class="mb-0">Try adjusting your search criteria or browse all categories.</p>
+            </div>
+          </div>
+        `;
         return;
       }
 
-      filtered.forEach((product) => {
+      currentProducts.forEach((product) => {
         container.appendChild(createProductCard({
           ...product,
           btnAction: (productData) => {
-            // save clicked product in localStorage
-            localStorage.setItem(
-              "selectedProduct",
-              JSON.stringify(productData)
-            );
-
-            // redirect to details page
+            localStorage.setItem("selectedProduct", JSON.stringify(productData));
             window.location.href = "product-datails.html";
           },
         }));
       });
     }
 
-    // ✅ Search event
-    searchInput.addEventListener("input", (e) => {
-      renderProducts(e.target.value);
+    // Render pagination
+  function renderPagination() {
+    const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+    pagination.innerHTML = "";
+
+    if (totalPages <= 1) {
+      return; // Don't show pagination if only one page
+    }
+
+    // Container with flex for responsiveness
+    pagination.className = 'pagination d-flex flex-wrap justify-content-center';
+
+    // Previous button
+    const prevLi = document.createElement('li');
+    prevLi.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+    prevLi.innerHTML = `
+    <a class="page-link py-2 px-3 text-dark text-decoration-none" href="#" data-page="${currentPage - 1}" 
+       data-bs-toggle="tooltip" title="Go to previous page">
+      <i class="fas fa-chevron-left"></i> Previous
+    </a>
+  `;
+    pagination.appendChild(prevLi);
+
+    // Calculate page numbers to show (adjusted for small screens)
+    let startPage = Math.max(1, currentPage - 1);
+    let endPage = Math.min(totalPages, currentPage + 1);
+
+    // Adjust for very small datasets or near boundaries
+    if (currentPage <= 2) {
+      endPage = Math.min(3, totalPages);
+    }
+    if (currentPage >= totalPages - 1) {
+      startPage = Math.max(totalPages - 2, 1);
+    }
+
+    // First page and ellipsis
+    if (startPage > 1) {
+      const firstLi = document.createElement('li');
+      firstLi.className = 'page-item';
+      firstLi.innerHTML = `
+      <a class="page-link py-2 px-3 text-decoration-none" href="#" data-page="1" 
+         data-bs-toggle="tooltip" title="Go to first page">1</a>
+    `;
+      pagination.appendChild(firstLi);
+
+      if (startPage > 2) {
+        const ellipsisLi = document.createElement('li');
+        ellipsisLi.className = 'page-item disabled';
+        ellipsisLi.innerHTML = `
+        <a class="page-link py-2 px-3 text-decoration-none" href="#">...</a>
+      `;
+        pagination.appendChild(ellipsisLi);
+      }
+    }
+
+    // Page numbers
+    for (let i = startPage; i <= endPage; i++) {
+      const li = document.createElement('li');
+      li.className = `page-item  ${i === currentPage ? 'active' : ''}`;
+      li.innerHTML = `
+      <a class="page-link py-2 px-3 text-dark text-decoration-none ${i === currentPage ? 'fw-bold' : ''}" 
+         href="#" data-page="${i}" data-bs-toggle="tooltip" title="Go to page ${i}">${i}</a>
+    `;
+      pagination.appendChild(li);
+    }
+
+    // Last page and ellipsis
+    if (endPage < totalPages) {
+      if (endPage < totalPages - 1) {
+        const ellipsisLi = document.createElement('li');
+        ellipsisLi.className = 'page-item disabled';
+        ellipsisLi.innerHTML = `
+        <a class="page-link py-2 px-3 text-decoration-none" href="#">...</a>
+      `;
+        pagination.appendChild(ellipsisLi);
+      }
+
+      const lastLi = document.createElement('li');
+      lastLi.className = 'page-item';
+      lastLi.innerHTML = `
+      <a class="page-link py-2 px-3 text-decoration-none" href="#" data-page="${totalPages}" 
+         data-bs-toggle="tooltip" title="Go to last page">${totalPages}</a>
+    `;
+      pagination.appendChild(lastLi);
+    }
+
+    // Next button
+    const nextLi = document.createElement('li');
+    nextLi.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+    nextLi.innerHTML = `
+    <a class="page-link py-2 px-3 text-dark text-decoration-none" href="#" data-page="${currentPage + 1}" 
+       data-bs-toggle="tooltip" title="Go to next page">
+      Next <i class="fas fa-chevron-right"></i>
+    </a>
+  `;
+    pagination.appendChild(nextLi);
+  }
+  
+    // Handle pagination clicks
+    pagination.addEventListener('click', (e) => {
+      e.preventDefault();
+      const pageLink = e.target.closest('[data-page]');
+      if (pageLink && !pageLink.closest('.page-item').classList.contains('disabled')) {
+        const page = parseInt(pageLink.dataset.page);
+        if (page >= 1 && page <= Math.ceil(filteredProducts.length / productsPerPage)) {
+          currentPage = page;
+          renderCurrentPage();
+          renderPagination();
+          // Smooth scroll to top of products
+          searchInput.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }
     });
 
-    // ✅ Initial load
-    // renderProducts();
+    // Search event with debouncing
+    let searchTimeout;
+    searchInput.addEventListener("input", (e) => {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const category = sortSelect.value;
+        renderProducts(e.target.value, category);
+      }, 300);
+    });
+
+    // Sort event
+    sortSelect.addEventListener("change", (e) => {
+      const category = e.target.value;
+
+      // Save selected category to localStorage
+      if (category !== 'all') {
+        localStorage.setItem('selected-category', category);
+      } else {
+        localStorage.removeItem('selected-category');
+      }
+
+      renderProducts(searchInput.value, category);
+    });
+
+    // Initialize page
+    initializePage();
   </script>
 </body>
 
