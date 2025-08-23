@@ -18,26 +18,17 @@ function saveUsers(users) {
   localStorage.setItem("users", JSON.stringify(users));
 }
 
-function updateUserAddressInStorage(addressObj) {
-  let currentUser = getCurrentUser();
-  let users = getUsers();
-
-  let index = users.findIndex(u => u.email === currentUser.email);
-  if (index !== -1) {
-    users[index].address = addressObj;
-    saveUsers(users);
-
-    currentUser.address = addressObj;
-    saveCurrentUser(currentUser);
-  }
+function findCurrentUserIndex(users, currentUser) {
+  return users.findIndex(u => u.email === currentUser.email);
 }
 
 // --- Render address card ---
-function renderAddressCard(addressObj, checked = false) {
+function renderAddressCard(addressObj, index, checked = false) {
   const addressList = document.getElementById("addressList");
 
   const newAddress = document.createElement("div");
   newAddress.classList.add("col-12");
+  newAddress.dataset.index = index;
   newAddress.innerHTML = `
     <div class="card p-3">
       <div class="d-flex justify-content-between align-items-start">
@@ -73,9 +64,21 @@ document.getElementById("newAddressForm").addEventListener("submit", function(e)
 
   const addressObj = { title, fullAddress: address, phone, label };
 
-  renderAddressCard(addressObj, true);
+  let currentUser = getCurrentUser();
+  let users = getUsers();
+  let idx = findCurrentUserIndex(users, currentUser);
 
-  updateUserAddressInStorage(addressObj);
+  if (idx !== -1) {
+    if (!users[idx].addresses) users[idx].addresses = [];
+    users[idx].addresses.push(addressObj);
+    users[idx].selectedAddressIndex = users[idx].addresses.length - 1; // mark as selected
+    saveUsers(users);
+
+    currentUser = { ...users[idx] };
+    saveCurrentUser(currentUser);
+
+    renderAddressCard(addressObj, users[idx].addresses.length - 1, true);
+  }
 
   document.getElementById("newAddressForm").reset();
   bootstrap.Modal.getInstance(document.getElementById("addAddressModal")).hide();
@@ -85,28 +88,34 @@ document.getElementById("newAddressForm").addEventListener("submit", function(e)
 document.addEventListener("click", function(e) {
   if (e.target.classList.contains("remove-address")) {
     const card = e.target.closest(".col-12");
-    const radio = card.querySelector("input[type=radio]");
-    card.remove();
+    const index = parseInt(card.dataset.index);
 
-    if (radio.checked) {
-      let currentUser = getCurrentUser();
-      let users = getUsers();
+    let currentUser = getCurrentUser();
+    let users = getUsers();
+    let idx = findCurrentUserIndex(users, currentUser);
 
-      let index = users.findIndex(u => u.email === currentUser.email);
-      if (index !== -1) {
-        delete users[index].address;
-        saveUsers(users);
+    if (idx !== -1) {
+      users[idx].addresses.splice(index, 1);
+
+      // Adjust selected index if needed
+      if (users[idx].selectedAddressIndex === index) {
+        users[idx].selectedAddressIndex = null;
+      } else if (users[idx].selectedAddressIndex > index) {
+        users[idx].selectedAddressIndex--;
       }
-      delete currentUser.address;
-      saveCurrentUser(currentUser);
+
+      saveUsers(users);
+      saveCurrentUser(users[idx]);
     }
+
+    card.remove();
   }
 });
 
 // --- Edit Address - open modal ---
 document.addEventListener("click", function(e) {
   if (e.target.closest(".edit-address")) {
-    const card = e.target.closest(".card");
+    const card = e.target.closest(".col-12");
     editTargetCard = card;
 
     document.getElementById("editTitle").value = card.querySelector(".address-title").innerText;
@@ -123,14 +132,28 @@ document.getElementById("editAddressForm").addEventListener("submit", function(e
   e.preventDefault();
 
   if (editTargetCard) {
-    editTargetCard.querySelector(".address-title").innerText = document.getElementById("editTitle").value;
-    editTargetCard.querySelector(".address-full").innerText = document.getElementById("editFullAddress").value;
-    editTargetCard.querySelector(".address-phone").innerText = document.getElementById("editPhone").value;
-    editTargetCard.querySelector(".address-label").innerText = document.getElementById("editLabelType").value;
+    const index = parseInt(editTargetCard.dataset.index);
 
-    const radio = editTargetCard.closest(".col-12").querySelector("input[type=radio]");
-    if (radio.checked) {
-      updateSelectedAddress(radio);
+    const updatedAddress = {
+      title: document.getElementById("editTitle").value,
+      fullAddress: document.getElementById("editFullAddress").value,
+      phone: document.getElementById("editPhone").value,
+      label: document.getElementById("editLabelType").value
+    };
+
+    editTargetCard.querySelector(".address-title").innerText = updatedAddress.title;
+    editTargetCard.querySelector(".address-full").innerText = updatedAddress.fullAddress;
+    editTargetCard.querySelector(".address-phone").innerText = updatedAddress.phone;
+    editTargetCard.querySelector(".address-label").innerText = updatedAddress.label;
+
+    let currentUser = getCurrentUser();
+    let users = getUsers();
+    let idx = findCurrentUserIndex(users, currentUser);
+
+    if (idx !== -1) {
+      users[idx].addresses[index] = updatedAddress;
+      saveUsers(users);
+      saveCurrentUser(users[idx]);
     }
   }
 
@@ -140,33 +163,31 @@ document.getElementById("editAddressForm").addEventListener("submit", function(e
 // --- Handle selecting address ---
 document.addEventListener("change", function(e) {
   if (e.target.matches('input[name="address"]')) {
-    updateSelectedAddress(e.target);
+    const card = e.target.closest(".col-12");
+    const index = parseInt(card.dataset.index);
+
+    let currentUser = getCurrentUser();
+    let users = getUsers();
+    let idx = findCurrentUserIndex(users, currentUser);
+
+    if (idx !== -1) {
+      users[idx].selectedAddressIndex = index;
+      saveUsers(users);
+      saveCurrentUser(users[idx]);
+    }
   }
 });
 
-// --- Save selected address into storage ---
-function updateSelectedAddress(radioInput) {
-  const card = radioInput.closest(".card");
-  let selectedAddress = {
-    title: card.querySelector(".address-title").innerText,
-    fullAddress: card.querySelector(".address-full").innerText,
-    phone: card.querySelector(".address-phone").innerText,
-    label: card.querySelector(".address-label").innerText
-  };
-
-  updateUserAddressInStorage(selectedAddress);
-}
-
-// --- On page load, render saved address ---
+// --- On page load, render saved addresses ---
 window.addEventListener("DOMContentLoaded", () => {
   let currentUser = getCurrentUser();
-  if (currentUser && currentUser.address) {
-    renderAddressCard(currentUser.address, true);
+  let users = getUsers();
+  let idx = findCurrentUserIndex(users, currentUser);
+
+  if (idx !== -1 && users[idx].addresses) {
+    users[idx].addresses.forEach((addr, i) => {
+      let checked = users[idx].selectedAddressIndex === i;
+      renderAddressCard(addr, i, checked);
+    });
   }
 });
-function ToPayment(){
-    window.location.href = "payment.html";
-}
-function ToCart(){
-    window.location.href = "customer/cart.html";
-}
