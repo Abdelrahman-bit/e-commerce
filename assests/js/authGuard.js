@@ -11,7 +11,7 @@
     "/profile.html",
     "/customer/cart.html",
     "/admin/dashboard.html",
-    "/seller/dashboard.html",
+    "/seller/seller-dashboard.html",
   ];
 
   // Role restrictions
