@@ -128,19 +128,6 @@
       if (!authPlaceholder) return;
 
       if (currentUser) {
-        if(currentUser.role == 'seller'){
-          let li = document.createElement('li');
-        li.className = 'nav-item';
-        li.setAttribute('data-dynamic', 'auth');
-        li.innerHTML = `<a class="nav-link" href="/seller/seller-dashboard.html">Dashboard</a>`;
-        authPlaceholder.insertAdjacentElement('afterend', li);
-        }else if(currentUser.role == 'admin'){
-          let li = document.createElement('li');
-          li.className = 'nav-item';
-          li.setAttribute('data-dynamic', 'auth');
-          li.innerHTML = `<a class="nav-link" href="/admin/admin-dashboard.html">Dashboard</a>`;
-          authPlaceholder.insertAdjacentElement('afterend', li);
-        }
         // Dropdown لو فيه يوزر عامل لوجين
         authPlaceholder.innerHTML = `
         <li class="nav-item dropdown">
@@ -166,9 +153,9 @@
         if (currentUser.role === 'seller') {
           dashboardBtn.firstElementChild.href = '/seller/seller-dashboard.html'
           dashboardBtn.classList.remove('d-none');
-          
+
         } else if (currentUser.role === 'admin') {
-         dashboardBtn.firstElementChild.href = '/admin/admin-dashboard.html'
+          dashboardBtn.firstElementChild.href = '/admin/admin-dashboard.html'
           dashboardBtn.classList.remove('d-none');
         }
         // زرار اللوج اوت
