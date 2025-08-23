@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile Page</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        #profileForm input:focus {
+            outline: none;
+            border: 1px solid black;
+            box-shadow: none;
+        }
+
+        /* إخفاء علامة الصح */
+        .form-control.is-valid,
+        .was-validated .form-control:valid {
+            background-image: none !important;
+            padding-right: 0.75rem !important;
+        }
+
+        /* إخفاء علامة الغلط برضه */
+        .form-control.is-invalid,
+        .was-validated .form-control:invalid {
+            background-image: none !important;
+            padding-right: 0.75rem !important;
+        }
+    </style>
+</head>
+
+<body class="bg-light">
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Edit Profile</h2>
+
+        <div id="successMsg" class="alert alert-success d-none" role="alert">
+            ✅ Changes saved successfully!
+        </div>
+
+        <!-- Tabs -->
+        <ul class="nav nav-tabs" id="profileTabs" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="info-tab" data-bs-toggle="tab" data-bs-target="#info" type="button"
+                    role="tab">Profile Info</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="password-tab" data-bs-toggle="tab" data-bs-target="#passwordTab"
+                    type="button" role="tab">Change Password</button>
+            </li>
+        </ul>
+
+        <div class="tab-content mt-3">
+            <!-- Info Tab -->
+            <div class="tab-pane fade show active" id="info" role="tabpanel">
+                <form id="infoForm" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
+                        <div class="invalid-feedback">Please enter your full name.</div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Email address</label>
+                        <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
+                        <div class="invalid-feedback">Please enter a valid email.</div>
+                    </div>
+
+                    <button type="submit" class="btn btn-success">Save Info</button>
+                </form>
+            </div>
+
+            <!-- Password Tab -->
+            <div class="tab-pane fade" id="passwordTab" role="tabpanel">
+                <form id="passwordForm" class="needs-validation" novalidate>
+                    <div class="mb-3">
+                        <label for="currentPassword" class="form-label">Current Password</label>
+                        <input type="password" id="currentPassword" class="form-control"
+                            placeholder="Enter Current Password" required>
+                        <div class="invalid-feedback">
+                            Please enter your current password correctly.
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="newPassword" class="form-label">New Password</label>
+                        <input type="password" id="newPassword" class="form-control" placeholder="Enter New Password"
+                            required pattern="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^A-Za-z0-9])\S{8,16}$">
+                        <div class="invalid-feedback">
+                            Password must be 8-16 chars with uppercase, lowercase, number, and special char.
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-warning">Update Password</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Load current user data
+        const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
+        document.getElementById('name').value = currentUser.name || "";
+        document.getElementById('email').value = currentUser.email || "";
+
+        // Regex
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,16}$/;
+
+        const successMsg = document.getElementById("successMsg");
+
+        // ====== Info Form ======
+        document.getElementById("infoForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const nameInput = document.getElementById("name");
+            const emailInput = document.getElementById("email");
+            let valid = true;
+
+            if (!nameInput.value.trim()) {
+                nameInput.classList.add("is-invalid");
+                valid = false;
+            } else {
+                nameInput.classList.remove("is-invalid");
+            }
+
+            if (!emailRegex.test(emailInput.value)) {
+                emailInput.classList.add("is-invalid");
+                valid = false;
+            } else {
+                emailInput.classList.remove("is-invalid");
+            }
+
+            if (valid) {
+                currentUser.name = nameInput.value.trim();
+                currentUser.email = emailInput.value.trim();
+                localStorage.setItem("currentUser", JSON.stringify(currentUser));
+                showSuccess();
+            }
+        });
+
+        // ====== Password Form ======
+        document.getElementById("passwordForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            const currentPasswordInput = document.getElementById("currentPassword");
+            const newPasswordInput = document.getElementById("newPassword");
+            let valid = true;
+
+            if (currentPasswordInput.value !== currentUser.password) {
+                currentPasswordInput.classList.add("is-invalid");
+                valid = false;
+            } else {
+                currentPasswordInput.classList.remove("is-invalid");
+            }
+
+            if (!passwordRegex.test(newPasswordInput.value)) {
+                newPasswordInput.classList.add("is-invalid");
+                valid = false;
+            } else {
+                newPasswordInput.classList.remove("is-invalid");
+            }
+
+            if (valid) {
+                currentUser.password = newPasswordInput.value;
+                localStorage.setItem("currentUser", JSON.stringify(currentUser));
+                showSuccess();
+            }
+        });
+
+        // ====== Remove validation error on input ======
+        document.getElementById("name").addEventListener("input", function () {
+            if (this.value.trim()) this.classList.remove("is-invalid");
+        });
+
+        document.getElementById("email").addEventListener("input", function () {
+            if (emailRegex.test(this.value)) this.classList.remove("is-invalid");
+        });
+
+        document.getElementById("currentPassword").addEventListener("input", function () {
+            if (this.value === currentUser.password) this.classList.remove("is-invalid");
+        });
+
+        document.getElementById("newPassword").addEventListener("input", function () {
+            if (passwordRegex.test(this.value)) this.classList.remove("is-invalid");
+        });
+
+        // Success message function
+        function showSuccess() {
+            successMsg.classList.remove("d-none");
+            setTimeout(() => {
+                successMsg.classList.add("d-none");
+            }, 3000);
+        }
+    </script>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
