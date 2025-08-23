@@ -26,8 +26,7 @@
           import("./assests/js/cartBadge.js");
         }, 1000);
     </script>
-    <style></style>
-  </head>
+<link rel="stylesheet" href="assests/css/paymentStyle.css">  </head>
   <body>
     <!-- Header  -->
     <header id="header"></header>
@@ -35,185 +34,136 @@
     <div id="category"></div>
 
     <!-- Main Content (Demo) -->
-    <!DOCTYPE html>
-    <html lang="en">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Shopping Cart</title>
-        <link
-          href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
-          rel="stylesheet"
-        />
-      </head>
-      <body class="bg-light">
-        <div class="container my-4">
-          <div class="row g-4">
-            <!-- Left side - Cart items -->
-            <div class="col-12 col-md-8">
-              <h4 class="fw-bold mb-4">Shopping Cart</h4>
+    <div class="container py-4">
 
-              <!-- Item 1 -->
-              <div class="card mb-3 border-0 border-bottom rounded-0">
-                <div class="row g-0 align-items-center p-3">
-                  <div class="col-3 col-md-2">
-                    <img
-                      src="assests/images/Products/IphoneProduct1.png"
-                      alt="Product"
-                      class="img-fluid rounded"
-                    />
-                  </div>
-                  <div class="col-9 col-md-10">
-                    <div class="d-flex justify-content-between">
-                      <div>
-                        <h6 class="mb-1">
-                          Apple iPhone 14 Pro Max 128Gb Deep Purple
-                        </h6>
-                        <small class="text-muted">#25139526913984</small>
-                        <div class="d-flex align-items-center mt-2">
-                          <button class="btn btn-outline-secondary btn-sm">
-                            -
-                          </button>
-                          <input
-                            type="text"
-                            value="1"
-                            class="form-control form-control-sm text-center mx-2"
-                            style="width: 50px"
-                          />
-                          <button class="btn btn-outline-secondary btn-sm">
-                            +
-                          </button>
-                        </div>
-                      </div>
-                      <div class="text-end">
-                        <h6>$1399</h6>
-                        <button class="btn btn-sm">&#x2715;</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+      <div class="container my-5">
+  <div class="d-flex align-items-center justify-content-between flex-nowrap">
 
-              <!-- Item 2 -->
-              <div class="card mb-3 border-0 border-bottom rounded-0">
-                <div class="row g-0 align-items-center p-3">
-                  <div class="col-3 col-md-2">
-                    <img
-                      src="assests/images/Products/Airbodsmax.png"
-                      alt="Product"
-                      class="img-fluid rounded"
-                    />
-                  </div>
-                  <div class="col-9 col-md-10">
-                    <div class="d-flex justify-content-between">
-                      <div>
-                        <h6 class="mb-1">AirPods Max Silver</h6>
-                        <small class="text-muted">#543459358345</small>
-                        <div class="d-flex align-items-center mt-2">
-                          <button class="btn btn-outline-secondary btn-sm">
-                            -
-                          </button>
-                          <input
-                            type="text"
-                            value="1"
-                            class="form-control form-control-sm text-center mx-2"
-                            style="width: 50px"
-                          />
-                          <button class="btn btn-outline-secondary btn-sm">
-                            +
-                          </button>
-                        </div>
-                      </div>
-                      <div class="text-end">
-                        <h6>$549</h6>
-                        <button class="btn btn-sm">&#x2715;</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
+    <div class="d-flex align-items-center gap-2 flex-shrink-1">
+      <span class="badge text-bg-secondary p-3">
+        <i class="fas fa-map-marker-alt"></i>
+      </span>
+      <div class="ms-1">
+        <div class="small text-muted">Step 1</div>
+        <div class="fw-semibold">Address</div>
+      </div>
+    </div>
 
-              <!-- Item 3 -->
-              <div class="card mb-3 border-0 border-bottom rounded-0">
-                <div class="row g-0 align-items-center p-3">
-                  <div class="col-3 col-md-2">
-                    <img
-                      src="assests/images/Products/applewatch.png"
-                      alt="Product"
-                      class="img-fluid rounded"
-                    />
-                  </div>
-                  <div class="col-9 col-md-10">
-                    <div class="d-flex justify-content-between">
-                      <div>
-                        <h6 class="mb-1">
-                          Apple Watch Series 9 GPS 41mm Starlight Aluminium
-                        </h6>
-                        <small class="text-muted">#63632324</small>
-                        <div class="d-flex align-items-center mt-2">
-                          <button class="btn btn-outline-secondary btn-sm">
-                            -
-                          </button>
-                          <input
-                            type="text"
-                            value="1"
-                            class="form-control form-control-sm text-center mx-2"
-                            style="width: 50px"
-                          />
-                          <button class="btn btn-outline-secondary btn-sm">
-                            +
-                          </button>
-                        </div>
-                      </div>
-                      <div class="text-end">
-                        <h6>$399</h6>
-                        <button class="btn btn-sm">&#x2715;</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div class="connector mx-3 flex-grow-1"></div>
 
-            <!-- Right side - Order Summary -->
-            <div class="col-12 col-md-4">
-              <div class="card p-4">
-                <h5 class="fw-bold mb-3">Order Summary</h5>
+    <div class="d-flex align-items-center gap-2 flex-shrink-1">
+      <span class="badge text-bg-dark p-3">
+        <i class="fa fa-credit-card"></i>
+      </span>
+      <div class="ms-1">
+        <div class="small text-muted">Step 3</div>
+        <div class="fw-semibold">Payment</div>
+      </div>
+    </div>
 
-                <div class="mb-3">
-                  <label class="form-label">Payment Details</label>
-                  <input type="text" class="form-control" />
-                </div>
+  </div>
+</div>
 
-                <div class="mb-3">
-                  <label class="form-label">Order Date</label>
-                  <div class="input-group">
-                    <input type="date" class="form-control" />
-                  </div>
-                </div>
+  <h4 class="fw-bold mb-3">Select Address</h4>
 
-                <ul class="list-unstyled">
-                  <li class="d-flex justify-content-between">
-                    <strong>Subtotal</strong><strong>$2347</strong>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <span>Estimated Tax</span><span>$50</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <span>Estimated shipping & Handling</span><span>$29</span>
-                  </li>
-                  <hr />
-                  <li class="d-flex justify-content-between fw-bold">
-                    <strong>Total</strong><strong>$2426</strong>
-                  </li>
-                </ul>
+  <!-- Address List -->
+  <div id="addressList" class="row gy-3">
 
-                <button class="btn btn-dark w-100 mt-3">Checkout</button>
-              </div>
-            </div>
+  </div>
+
+  <!-- Add New Address -->
+  <div class="text-center my-3">
+    <button class="btn btn-outline-dark rounded-circle mb-2" data-bs-toggle="modal" data-bs-target="#addAddressModal">+</button>
+    <div>Add New Address</div>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="d-flex justify-content-between mt-3">
+    <button class="btn btn-outline-dark" onclick="ToCart()">Back</button>
+    <button class="btn btn-dark" onclick="ToPayment()">Next</button>
+  </div>
+</div>
+
+<!-- Add Address Modal -->
+<div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="addAddressModalLabel">Add New Address</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="newAddressForm">
+          <div class="mb-3">
+            <label class="form-label">Address Title</label>
+            <input type="text" class="form-control" id="addressTitle" required>
           </div>
-        </div>
+          <div class="mb-3">
+            <label class="form-label">Full Address</label>
+            <textarea class="form-control" id="fullAddress" rows="2" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="phoneNumber" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Label Type</label>
+            <select class="form-select" id="labelType">
+              <option value="HOME">Home</option>
+              <option value="OFFICE">Office</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-dark w-100">Save Address</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
+<!-- Edit Address Modal -->
+<div class="modal fade" id="editAddressModal" tabindex="-1" aria-labelledby="editAddressModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="editAddressModalLabel">Edit Address</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editAddressForm">
+          <div class="mb-3">
+            <label class="form-label">Address Title</label>
+            <input type="text" class="form-control" id="editTitle" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Full Address</label>
+            <textarea class="form-control" id="editFullAddress" rows="2" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Phone Number</label>
+            <input type="tel" class="form-control" id="editPhone" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Label Type</label>
+            <select class="form-select" id="editLabelType">
+              <option value="HOME">Home</option>
+              <option value="OFFICE">Office</option>
+              <option value="OTHER">Other</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-dark w-100">Update Address</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Bootstrap Icons -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+
+<script src="assests/js/Address.js">
+  
+</script>
     <!-- Footer -->
     <footer id="footer"></footer>
   </body>
