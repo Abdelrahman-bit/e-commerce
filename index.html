@@ -1,25 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cyber - Tech Store</title>
 
-    <!-- Bootstrap & FontAwesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber - Tech Store</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="./components/style.css" />
-    <link rel="stylesheet" href="assests/css/homeStyle.css" />
-    <link rel="stylesheet" href="../assests/css/productCard.css" />
-    <link rel="stylesheet" href="assests/css/cartBadge.css" />
+  <!-- Bootstrap & FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="./components/style.css" />
+  <link rel="stylesheet" href="assests/css/homeStyle.css" />
+  <link rel="stylesheet" href="../assests/css/productCard.css" />
+  <link rel="stylesheet" href="assests/css/cartBadge.css" />
 
   <!-- Auth & Navbar logic -->
   <script src="./assests/js/auth.js" defer></script>
@@ -35,7 +30,7 @@
     loadComponent("category", "./components/category.html");
     loadComponent("mainCategories", "./components/mainCategories.html");
     loadComponent("panner", "./components/panner.html");
-    
+
     setTimeout(() => {
       import("./assests/js/cartBadge.js");
     }, 1000);
@@ -64,7 +59,7 @@
           <p class="lead text-secondary mb-4">
             Created to change everything for the better. For everyone.
           </p>
-          <a href="#" class="btn btn-outline-light btn-lg px-5 py-3">Shop Now</a>
+          <a href="/Products.html" class="btn btn-outline-light btn-lg px-5 py-3" id="productsLink">Shop Now</a>
         </div>
 
         <div class="col-12 col-sm-6 text-center">
@@ -98,6 +93,7 @@
   <footer id="footer"></footer>
 
   <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
   <script type="module">
     import { createProductCard } from './assests/js/card.js'
     import { getProducts, addToCart } from './assests/js/storage.js'
@@ -106,7 +102,7 @@
     let products = getProducts();
     products.forEach((product, index) => {
       // abdelrahman: add this condition to just render 8 card in home page.
-      if(index > 7){
+      if (index > 7) {
         return
       }
       const card = createProductCard({
@@ -123,7 +119,11 @@
       container.appendChild(card);
     });
 
-
+    //abdelrahman: make sure when navigate to products page all products are shown and remove any selected category from local storage
+    const productsLink = document.querySelector('#productsLink');
+    productsLink.addEventListener('click', (e) => {
+      localStorage.removeItem('selected-category');
+    });
 
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
