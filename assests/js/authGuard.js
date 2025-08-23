@@ -17,7 +17,11 @@
 
   // Role restrictions
   const roleRestrictions = {
-    customer: ["/admin/admin-dashboard.html", "/seller/seller-dashboard.html"],
+    customer: [
+      "/admin/admin-dashboard.html",
+      "/seller/seller-dashboard.html",
+      "/seller/seller-orders.html",
+    ],
     seller: ["/admin/admin-dashboard.html"],
     admin: [],
   };
