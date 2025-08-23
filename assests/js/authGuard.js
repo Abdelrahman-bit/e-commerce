@@ -6,12 +6,13 @@
 
   // Protected routes (need login)
   const protectedRoutes = [
-    "/checkOutPage.html",
+    "/CheckOutPage.html",
     "/payment.html",
     "/profile.html",
     "/customer/cart.html",
     "/admin/dashboard.html",
     "/seller/seller-dashboard.html",
+    "/seller/seller-orders.html",
   ];
 
   // Role restrictions
