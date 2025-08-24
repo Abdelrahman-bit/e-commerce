@@ -272,7 +272,7 @@ export const products = [
 export const orders = [
 	{
 		id: new Date().getTime(),
-		customerEmail: "customer@example.com",
+		customerEmail: "ali@example.com",
 		cart: [
 			{
 				id: new Date().getTime(),

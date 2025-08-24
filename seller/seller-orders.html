@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assests/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../components/style.css"> <!-- footer and header style -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assests/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../components/style.css" />
+    <!-- footer and header style -->
     <script src="../assests/js/bootstrap.bundle.min.js" defer></script>
     <script type="module">
-        import { loadComponent } from '../assests/js/utils.js';
-        // Load header and footer components
-        loadComponent('header', '../components/header.html');
-        loadComponent('footer', '../components/footer.html');
+      import { loadComponent } from "../assests/js/utils.js";
+      // Load header and footer components
+      loadComponent("header", "../components/header.html");
+      loadComponent("footer", "../components/footer.html");
     </script>
     <title>Seller Orders</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- header -->
     <header id="header"></header>
 
     <main class="container my-5">
-        <h1 class="text-center">Seller Orders</h1>
-        <p class="lead text-center">Manage your orders and track their status.</p>
-        <!-- Additional orders management content goes here -->
+      <h1 class="text-center">Seller Orders</h1>
+      <p class="lead text-center">Manage your orders and track their status.</p>
+      <!-- Additional orders management content goes here -->
     </main>
 
     <!-- footer -->
     <footer id="footer"></footer>
-</body>
+    <script src="/assests/js/authGuard.js"></script>
+  </body>
 </html>

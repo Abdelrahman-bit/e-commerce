@@ -1,0 +1,17 @@
+.connector {
+  width: 120px;         
+  height: 4px;
+  border: none;
+  background-image: repeating-linear-gradient(
+    to right,
+    #000 0 10px,
+    transparent 10px 20px
+  );
+  background-size: 20px 4px;
+  animation: dashmove 1s linear infinite;
+}
+
+@keyframes dashmove {
+  from { background-position: 0 0; }
+  to   { background-position: 20px 0; }
+}

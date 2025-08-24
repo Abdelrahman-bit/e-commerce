@@ -1,4 +1,4 @@
-export function createProductCard({ id, image, name, price, description, category, stock, btnAction }) {
+export function createProductCard({ id, image, name, price, description, category, stock, sellerEmail, btnAction }) {
 	const card = document.createElement("div");
 	card.className = "col-6 col-sm-6 col-lg-3 product-cards mb-4";
 	card.dataset.id = id; // بيحفظ ال اي دي عشان نستخدمه بعدين
@@ -28,7 +28,7 @@ export function createProductCard({ id, image, name, price, description, categor
 	// If btnAction is provided → attach it to the view details button
 	if (btnAction) {
 		const viewButton = card.querySelector(".btn-dark");
-		viewButton.addEventListener("click", () => btnAction({ id, image, name, price, description, category, stock }));
+		viewButton.addEventListener("click", () => btnAction({ id, image, name, price, description, category, sellerEmail, stock }));
 	}
 
 		// Add to cart functionality
@@ -54,7 +54,7 @@ export function createProductCard({ id, image, name, price, description, categor
 
 		// Add product to cart
 		const cart = JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [];
-		const productData = { id, image, name, price, description, category, stock };
+		const productData = { id, image, name, price, description, category,sellerEmail, stock };
 		
 		// Check if product already exists in cart
 		const existingItem = cart.find(item => item.id === id);
