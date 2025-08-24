@@ -1,173 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cyber - Tech Store</title>
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="./components/style.css" />
-    <link rel="stylesheet" href="assests/css/cartBadge.css" />
-    <link rel="stylesheet" href="assests/css/checkoutStyle.css">  
 
-    <script type="module">
-      import { loadComponent } from "./assests/js/utils.js";
-      // Load header and footer components
-      // loadComponent(where you want to load the component in the current page, the component file path)
-      loadComponent("header", "./components/header.html");
-      loadComponent("footer", "./components/footer.html");
-      loadComponent("category", "./components/category.html");
-       setTimeout(() => {
-          import("./assests/js/cartBadge.js");
-        }, 1000);
-    </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber - Tech Store</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./components/style.css" />
+  <link rel="stylesheet" href="./assests/css/cartBadge.css" />
+  <link rel="stylesheet" href="./assests/css/checkoutStyle.css">
+
+  <script type="module">
+    import { loadComponent } from "./assests/js/utils.js";
+    // Load header and footer components
+    // loadComponent(where you want to load the component in the current page, the component file path)
+    loadComponent("header", "./components/header.html");
+    loadComponent("footer", "./components/footer.html");
+    loadComponent("category", "./components/category.html");
+    setTimeout(() => {
+      import("./assests/js/cartBadge.js");
+    }, 1000);
+  </script>
 </head>
-  <body>
-    <!-- Header  -->
-    <header id="header"></header>
-    <!-- categorys -->
-    <div id="category"></div>
 
-    <!-- Main Content (Demo) -->
-    <div class="container py-4">
+<body>
+  <!-- Header  -->
+  <header id="header"></header>
+  <!-- categorys -->
+  <div id="category"></div>
 
-      <div class="container my-5">
-  <div class="d-flex align-items-center justify-content-between flex-nowrap">
+  <!-- Main Content (Demo) -->
+  <div class="container py-4">
 
-    <div class="d-flex align-items-center gap-2 flex-shrink-1">
-      <span class="badge text-bg-dark p-3">
-        <i class="fas fa-map-marker-alt"></i>
-      </span>
-      <div class="ms-1">
-        <div class="small text-muted">Step 1</div>
-        <div class="fw-semibold">Address</div>
+    <div class="container my-5">
+      <div class="d-flex align-items-center justify-content-between flex-nowrap">
+
+        <div class="d-flex align-items-center gap-2 flex-shrink-1">
+          <span class="badge text-bg-dark p-3">
+            <i class="fas fa-map-marker-alt"></i>
+          </span>
+          <div class="ms-1">
+            <div class="small text-muted">Step 1</div>
+            <div class="fw-semibold">Address</div>
+          </div>
+        </div>
+
+        <div class="connector mx-3 flex-grow-1"></div>
+
+        <div class="d-flex align-items-center gap-2 flex-shrink-1">
+          <span class="badge text-bg-secondary p-3">
+            <i class="fa fa-credit-card"></i>
+          </span>
+          <div class="ms-1">
+            <div class="small text-muted">Step 3</div>
+            <div class="fw-semibold">Payment</div>
+          </div>
+        </div>
+
       </div>
     </div>
 
-    <div class="connector mx-3 flex-grow-1"></div>
+    <h4 class="fw-bold mb-3">Select Address</h4>
 
-    <div class="d-flex align-items-center gap-2 flex-shrink-1">
-      <span class="badge text-bg-secondary p-3">
-        <i class="fa fa-credit-card"></i>
-      </span>
-      <div class="ms-1">
-        <div class="small text-muted">Step 3</div>
-        <div class="fw-semibold">Payment</div>
-      </div>
+    <!-- Address List -->
+    <div id="addressList" class="row gy-3">
+
     </div>
 
-  </div>
-</div>
+    <!-- Add New Address -->
+    <div class="text-center my-3">
+      <button class="btn btn-outline-dark rounded-circle mb-2" data-bs-toggle="modal"
+        data-bs-target="#addAddressModal">+</button>
+      <div>Add New Address</div>
+    </div>
 
-  <h4 class="fw-bold mb-3">Select Address</h4>
-
-  <!-- Address List -->
-  <div id="addressList" class="row gy-3">
-
-  </div>
-
-  <!-- Add New Address -->
-  <div class="text-center my-3">
-    <button class="btn btn-outline-dark rounded-circle mb-2" data-bs-toggle="modal" data-bs-target="#addAddressModal">+</button>
-    <div>Add New Address</div>
+    <!-- Action Buttons -->
+    <div class="d-flex justify-content-between mt-3">
+      <button class="btn btn-outline-dark" onclick="ToCart()">Back</button>
+      <button class="btn btn-dark" onclick="ToPayment()">Next</button>
+    </div>
   </div>
 
-  <!-- Action Buttons -->
-  <div class="d-flex justify-content-between mt-3">
-    <button class="btn btn-outline-dark" onclick="ToCart()">Back</button>
-    <button class="btn btn-dark" onclick="ToPayment()">Next</button>
-  </div>
-</div>
-
-<!-- Add Address Modal -->
-<div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="addAddressModalLabel">Add New Address</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="newAddressForm">
-          <div class="mb-3">
-            <label class="form-label">Address Title</label>
-            <input type="text" class="form-control" id="addressTitle" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Full Address</label>
-            <textarea class="form-control" id="fullAddress" rows="2" required></textarea>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Phone Number</label>
-            <input type="tel" class="form-control" id="phoneNumber" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Label Type</label>
-            <select class="form-select" id="labelType">
-              <option value="HOME">Home</option>
-              <option value="OFFICE">Office</option>
-              <option value="OTHER">Other</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-dark w-100">Save Address</button>
-        </form>
+  <!-- Add Address Modal -->
+  <div class="modal fade" id="addAddressModal" tabindex="-1" aria-labelledby="addAddressModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addAddressModalLabel">Add New Address</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="newAddressForm">
+            <div class="mb-3">
+              <label class="form-label">Address Title</label>
+              <input type="text" class="form-control" id="addressTitle" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Full Address</label>
+              <textarea class="form-control" id="fullAddress" rows="2" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="phoneNumber" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Label Type</label>
+              <select class="form-select" id="labelType">
+                <option value="HOME">Home</option>
+                <option value="OFFICE">Office</option>
+                <option value="OTHER">Other</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Save Address</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Edit Address Modal -->
-<div class="modal fade" id="editAddressModal" tabindex="-1" aria-labelledby="editAddressModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="editAddressModalLabel">Edit Address</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-        <form id="editAddressForm">
-          <div class="mb-3">
-            <label class="form-label">Address Title</label>
-            <input type="text" class="form-control" id="editTitle" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Full Address</label>
-            <textarea class="form-control" id="editFullAddress" rows="2" required></textarea>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Phone Number</label>
-            <input type="tel" class="form-control" id="editPhone" required>
-          </div>
-          <div class="mb-3">
-            <label class="form-label">Label Type</label>
-            <select class="form-select" id="editLabelType">
-              <option value="HOME">Home</option>
-              <option value="OFFICE">Office</option>
-              <option value="OTHER">Other</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-dark w-100">Update Address</button>
-        </form>
+  <!-- Edit Address Modal -->
+  <div class="modal fade" id="editAddressModal" tabindex="-1" aria-labelledby="editAddressModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="editAddressModalLabel">Edit Address</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form id="editAddressForm">
+            <div class="mb-3">
+              <label class="form-label">Address Title</label>
+              <input type="text" class="form-control" id="editTitle" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Full Address</label>
+              <textarea class="form-control" id="editFullAddress" rows="2" required></textarea>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="editPhone" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Label Type</label>
+              <select class="form-select" id="editLabelType">
+                <option value="HOME">Home</option>
+                <option value="OFFICE">Office</option>
+                <option value="OTHER">Other</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Update Address</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
-<!-- Bootstrap Icons -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css">
 
-<script src="assests/js/Address.js">
-  
-  
-</script>
-<script src="assests/js/authGuard.js"></script>
-    <!-- Footer -->
-    <footer id="footer"></footer>
-  </body>
+  <script src="./assests/js/Address.js">
+
+
+  </script>
+  <script src="./assests/js/authGuard.js"></script>
+  <!-- Footer -->
+  <footer id="footer"></footer>
+</body>
+
 </html>
