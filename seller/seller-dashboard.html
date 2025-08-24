@@ -1,34 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assests/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../components/style.css"> <!-- footer and header style -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../assests/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../components/style.css" />
+    <!-- footer and header style -->
     <script src="../assests/js/bootstrap.bundle.min.js" defer></script>
     <script type="module">
-        import { loadComponent } from '../assests/js/utils.js';
-        // Load header and footer components
-        loadComponent('header', '../components/header.html');
-        loadComponent('footer', '../components/footer.html');
+      import { loadComponent } from "../assests/js/utils.js";
+      // Load header and footer components
+      loadComponent("header", "../components/header.html");
+      loadComponent("footer", "../components/footer.html");
     </script>
     <title>Seller Dashboard</title>
-</head>
-<body>
+  </head>
+  <body>
     <!-- Header -->
     <header id="header"></header>
 
     <!-- Main Content -->
     <main class="container my-5">
-        <h1 class="text-center">Seller Dashboard</h1>
-        <p class="lead text-center">Manage your products, orders, and account settings.</p>
-        <!-- Additional dashboard content goes here -->
+      <h1 class="text-center">Seller Dashboard</h1>
+      <p class="lead text-center">
+        Manage your products, orders, and account settings.
+      </p>
+      <!-- Additional dashboard content goes here -->
     </main>
 
     <!-- Footer -->
     <footer id="footer"></footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-    
-</body>
+
+    <script src="../assests/js/authGuard.js"></script>
+  </body>
 </html>

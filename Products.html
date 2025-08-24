@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="./components/style.css" />
   <link rel="stylesheet" href="./assests/css/productCard.css" />
   <link rel="stylesheet" href="./assests/css/paginationStyle.css">
-  <link rel="stylesheet" href="assests/css/cartBadge.css" />
+  <link rel="stylesheet" href="./assests/css/cartBadge.css" />
 
 
   <script type="module">
@@ -166,7 +166,7 @@
           ...product,
           btnAction: (productData) => {
             localStorage.setItem("selectedProduct", JSON.stringify(productData));
-            window.location.href = "product-datails.html";
+            window.location.href = "./product-datails.html";
           },
         }));
       });
@@ -313,6 +313,7 @@
     // Initialize page
     initializePage();
   </script>
+  <script src="./assests/js/authGuard.js"></script>
 </body>
 
 </html>

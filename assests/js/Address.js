@@ -191,3 +191,11 @@ window.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
+
+function ToPayment(){
+    window.location.href = "payment.html";
+}
+function ToCart(){
+    window.location.href = "customer/cart.html";
+}
+
