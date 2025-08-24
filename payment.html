@@ -1,285 +1,250 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Cyber - Tech Store</title>
 
-    <!-- Bootstrap & FontAwesome -->
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
-      rel="stylesheet"
-    />
-    <link
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-      rel="stylesheet"
-    />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cyber - Tech Store</title>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="./components/style.css" />
-    <link rel="stylesheet" href="assests/css/homeStyle.css" />
-    <link rel="stylesheet" href="../assests/css/productCard.css" />
+  <!-- Bootstrap & FontAwesome -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
-    <!-- Auth & Navbar logic -->
-    <script src="./assests/js/auth.js" defer></script>
-    <script src="./assests/js/navbar.js" defer></script>
-    <!-- load data to local storage on load -->
-    <script src="./assests/js/initLocalStorage.js" type="module"></script>
-    <link rel="stylesheet" href="assests/css/cartBadge.css" />
+  <!-- styles -->
+  <link rel="stylesheet" href="./assests/css/paymentStyle.css">
+  <link rel="stylesheet" href="assests/css/cartBadge.css" />
+  <link rel="stylesheet" href="./components/style.css" />
+  <link rel="stylesheet" href="assests/css/checkoutStyle.css">
 
-    <!-- تحميل المكونات -->
-    <script type="module">
-      import { loadComponent } from "./assests/js/utils.js";
-      // تحميل الـ header / footer / category / mainCategories
-      loadComponent("header", "./components/header.html");
-      loadComponent("footer", "./components/footer.html");
-      loadComponent("category", "./components/category.html");
-      loadComponent("mainCategories", "./components/mainCategories.html");
-      loadComponent("panner", "./components/panner.html");
+  <script type="module">
+    import { loadComponent } from "./assests/js/utils.js";
+    // تحميل الـ header / footer / category / mainCategories
+    loadComponent("header", "./components/header.html");
+    loadComponent("footer", "./components/footer.html");
+    loadComponent("category", "./components/category.html");
+    loadComponent("mainCategories", "./components/mainCategories.html");
+    loadComponent("panner", "./components/panner.html");
 
-      setTimeout(() => {
-          import("./assests/js/cartBadge.js");
-        }, 1000);
-    </script>
+    setTimeout(() => {
+      import("./assests/js/cartBadge.js");
+    }, 1000);
+  </script>
 
-    <!-- Model Viewer -->
-    <script
-      type="module"
-      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
-    ></script>
-    <link rel="stylesheet" href="/assests/css/paymentStyle.css" />
-    <style>
+</head>
 
-</style>
-  </head>
-  <body>
-    <!-- Header Navigation -->
-    <header id="header"></header>
+<body>
+  <!-- Header Navigation -->
+  <header id="header"></header>
 
+  <div class="container my-5">
     <div class="container my-5">
-      <div class="container my-5">
-  <div class="d-flex align-items-center justify-content-between flex-nowrap">
+      <div class="d-flex align-items-center justify-content-between flex-nowrap">
+        <div class="d-flex align-items-center gap-2 flex-shrink-1">
+          <span class="badge text-bg-secondary p-3">
+            <i class="fas fa-map-marker-alt"></i>
+          </span>
+          <div class="ms-1">
+            <div class="small text-muted">Step 1</div>
+            <div class="fw-semibold">Address</div>
+          </div>
+        </div>
 
-    <div class="d-flex align-items-center gap-2 flex-shrink-1">
-      <span class="badge text-bg-secondary p-3">
-        <i class="fas fa-map-marker-alt"></i>
-      </span>
-      <div class="ms-1">
-        <div class="small text-muted">Step 1</div>
-        <div class="fw-semibold">Address</div>
+        <div class="connector mx-3 flex-grow-1"></div>
+
+        <div class="d-flex align-items-center gap-2 flex-shrink-1">
+          <span class="badge text-bg-dark p-3">
+            <i class="fa fa-credit-card"></i>
+          </span>
+          <div class="ms-1">
+            <div class="small text-muted">Step 3</div>
+            <div class="fw-semibold">Payment</div>
+          </div>
+        </div>
       </div>
     </div>
 
-    <div class="connector mx-3 flex-grow-1"></div>
-
-    <div class="d-flex align-items-center gap-2 flex-shrink-1">
-      <span class="badge text-bg-dark p-3">
-        <i class="fa fa-credit-card"></i>
-      </span>
-      <div class="ms-1">
-        <div class="small text-muted">Step 3</div>
-        <div class="fw-semibold">Payment</div>
-      </div>
+    <!-- Alert for empty cart -->
+    <div id="emptyCartAlert" class="alert alert-warning d-none" role="alert">
+      <i class="fas fa-shopping-cart me-2"></i>
+      Your cart is empty. <a href="Products.html" class="alert-link">Continue shopping</a>
     </div>
 
-  </div>
-</div>
-      <div class="row">
-        <div class="col-lg-5 mb-4">
-          <div class="card p-3">
-            <h5>Summary</h5>
+    <div class="row" id="checkoutContent">
+      <div class="col-lg-5 mb-4">
+        <div class="card p-3">
+          <h5><i class="fas fa-receipt me-2"></i>Summary</h5>
 
-            <div class="d-flex align-items-center border rounded p-2 mb-2">
-              <div class="me-3">
-                <img
-                  src="assests/images/Products/IphoneProduct1.png"
-                  alt="Product Image"
-                  class="img-fluid"
-                  style="width: 50px; height: 50px"
-                />
-              </div>
-              <div class="flex-grow-1">
-                <p class="mb-0">Apple iPhone 14 Pro Max 128Gb</p>
-              </div>
-              <div>
-                <strong>$1399</strong>
-              </div>
-            </div>
+          <!-- Products List -->
+          <div id="productsList"></div>
 
-            <div class="d-flex align-items-center border rounded p-2 mb-2">
-              <div class="me-3">
-                <img
-                  src="assests/images/Products/Airbodsmax.png"
-                  alt="Product Image"
-                  class="img-fluid"
-                  style="width: 50px; height: 50px"
-                />
-              </div>
-              <div class="flex-grow-1">
-                <p class="mb-0">AirPods Max Silver</p>
-              </div>
-              <div>
-                <strong>$549</strong>
-              </div>
-            </div>
+          <!-- Address Section -->
+          <div class="mt-4 pt-3 border-top">
+            <p class="mb-1"><strong><i class="fas fa-map-marker-alt me-2"></i>Address</strong></p>
+            <p id="userAddress" class="text-muted">Loading address...</p>
+          </div>
 
-            <div class="d-flex align-items-center border rounded p-2 mb-2">
-              <div class="me-3">
-                <img
-                  src="assests/images/Products/applewatch.png"
-                  alt="Product Image"
-                  class="img-fluid"
-                  style="width: 50px; height: 50px"
-                />
-              </div>
-              <div class="flex-grow-1">
-                <p class="mb-0">Apple Watch Series 9 GPS 41mm</p>
-              </div>
-              <div>
-                <strong>$399</strong>
-              </div>
-            </div>
+          <!-- Shipping Method -->
+          <div class="mb-3">
+            <p class="mb-1"><strong><i class="fas fa-truck me-2"></i>Shipment method</strong></p>
+            <p class="text-muted">Free</p>
+          </div>
 
-            <p class="mt-3 mb-1"><strong>Address</strong></p>
-            <p>1131 Dusty Townline, Jacksonville, TX 40322</p>
-
-            <p class="mb-1"><strong>Shipment method</strong></p>
-            <p>Free</p>
-
-            <div class="d-flex justify-content-between">
+          <!-- Totals -->
+          <div class="border-top pt-3">
+            <div class="d-flex justify-content-between mb-2">
               <span>Subtotal</span>
-              <strong>$2347</strong>
+              <strong id="subtotal">$0</strong>
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-2">
               <span>Estimated Tax</span>
-              <strong>$50</strong>
+              <strong id="tax">$0</strong>
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between mb-2">
               <span>Estimated shipping & Handling</span>
-              <strong>$29</strong>
+              <strong id="shipping">$29</strong>
             </div>
-            <div class="d-flex justify-content-between">
+            <div class="d-flex justify-content-between pt-2 border-top">
               <span><strong>Total</strong></span>
-              <strong>$2426</strong>
+              <strong id="total">$0</strong>
             </div>
           </div>
         </div>
+      </div>
 
-        <div class="col-lg-7">
-          <h5>Payment</h5>
+      <div class="col-lg-7">
+        <h5><i class="fas fa-credit-card me-2"></i>Payment</h5>
 
-          <ul class="nav nav-tabs mb-3" id="paymentTabs" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link active"
-                id="credit-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#credit"
-                type="button"
-                role="tab"
-              >
-                Credit Card
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link te"
-                id="paypal-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#paypal"
-                type="button"
-                role="tab"
-              >
-                PayPal
-              </button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button
-                class="nav-link"
-                id="paypal-credit-tab"
-                data-bs-toggle="tab"
-                data-bs-target="#paypal-credit"
-                type="button"
-                role="tab"
-              >
-                PayPal Credit
-              </button>
-            </li>
-          </ul>
+        <ul class="nav nav-tabs mb-3" id="paymentTabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="credit-tab" data-bs-toggle="tab" data-bs-target="#credit" type="button"
+              role="tab">
+              <i class="fas fa-credit-card me-2"></i>Credit Card
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="paypal-tab" data-bs-toggle="tab" data-bs-target="#paypal" type="button"
+              role="tab">
+              <i class="fab fa-paypal me-2"></i>PayPal
+            </button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="paypal-credit-tab" data-bs-toggle="tab" data-bs-target="#paypal-credit"
+              type="button" role="tab">
+              <i class="fab fa-paypal me-2"></i>PayPal Credit
+            </button>
+          </li>
+        </ul>
 
-          <div class="tab-content">
-            <div class="tab-pane fade show active" id="credit" role="tabpanel">
+        <div class="tab-content">
+          <div class="tab-pane fade show active" id="credit" role="tabpanel">
+            <div class="mb-3">
+              <img
+                src="assests/images/card.jpg"
+                alt="Credit Card" class="img-fluid rounded" style="max-width: 250px;" />
+            </div>
+
+            <form id="paymentForm">
               <div class="mb-3">
-                <img
-                  src="assests/images/card.jpg"
-                  alt="Credit Card"
-                  class="img-fluid rounded w-50"
-                />
+                <input type="text" class="form-control" id="cardholderName" placeholder="Cardholder Name" required />
+                <div class="error-message" id="cardholderNameError"></div>
               </div>
+              <div class="mb-3">
+                <input type="text" class="form-control" id="cardNumber" placeholder="Card Number (1234 5678 9012 3456)"
+                  maxlength="19" required />
+                <div class="error-message" id="cardNumberError"></div>
+              </div>
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <input type="text" class="form-control" id="expDate" placeholder="MM/YY" maxlength="5" required />
+                  <div class="error-message" id="expDateError"></div>
+                </div>
+                <div class="col-md-6 mb-3">
+                  <input type="text" class="form-control" id="cvv" placeholder="CVV" maxlength="4" required />
+                  <div class="error-message" id="cvvError"></div>
+                </div>
+              </div>
+              <div class="form-check mb-3">
+                <input class="form-check-input" type="checkbox" id="sameAddress" checked />
+                <label class="form-check-label" for="sameAddress">
+                  Same as billing address
+                </label>
+              </div>
+              <div class="d-flex justify-content-between">
+                <button type="button" class="btn btn-outline-dark" onclick="history.back()">
+                  <i class="fas fa-arrow-left me-2"></i>Back
+                </button>
+                <button type="submit" class="btn btn-dark" id="payBtn">
+                  <span class="btn-text">
+                    <i class="fas fa-lock me-2"></i>Pay Now
+                  </span>
+                  <span class="loading-spinner">
+                    <span class="spinner-border spinner-border-sm me-2" role="status"></span>
+                    Processing...
+                  </span>
+                </button>
+              </div>
+            </form>
+          </div>
 
-              <form>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Cardholder Name"
-                  />
-                </div>
-                <div class="mb-3">
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Card Number"
-                  />
-                </div>
-                <div class="row">
-                  <div class="col-md-6 mb-3">
-                    <input
-                      type="text"
-                      class="form-control"
-                      placeholder="Exp.Date"
-                    />
-                  </div>
-                  <div class="col-md-6 mb-3">
-                    <input type="text" class="form-control" placeholder="CVV" />
-                  </div>
-                </div>
-                <div class="form-check mb-3">
-                  <input
-                    class="form-check-input"
-                    type="checkbox"
-                    value=""
-                    id="sameAddress"
-                  />
-                  <label class="form-check-label" for="sameAddress">
-                    Same as billing address
-                  </label>
-                </div>
-                <div class="d-flex justify-content-between">
-                  <button type="button" class="btn btn-outline-dark">
-                    Back
-                  </button>
-                  <button type="submit" class="btn btn-dark">Pay</button>
-                </div>
-              </form>
+          <div class="tab-pane fade" id="paypal" role="tabpanel">
+            <div class="text-center py-5">
+              <i class="fab fa-paypal fa-3x text-primary mb-3"></i>
+              <p class="lead">PayPal payment integration coming soon!</p>
+              <button class="btn btn-primary">
+                <i class="fab fa-paypal me-2"></i>Pay with PayPal
+              </button>
             </div>
+          </div>
 
-            <div class="tab-pane fade" id="paypal" role="tabpanel">
-              <p>Pay with PayPal option here.</p>
-            </div>
-
-            <div class="tab-pane fade" id="paypal-credit" role="tabpanel">
-              <p>Pay with PayPal Credit option here.</p>
+          <div class="tab-pane fade" id="paypal-credit" role="tabpanel">
+            <div class="text-center py-5">
+              <i class="fab fa-paypal fa-3x text-info mb-3"></i>
+              <p class="lead">PayPal Credit payment integration coming soon!</p>
+              <button class="btn btn-info">
+                <i class="fab fa-paypal me-2"></i>Pay with PayPal Credit
+              </button>
             </div>
           </div>
         </div>
       </div>
     </div>
+  </div>
 
+  <!-- Receipt Modal -->
+  <div class="modal fade" id="receiptModal" tabindex="-1" aria-labelledby="receiptModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content receipt-modal">
+        <div class="modal-header">
+          <h5 class="modal-title" id="receiptModalLabel">
+            <i class="fas fa-receipt me-2"></i>Order Receipt
+          </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body" id="receiptContent">
+          <!-- Receipt content will be generated here -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary" id="downloadReceipt">
+            <i class="fas fa-download me-2"></i>Download Receipt
+          </button>
+          <button type="button" class="btn btn-success" onclick="window.location.href='products.html'">
+            <i class="fas fa-shopping-bag me-2"></i>Continue Shopping
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
-    <footer id="footer"></footer>
+  <footer id="footer"></footer>
+
+  <script src="./assests/js/payment.js"></script>
+</body>
 
     <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script> -->
      <script src="assests/js/authGuard.js"></script>
   </body>
 </html>
+
