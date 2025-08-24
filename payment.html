@@ -38,8 +38,8 @@
       loadComponent("panner", "./components/panner.html");
 
       setTimeout(() => {
-          import("./assests/js/cartBadge.js");
-        }, 1000);
+        import("./assests/js/cartBadge.js");
+      }, 1000);
     </script>
 
     <!-- Model Viewer -->
@@ -48,9 +48,7 @@
       src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
     ></script>
     <link rel="stylesheet" href="/assests/css/paymentStyle.css" />
-    <style>
-
-</style>
+    <style></style>
   </head>
   <body>
     <!-- Header Navigation -->
@@ -58,36 +56,37 @@
 
     <div class="container my-5">
       <div class="container my-5">
-  <div class="d-flex align-items-center justify-content-between flex-nowrap">
+        <div
+          class="d-flex align-items-center justify-content-between flex-nowrap"
+        >
+          <div class="d-flex align-items-center gap-2 flex-shrink-1">
+            <span class="badge text-bg-secondary p-3">
+              <i class="fas fa-map-marker-alt"></i>
+            </span>
+            <div class="ms-1">
+              <div class="small text-muted">Step 1</div>
+              <div class="fw-semibold">Address</div>
+            </div>
+          </div>
 
-    <div class="d-flex align-items-center gap-2 flex-shrink-1">
-      <span class="badge text-bg-secondary p-3">
-        <i class="fas fa-map-marker-alt"></i>
-      </span>
-      <div class="ms-1">
-        <div class="small text-muted">Step 1</div>
-        <div class="fw-semibold">Address</div>
+          <div class="connector mx-3 flex-grow-1"></div>
+
+          <div class="d-flex align-items-center gap-2 flex-shrink-1">
+            <span class="badge text-bg-dark p-3">
+              <i class="fa fa-credit-card"></i>
+            </span>
+            <div class="ms-1">
+              <div class="small text-muted">Step 3</div>
+              <div class="fw-semibold">Payment</div>
+            </div>
+          </div>
+        </div>
       </div>
-    </div>
 
-    <div class="connector mx-3 flex-grow-1"></div>
-
-    <div class="d-flex align-items-center gap-2 flex-shrink-1">
-      <span class="badge text-bg-dark p-3">
-        <i class="fa fa-credit-card"></i>
-      </span>
-      <div class="ms-1">
-        <div class="small text-muted">Step 3</div>
-        <div class="fw-semibold">Payment</div>
-      </div>
-    </div>
-
-  </div>
-</div>
       <div class="row">
-        <div class="col-lg-5 mb-4">
-          <div class="card p-3">
-            <h5>Summary</h5>
+        <div class="col-lg-5 px-0 px-lg-3 mb-5 mb-lg-0">
+          <div class="card p-3 h-100">
+            <h5 class="mb-3">Summary</h5>
 
             <div class="d-flex align-items-center border rounded p-2 mb-2">
               <div class="me-3">
@@ -165,8 +164,11 @@
           </div>
         </div>
 
-        <div class="col-lg-7">
-          <h5>Payment</h5>
+        <div
+          class="col-lg-7 d-flex flex-column justify-content-between pt-3"
+          id="payment-border-gray"
+        >
+          <h5 class="mb-0">Payment</h5>
 
           <ul class="nav nav-tabs mb-3" id="paymentTabs" role="tablist">
             <li class="nav-item" role="presentation">
@@ -217,7 +219,7 @@
                 />
               </div>
 
-              <form>
+              <form class="pb-2">
                 <div class="mb-3">
                   <input
                     type="text"
@@ -275,7 +277,6 @@
         </div>
       </div>
     </div>
-
 
     <footer id="footer"></footer>
 

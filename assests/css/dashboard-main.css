@@ -1,0 +1,16 @@
+#main {
+  height: 94vh;
+}
+#logout-bottom-margin {
+  margin-bottom: 130px;
+}
+.dashboard-SideMenuItem {
+  border-radius: 6px;
+  transition: all 0.3s ease-in-out;
+}
+.dashboard-SideMenuItem.dashboard-SideMenuItemActive {
+  background-color: lightgrey;
+}
+.dashboard-SideMenuItem:hover {
+  background-color: lightgrey;
+}

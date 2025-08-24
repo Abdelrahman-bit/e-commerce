@@ -1,5 +1,5 @@
 .connector {
-  width: 120px;         
+  width: 120px;
   height: 4px;
   border: none;
   background-image: repeating-linear-gradient(
@@ -11,7 +11,16 @@
   animation: dashmove 1s linear infinite;
 }
 
+#payment-border-gray {
+  border: 1px solid lightgray;
+  border-radius: 6px;
+}
+
 @keyframes dashmove {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 0; }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 20px 0;
+  }
 }
