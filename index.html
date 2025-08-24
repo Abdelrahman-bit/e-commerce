@@ -1,133 +1,156 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cyber - Tech Store</title>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Cyber - Tech Store</title>
+    <!-- Bootstrap & FontAwesome -->
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
 
-  <!-- Bootstrap & FontAwesome -->
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
+    <!-- Styles -->
+    <link rel="stylesheet" href="./components/style.css" />
+    <link rel="stylesheet" href="assests/css/homeStyle.css" />
+    <link rel="stylesheet" href="../assests/css/productCard.css" />
+    <link rel="stylesheet" href="assests/css/cartBadge.css" />
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="./components/style.css" />
-  <link rel="stylesheet" href="assests/css/homeStyle.css" />
-  <link rel="stylesheet" href="../assests/css/productCard.css" />
-  <link rel="stylesheet" href="assests/css/cartBadge.css" />
+    <!-- Auth & Navbar logic -->
+    <script src="./assests/js/auth.js" defer></script>
+    <script src="./assests/js/navbar.js" defer></script>
+    <!-- load data to local storage on load -->
+    <script src="./assests/js/initLocalStorage.js" type="module"></script>
+    <!-- تحميل المكونات -->
+    <script type="module">
+      import { loadComponent } from "./assests/js/utils.js";
+      // تحميل الـ header / footer / category / mainCategories
+      loadComponent("header", "./components/header.html");
+      loadComponent("footer", "./components/footer.html");
+      loadComponent("category", "./components/category.html");
+      loadComponent("mainCategories", "./components/mainCategories.html");
+      loadComponent("panner", "./components/panner.html");
 
-  <!-- Auth & Navbar logic -->
-  <script src="./assests/js/auth.js" defer></script>
-  <script src="./assests/js/navbar.js" defer></script>
-  <!-- load data to local storage on load -->
-  <script src="./assests/js/initLocalStorage.js" type="module"></script>
-  <!-- تحميل المكونات -->
-  <script type="module">
-    import { loadComponent } from "./assests/js/utils.js";
-    // تحميل الـ header / footer / category / mainCategories
-    loadComponent("header", "./components/header.html");
-    loadComponent("footer", "./components/footer.html");
-    loadComponent("category", "./components/category.html");
-    loadComponent("mainCategories", "./components/mainCategories.html");
-    loadComponent("panner", "./components/panner.html");
+      setTimeout(() => {
+        import("./assests/js/cartBadge.js");
+      }, 1000);
+    </script>
 
-    setTimeout(() => {
-      import("./assests/js/cartBadge.js");
-    }, 1000);
-  </script>
+    <!-- Model Viewer -->
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"
+    ></script>
+  </head>
 
-  <!-- Model Viewer -->
-  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
-</head>
+  <body>
+    <!-- Header  -->
+    <header id="header"></header>
 
-<body>
-  <!-- Header  -->
-  <header id="header"></header>
+    <!-- categorys -->
+    <div id="category"></div>
 
-  <!-- categorys -->
-  <div id="category"></div>
+    <!-- Main Content -->
+    <section>
+      <div class="container">
+        <div class="row pt-5 pb-5">
+          <div class="col-12 col-sm-6">
+            <p class="text-secondary fs-5 mb-3">Pro.Beyond.</p>
+            <h1 class="display-1 fw-light mb-4">
+              IPhone 16 <span class="fw-bold">Pro</span>
+            </h1>
+            <p class="lead text-secondary mb-4">
+              Created to change everything for the better. For everyone.
+            </p>
+            <a
+              href="/Products.html"
+              class="btn btn-outline-light btn-lg px-5 py-3"
+              id="productsLink"
+              >Shop Now</a
+            >
+          </div>
 
-  <!-- Main Content -->
-  <section>
-    <div class="container">
-      <div class="row pt-5 pb-5">
-        <div class="col-12 col-sm-6">
-          <p class="text-secondary fs-5 mb-3">Pro.Beyond.</p>
-          <h1 class="display-1 fw-light mb-4">
-            IPhone 14 <span class="fw-bold">Pro</span>
-          </h1>
-          <p class="lead text-secondary mb-4">
-            Created to change everything for the better. For everyone.
-          </p>
-          <a href="/Products.html" class="btn btn-outline-light btn-lg px-5 py-3" id="productsLink">Shop Now</a>
-        </div>
-
-        <div class="col-12 col-sm-6 text-center">
-          <model-viewer class="col-12" src="/assests/3d module/iphone-16-pro-max/iphone_16_pro_max.glb"
-            style="width: 100%; height: 400px" alt="3D Model" auto-rotate camera-controls disable-zoom background-color="#211C24">
-          </model-viewer>
+          <div class="col-12 col-sm-6 text-center">
+            <model-viewer
+              class="col-12"
+              src="/assests/3d module/iphone-16-pro-max/iphone_16_pro_max.glb"
+              style="width: 100%; height: 400px"
+              alt="3D Model"
+              auto-rotate
+              camera-controls
+              disable-zoom
+              background-color="#211C24"
+            >
+            </model-viewer>
+          </div>
         </div>
       </div>
+    </section>
+
+    <!-- Main Categories -->
+    <main>
+      <div class="container">
+        <div id="mainCategories"></div>
+      </div>
+    </main>
+
+    <!-- Products -->
+    <div class="container mb-4">
+      <div class="row g-4" id="products"></div>
     </div>
-  </section>
 
-  <!-- Main Categories -->
-  <main>
-    <div class="container">
-      <div id="mainCategories"></div>
+    <!-- Sale Panner -->
+
+    <div>
+      <div id="panner"></div>
     </div>
-  </main>
 
-  <!-- Products -->
-  <div class="container mb-4">
-    <div class="row g-4" id="products"></div>
-  </div>
+    <!-- Footer -->
+    <footer id="footer"></footer>
 
-  <!-- Sale Panner -->
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script type="module">
+      import { createProductCard } from "./assests/js/card.js";
+      import { getProducts, addToCart } from "./assests/js/storage.js";
+      const container = document.querySelector("#products");
 
-  <div>
-    <div id="panner"></div>
-  </div>
-
-  <!-- Footer -->
-  <footer id="footer"></footer>
-
-  <!-- Scripts -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-  <script type="module">
-    import { createProductCard } from './assests/js/card.js'
-    import { getProducts, addToCart } from './assests/js/storage.js'
-    const container = document.querySelector('#products');
-
-    let products = getProducts();
-    products.forEach((product, index) => {
-      // abdelrahman: add this condition to just render 8 card in home page.
-      if (index > 7) {
-        return
-      }
-      const card = createProductCard({
-        ...product,
-        btnAction: (productData) => {
-          // save clicked product in localStorage
-          localStorage.setItem("selectedProduct", JSON.stringify(productData));
-
-          // redirect to details page
-          window.location.href = "product-datails.html";
+      let products = getProducts();
+      products.forEach((product, index) => {
+        // abdelrahman: add this condition to just render 8 card in home page.
+        if (index > 7) {
+          return;
         }
+        const card = createProductCard({
+          ...product,
+          btnAction: (productData) => {
+            // save clicked product in localStorage
+            localStorage.setItem(
+              "selectedProduct",
+              JSON.stringify(productData)
+            );
+
+            // redirect to details page
+            window.location.href = "product-datails.html";
+          },
+        });
+
+        container.appendChild(card);
       });
 
-      container.appendChild(card);
-    });
-
-    //abdelrahman: make sure when navigate to products page all products are shown and remove any selected category from local storage
-    const productsLink = document.querySelector('#productsLink');
-    productsLink.addEventListener('click', (e) => {
-      localStorage.removeItem('selected-category');
-    });
-
-  </script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
+      //abdelrahman: make sure when navigate to products page all products are shown and remove any selected category from local storage
+      const productsLink = document.querySelector("#productsLink");
+      productsLink.addEventListener("click", (e) => {
+        localStorage.removeItem("selected-category");
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assests/js/authGuard.js"></script>
+  </body>
 </html>

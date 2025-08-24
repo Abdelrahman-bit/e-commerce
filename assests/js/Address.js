@@ -192,11 +192,10 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-// abdelrahman edits: to make the navegation to payment and back to home page.
 function ToPayment(){
-  window.location.href = '/payment.html'
+    window.location.href = "payment.html";
+}
+function ToCart(){
+    window.location.href = "customer/cart.html";
 }
 
-function ToCart(){
-  window.location.href = "/customer/cart.html";
-}
