@@ -1,17 +1,65 @@
-.connector {
-  width: 120px;         
-  height: 4px;
-  border: none;
-  background-image: repeating-linear-gradient(
-    to right,
-    #000 0 10px,
-    transparent 10px 20px
-  );
-  background-size: 20px 4px;
-  animation: dashmove 1s linear infinite;
+.receipt-modal .modal-body {
+	font-family: "Courier New", monospace;
+	background-color: #f8f9fa;
 }
 
-@keyframes dashmove {
-  from { background-position: 0 0; }
-  to   { background-position: 20px 0; }
+.receipt-header {
+	text-align: center;
+	border-bottom: 2px dashed #000;
+	padding-bottom: 10px;
+	margin-bottom: 15px;
+}
+
+.receipt-item {
+	display: flex;
+	justify-content: space-between;
+	margin: 5px 0;
+}
+
+.receipt-total {
+	border-top: 2px dashed #000;
+	padding-top: 10px;
+	margin-top: 15px;
+	font-weight: bold;
+}
+
+.product-item {
+	transition: all 0.3s ease;
+}
+
+.product-item:hover {
+	background-color: #f8f9fa;
+}
+
+.card {
+	box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+	border: 1px solid #dee2e6;
+}
+
+.btn-dark {
+	background-color: #212529;
+	border-color: #212529;
+}
+
+.btn-dark:hover {
+	background-color: #1c1f23;
+	border-color: #1a1d20;
+}
+
+.error-message {
+	color: #dc3545;
+	font-size: 0.875rem;
+	margin-top: 0.25rem;
+}
+
+.loading-spinner {
+	display: none;
+}
+
+.loading .loading-spinner {
+	display: inline-block;
+}
+
+.loading .btn-text {
+	display: none;
 }
