@@ -17,6 +17,48 @@
         loadComponent('footer', '../components/footer.html');
     </script>
     <title>Shopping Cart - Cyber Tech Store</title>
+    <style>
+        .continue-shopping-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 12px 18px;
+            font-size: 15px;
+            font-weight: 500;
+            color: #fff;
+            background: linear-gradient(135deg, #2c3e50, #1a252f);
+            border-radius: 30px;
+            text-decoration: none;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease-in-out;
+            animation: pulse 2.5s infinite;
+        }
+
+
+        .continue-shopping-btn:hover {
+            background: linear-gradient(135deg, #090c0f, #22303c);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 14px rgba(0, 0, 0, 0.4);
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .continue-shopping-btn {
+            animation: pulse 2.5s infinite;
+        }
+    </style>
 </head>
 
 <body>
@@ -32,7 +74,7 @@
             </div>
 
             <!-- Cart Items Section -->
-            <div class="row">
+            <div class="row  d-flex justify-content-center align-items-start flex-wrap">
                 <div class="col-lg-8">
                     <div id="cart-items">
                         <!-- Cart items will be loaded here -->
@@ -40,7 +82,8 @@
                 </div>
 
                 <!-- Cart Summary Section -->
-                <div class="col-lg-4">
+                <!-- Cart Summary Section -->
+                <div class="col-lg-4" id="cart-summary-section" style="display:none;">
                     <div class="cart-summary">
                         <h4><i class="fas fa-receipt me-2"></i>Order Summary</h4>
                         <div id="cart-summary-content">
@@ -48,6 +91,7 @@
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
     </main>
@@ -86,6 +130,9 @@
 
                 this.renderCartItems();
                 this.renderCartSummary();
+
+                // show summary section if cart has items
+                document.getElementById('cart-summary-section').style.display = 'block';
             }
 
             renderCartItems() {
@@ -132,8 +179,8 @@
 
             renderCartSummary() {
                 const subtotal = this.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-                const shipping = subtotal > 100 ? 0 : 10; 
-                const tax = subtotal * 0.14; 
+                const shipping = subtotal > 100 ? 0 : 10;
+                const tax = subtotal * 0.14;
                 const total = subtotal + shipping + tax;
 
                 const summaryContainer = document.getElementById('cart-summary-content');
@@ -163,7 +210,7 @@
             updateQuantity(index, change) {
                 const item = this.cart[index];
                 const newQuantity = item.quantity + change;
-                
+
                 if (newQuantity < 1) return;
                 if (newQuantity > item.stock) return;
 
@@ -175,7 +222,7 @@
             updateQuantityInput(index, value) {
                 const item = this.cart[index];
                 const newQuantity = parseInt(value);
-                
+
                 if (isNaN(newQuantity) || newQuantity < 1) {
                     item.quantity = 1;
                 } else if (newQuantity > item.stock) {
@@ -189,11 +236,11 @@
             }
 
             removeItem(index) {
-                if (confirm('Are you sure you want to remove this item from your cart?')) {
-                    this.cart.splice(index, 1);
-                    this.saveCart();
-                    this.renderCart();
-                }
+
+                this.cart.splice(index, 1);
+                this.saveCart();
+                this.renderCart();
+
             }
 
             saveCart() {
@@ -221,7 +268,7 @@
                     alert('Your cart is empty!');
                     return;
                 }
-                
+
                 // Save cart to localStorage for checkout page
                 localStorage.setItem('checkoutCart', JSON.stringify(this.cart));
                 window.location.href = '../CheckOutPage.html';
@@ -230,19 +277,24 @@
             showEmptyCart(message = 'Your cart is empty') {
                 const cartContainer = document.getElementById('cart-items');
                 const summaryContainer = document.getElementById('cart-summary-content');
-                
+                const summarySection = document.getElementById('cart-summary-section');
+
                 cartContainer.innerHTML = `
-                    <div class="empty-cart">
-                        <i class="fas fa-shopping-cart"></i>
-                        <h3>${message}</h3>
-                        <p>Looks like you haven't added any items to your cart yet.</p>
-                        <a href="../index.html" class="continue-shopping-btn">
-                            <i class="fas fa-arrow-left me-2"></i><h4>Continue Shopping</h4>
-                        </a>
-                    </div>
-                `;
-                
+        <div class="empty-cart">
+            <i class="fas fa-shopping-cart"></i>
+            <h3>${message}</h3>
+            <p>Looks like you haven't added any items to your cart yet.</p>
+<a href="../index.html" class="continue-shopping-btn">
+
+  <span>Continue Shopping</span>
+</a>
+
+
+        </div>
+    `;
+
                 summaryContainer.innerHTML = '';
+                summarySection.style.display = 'none'; // hide the whole summary section
             }
         }
 
