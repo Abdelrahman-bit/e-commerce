@@ -26,7 +26,7 @@
     admin: [],
   };
 
-  const currentPage = window.location.pathname;
+  const currentPage = window.location.pathname.toLocaleLowerCase();
 
   // logged in but on guest route → redirect home
   if (currentUser && guestRoutes.includes(currentPage)) {
