@@ -192,10 +192,43 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-function ToPayment(){
-    window.location.href = "payment.html";
+function showAlert(message, type = "danger", duration = 3000) {
+  const alertPlaceholder = document.getElementById("alertPlaceholder");
+  alertPlaceholder.innerHTML = "";
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = `
+    <div class="alert alert-${type} alert-dismissible fade show mt-3" role="alert">
+      ${message}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+  `;
+
+  const alertElement = wrapper.firstElementChild;
+  alertPlaceholder.append(alertElement);
+  setTimeout(() => {
+    alertElement.classList.remove("show"); 
+    alertElement.classList.add("fade");   
+    setTimeout(() => alertElement.remove(), 200);
+  }, duration);
 }
+
+function ToPayment() {
+  let currentUser = getCurrentUser();
+  let users = getUsers();
+  let idx = findCurrentUserIndex(users, currentUser);
+
+  if (idx === -1 || !users[idx].addresses || users[idx].addresses.length === 0) {
+    showAlert("⚠️ Please add at least one address before proceeding to payment.");
+    return;
+  }
+
+  window.location.href = "payment.html";
+}
+
+
 function ToCart(){
     window.location.href = "customer/cart.html";
 }
+
+
 
