@@ -1,6 +1,7 @@
 import { SellerDashboard } from "./seller/dashboard.js";
 import { Products } from "./seller/products.js";
-import { Orders } from "./seller/orders.js";
+import { adminOrders } from "./admin/adminOrders.js";
+import { sellerOrders } from "./seller/sellerOrders.js";
 
 import { AdminDashboard } from "./admin/dashboard.js";
 import { Users } from "./admin/users.js";
@@ -25,8 +26,8 @@ export function loadPage(route) {
 			case "#products":
 				content.innerHTML = Products();
 				break;
-			case "#orders":
-				content.innerHTML = Orders();
+			case "#seller-orders":
+				content.innerHTML = sellerOrders();
 				break;
 			case "#analytics":
 				content.innerHTML = Analytics();
@@ -44,8 +45,8 @@ export function loadPage(route) {
 			case "#users":
 				content.innerHTML = Users();
 				break;
-			case "#reports":
-				content.innerHTML = Reports();
+			case "#admin-orders":
+				content.innerHTML = adminOrders();
 				break;
 			case "#settings":
 				content.innerHTML = Settings();

@@ -13,6 +13,7 @@
     "/admin/dashboard.html",
     "/seller/seller-dashboard.html",
     "/seller/seller-orders.html",
+    "/dashboard/index.html"
   ];
 
   // Role restrictions
