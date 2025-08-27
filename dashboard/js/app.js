@@ -16,7 +16,7 @@ function renderSidebar(role) {
         <a href="#products" class="nav-link text-dark px-3 py-2 rounded">Products</a>
       </li>
       <li class="nav-item">
-        <a href="#orders" class="nav-link text-dark px-3 py-2 rounded">Orders</a>
+        <a href="#seller-orders" class="nav-link text-dark px-3 py-2 rounded">Orders</a>
       </li>
     `;
   }
@@ -30,7 +30,7 @@ function renderSidebar(role) {
         <a href="#users" class="nav-link text-dark px-3 py-2 rounded">Manage Users</a>
       </li>
       <li class="nav-item">
-        <a href="#orders" class="nav-link text-dark px-3 py-2 rounded">Orders</a>
+        <a href="#admin-orders" class="nav-link text-dark px-3 py-2 rounded">Orders</a>
       </li>
       <li class="nav-item">
         <a href="#analytics" class="nav-link text-dark px-3 py-2 rounded">Analytics</a>
