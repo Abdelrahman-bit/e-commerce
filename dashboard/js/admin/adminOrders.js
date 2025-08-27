@@ -3,58 +3,27 @@ export function adminOrders() {
   const orders = JSON.parse(localStorage.getItem("orders")) || [];
   const users = JSON.parse(localStorage.getItem("users")) || [];
 
-  const totalRevenue = orders.reduce(
-    (sum, order) => sum + (Number(order.total) || 0),
-    0
-  );
-  const lowStock = products.filter((p) => Number(p.stock) < 5).length;
-
-  const productSales = {};
-  orders.forEach((order) => {
-    order.items.forEach((item) => {
-      const product = products.find((p) => p.id === item.id);
-      if (product) {
-        productSales[product.name] =
-          (productSales[product.name] || 0) + item.quantity;
-      }
-    });
-  });
-  const topProducts = Object.entries(productSales)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 5);
-
   const recentOrders = [...orders]
-    .sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate))
-    .slice(0);
-
-  const latestUsers = [...users].slice(-5).reverse();
-
-  const activeUsers = users
-    .map((u) => ({
-      ...u,
-      orderCount: orders.filter((o) => o.customerEmail === u.email).length,
-    }))
-    .sort((a, b) => b.orderCount - a.orderCount)
-    .slice(0, 5);
+    .sort((a, b) => new Date(b.orderDate) - new Date(a.orderDate));
 
   const html = `
-    <style>
-      @media (max-width: 576px) {
-        .card h5, .card h6 { font-size: 0.8rem; }
-        .card strong { font-size: 1rem; }
-        table { font-size: 0.7rem; }
-        .list-group-item{font-size: 0.7rem;}
-      }
-    </style>
-
-    <div class="row g-4">
-        <div class="col-lg-12 col-12">
-          <div class="card p-3 shadow-sm">
-            <h5>Recent Orders 🛒</h5>
+    <div class="row">
+      <div class="col-12">
+        <div class="card shadow-sm mb-4">
+          <div class="card-header  text-dark">
+            <h5 class="mb-0">Recent Orders 🛒</h5>
+          </div>
+          <div class="card-body p-0">
             <div class="table-responsive">
-              <table class="table table-sm table-hover">
-                <thead>
-                  <tr><th>ID</th><th>Customer</th><th>Total</th><th>Status</th><th>Action</th></tr>
+              <table class="table table-hover table-striped mb-0">
+                <thead class="table-dark">
+                  <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Customer</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                  </tr>
                 </thead>
                 <tbody>
                   ${recentOrders
@@ -64,8 +33,16 @@ export function adminOrders() {
                       <td>${o.orderId}</td>
                       <td>${o.customerName}</td>
                       <td>$${o.total}</td>
-                      <td><span class="badge bg-danger text-light shadow-sm">${o.status}</span></td>
-                      <td><button class="btn btn-link text-danger p-0 delete-order-btn">Delete</button></td>
+                      <td>
+                        <span class="badge ${
+                          o.status.toLowerCase() === "completed" ? "bg-success" :
+                          o.status.toLowerCase() === "pending" ? "bg-warning text-dark" :
+                          "bg-danger"
+                        }">${o.status}</span>
+                      </td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-danger delete-order-btn">Delete</button>
+                      </td>
                     </tr>
                   `
                     )
@@ -75,6 +52,7 @@ export function adminOrders() {
             </div>
           </div>
         </div>
+      </div>
     </div>
   `;
 

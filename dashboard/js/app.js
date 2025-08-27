@@ -1,6 +1,7 @@
 import {loadPage} from "./router.js";
 import {getCurrentUser} from "../../assests/js/storage.js";
 
+
 function renderSidebar(role) {
   const sidebar = document.getElementById("sidebar-desktop");
   const sidebarM = document.getElementById("sidebar-mobile");
@@ -31,6 +32,9 @@ function renderSidebar(role) {
       </li>
       <li class="nav-item">
         <a href="#admin-orders" class="nav-link text-dark px-3 py-2 rounded">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a href="#admin-products" class="nav-link text-dark px-3 py-2 rounded">Products</a>
       </li>
       <li class="nav-item">
         <a href="#analytics" class="nav-link text-dark px-3 py-2 rounded">Analytics</a>
