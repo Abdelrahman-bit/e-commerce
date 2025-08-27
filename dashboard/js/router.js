@@ -48,8 +48,8 @@ export function loadPage(route) {
 			case "#admin-orders":
 				content.innerHTML = adminOrders();
 				break;
-			case "#settings":
-				content.innerHTML = Settings();
+			case "#analytics":
+				content.innerHTML = Analytics();
 				break;
 			default:
 				content.innerHTML = AdminDashboard();
