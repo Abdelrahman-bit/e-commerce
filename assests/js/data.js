@@ -32,7 +32,7 @@ export const products = [
 		category: "computers",
 		image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/laptop_ksseyu.jpg",
 		fav: false,
-		stock: 50,
+		stock: 5,
 		quantity: 1,
 	},
 	{
@@ -239,7 +239,7 @@ export const products = [
 		category: "phones",
 		image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/tablet_vfmlus.jpg",
 		fav: false,
-		stock: 20,
+		stock: 9,
 		quantity: 1,
 	},
 	{

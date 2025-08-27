@@ -7,7 +7,7 @@ export function AdminDashboard() {
     (sum, order) => sum + (Number(order.total) || 0),
     0
   );
-  const lowStock = products.filter((p) => Number(p.stock) < 5).length;
+  const lowStock = products.filter((p) => Number(p.stock) < 10).length;
 
   // ---- Top Products ----
   const productSales = {};
@@ -97,7 +97,7 @@ export function AdminDashboard() {
                       <td>${o.orderId}</td>
                       <td>${o.customerName}</td>
                       <td>$${o.total}</td>
-                      <td class="badge bg-danger text-light shadow-sm" >${o.status}</td>
+                      <td><span class="badge bg-danger text-light shadow-sm">${o.status}</span></td>
                     </tr>
                   `
                     )
