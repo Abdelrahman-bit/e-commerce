@@ -1,26 +1,69 @@
 export const users = [
-	{
-		id: 1,
-		name: "admin",
-		role: "admin",
-		email: "admin@example.com",
-		password: "Admin123@",
-	},
-	{
-		id: 2,
-		name: "hamada",
-		role: "seller",
-		email: "hamada@example.com",
-		password: "Hamada123@",
-	},
-	{
-		id: 3,
-		name: "ali",
-		role: "customer",
-		email: "ali@example.com",
-		password: "Ali123@@",
-	},
+  {
+    id: 1,
+    name: "admin",
+    role: "admin",
+    email: "admin@example.com",
+    password: "Admin123@",
+  },
+  {
+    id: 2,
+    name: "hamada",
+    role: "seller",
+    email: "hamada@example.com",
+    password: "Hamada123@",
+  },
+  {
+    id: 3,
+    name: "ali",
+    role: "customer",
+    email: "ali@example.com",
+    password: "Ali123@@",
+  },
+  {
+    id: 4,
+    name: "sara",
+    role: "customer",
+    email: "sara@example.com",
+    password: "Sara123@",
+  },
+  {
+    id: 5,
+    name: "mona",
+    role: "seller",
+    email: "mona@example.com",
+    password: "Mona123@",
+  },
+  {
+    id: 6,
+    name: "ahmed",
+    role: "customer",
+    email: "ahmed@example.com",
+    password: "Ahmed123@",
+  },
+  {
+    id: 7,
+    name: "youssef",
+    role: "seller",
+    email: "youssef@example.com",
+    password: "Youssef123@",
+  },
+  {
+    id: 8,
+    name: "fatma",
+    role: "customer",
+    email: "fatma@example.com",
+    password: "Fatma123@",
+  },
+  {
+    id: 9,
+    name: "omar",
+    role: "admin",
+    email: "omar@example.com",
+    password: "Omar123@",
+  },
 ];
+
 
 export const products = [
 	{

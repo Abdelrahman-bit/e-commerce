@@ -130,7 +130,7 @@ background-color:red;
                       <td>${o.orderId}</td>
                       <td>${o.customerName}</td>
                       <td>$${o.total}</td>
-                      <td class="badge bg-danger text-light shadow-sm" >${o.status}</td>
+                      <td>  <span class="badge bg-danger text-light shadow-sm">${o.status}</span></td>
                     </tr>
                   `
                     )
@@ -185,8 +185,8 @@ background-color:red;
                               u.role === "admin"
                                 ? "danger"
                                 : u.role === "seller"
-                                ? "success"
-                                : "secondary";
+                                ? "info"
+                                : "success";
                             return `
                             <tr>
                               <td>${u.name}</td>
@@ -225,8 +225,8 @@ background-color:red;
                               u.role === "admin"
                                 ? "danger"
                                 : u.role === "seller"
-                                ? "success"
-                                : "secondary";
+                                ? "info"
+                                : "success";
                             return `
                             <tr>
                               <td>${u.name}</td>
