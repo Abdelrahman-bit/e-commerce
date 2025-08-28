@@ -222,11 +222,31 @@ function saveOrder(orderData) {
 	orders.push(orderData);
 	setToStorage("orders", orders);
 
+	// Update product stock based on purchased items
+	updateProductStock(orderData.items);
+	
 	// Clear the checkout cart
 	localStorage.removeItem("checkoutCart");
 	// clear the current user cart
 	const currentUser = getFromStorage("currentUser") || [];
 	localStorage.removeItem(`cart_${currentUser.id}`);
+}
+
+// Update product stock after order completion
+function updateProductStock(purchasedItems) {
+	const products = getFromStorage("products") || [];
+	
+	purchasedItems.forEach(item => {
+		const productIndex = products.findIndex(p => p.id === item.id);
+		if (productIndex !== -1) {
+			// Decrease stock by the quantity purchased
+			products[productIndex].stock = Math.max(0, products[productIndex].stock - item.quantity);
+		}
+	});
+	
+	// Save updated products back to localStorage
+	setToStorage("products", products);
+	console.log('Product stock updated after purchase');
 }
 
 // Download receipt as text file

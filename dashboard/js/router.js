@@ -1,5 +1,5 @@
 import { SellerDashboard } from "./seller/dashboard.js";
-import { Products } from "./seller/products.js";
+import { products } from "./seller/products.js";
 import { adminOrders } from "./admin/adminOrders.js";
 import { sellerOrders } from "./seller/sellerOrders.js";
 
@@ -12,11 +12,14 @@ import { getCurrentUser } from "../../assests/js/storage.js";
 export function loadPage(route) {
 	const content = document.getElementById("app-content");
 	const user = getCurrentUser();
+	// const Products = createProducts();
+	// window.Products = Products; 
 
 	if (!user) {
 		content.innerHTML = "<p>Please login first</p>";
 		return;
 	}
+
 
 	if (user.role === "seller") {
 		switch (route) {
@@ -24,7 +27,7 @@ export function loadPage(route) {
 				content.innerHTML = SellerDashboard();
 				break;
 			case "#products":
-				content.innerHTML = Products();
+				content.innerHTML = products();
 				break;
 			case "#seller-orders":
 				content.innerHTML = sellerOrders();
