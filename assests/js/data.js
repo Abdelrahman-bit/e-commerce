@@ -68,7 +68,7 @@ export const users = [
 export const products = [
 	{
 		id: 1,
-		sellerEmail: "hamada@example.com",
+		sellerEmail: "nova@gmail.com",
 		name: "Microsoft Surface Laptop",
 		price: 100,
 		description: "Description for laptop",
