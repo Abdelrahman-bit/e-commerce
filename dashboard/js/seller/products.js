@@ -1,6 +1,11 @@
 export function Products() {
 	return `
     <h2>Seller products</h2>
+       <div class="quick-actions mb-4 d-flex">
+        <a href="#dashboard"><i class="fas fa-tachometer-alt"></i></a>
+        <a href="#products"><i class="fa-solid fa-box-open"></i></a>
+        <a href="#sellerOrders"><i class="fas fa-box"></i></a>
+      </div>
     <div class="row g-3">
       <div class="col-md-3"><div class="card p-3">Total Products: <strong>20</strong></div></div>
       <div class="col-md-3"><div class="card p-3">Total Revenue: <strong>$150,000</strong></div></div>

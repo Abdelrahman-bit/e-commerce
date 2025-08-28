@@ -1,5 +1,5 @@
-import {loadPage} from "./router.js";
-import {getCurrentUser} from "../../assests/js/storage.js";
+import { loadPage } from "./router.js";
+import { getCurrentUser } from "../../assests/js/storage.js";
 
 
 function renderSidebar(role) {
@@ -39,6 +39,7 @@ function renderSidebar(role) {
       <li class="nav-item">
         <a href="#analytics" class="nav-link text-dark px-3 py-2 rounded">Analytics</a>
       </li>
+
     `;
   }
 

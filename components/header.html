@@ -14,7 +14,7 @@
 
 <body>
   <header>
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container">
         <a class="navbar-brand" href="../index.html" id="brand">
           <img src="/assests/images/LogoMainVector.png" alt="Logo" />
@@ -38,18 +38,15 @@
             <li class="nav-item d-none" id="dashboard">
               <a class="btn btn-dark" href="">dashboard</a>
             </li>
-            <div class="d-flex gap-2"> 
-   <li class="nav-item">
-              <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
-            </li>
-            <li class="nav-item">
-              <a id="cart-icon" class="nav-link cart-icon-container" href="#">
-                <i class="fas fa-shopping-cart"></i>
-                <span id="cart-badge" class="cart-badge hidden">0</span>
-              </a>
-            </li>
+            <div class="d-flex gap-2">
+              <li class="nav-item">
+                <a id="cart-icon" class="nav-link cart-icon-container" href="#">
+                  <i class="fas fa-shopping-cart"></i>
+                  <span id="cart-badge" class="cart-badge hidden">0</span>
+                </a>
+              </li>
             </div>
-         
+
 
             <li id="authPlaceholder" class="nav-item d-flex align-items-center justify-content-center gap-1"></li>
           </ul>
@@ -130,9 +127,9 @@
         if (currentUser.role === 'seller') {
           dashboardBtn.firstElementChild.href = '/seller/seller-dashboard.html'
           dashboardBtn.classList.remove('d-none');
-          
+
         } else if (currentUser.role === 'admin') {
-         dashboardBtn.firstElementChild.href = '/admin/admin-dashboard.html'
+          dashboardBtn.firstElementChild.href = '/admin/admin-dashboard.html'
           dashboardBtn.classList.remove('d-none');
         }
         // زرار اللوج اوت
@@ -144,12 +141,9 @@
       } else {
         // لو مفيش يوزر: Login/Register
         authPlaceholder.innerHTML = `
-        <ul class="navbar-nav  d-flex flex-row gap-4"> 
+        <ul class="navbar-nav  d-flex flex-row gap-4 ms-3"> 
         <li class="nav-item">
-          <a class="nav-link btn btn-light" href="../login.html">Login</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link btn bg-dark text-light" href="../login.html">Register</a>
+          <a class="nav-link btn bg-dark text-light" href="../login.html">Login</a>
         </li>
         </ul>
       `;

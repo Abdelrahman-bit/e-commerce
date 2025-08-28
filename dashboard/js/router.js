@@ -11,32 +11,29 @@ import { Analytics } from "./admin/analytics.js";
 import { getCurrentUser } from "../../assests/js/storage.js";
 
 export function loadPage(route) {
-	const content = document.getElementById("app-content");
-	const user = getCurrentUser();
+  const content = document.getElementById("app-content");
+  const user = getCurrentUser();
 
-	if (!user) {
-		content.innerHTML = "<p>Please login first</p>";
-		return;
-	}
+  if (!user) {
+    content.innerHTML = "<p>Please login first</p>";
+    return;
+  }
 
-	if (user.role === "seller") {
-		switch (route) {
-			case "#dashboard":
-				content.innerHTML = SellerDashboard();
-				break;
-			case "#products":
-				content.innerHTML = Products();
-				break;
-			case "#seller-orders":
-				content.innerHTML = sellerOrders();
-				break;
-			case "#analytics":
-				content.innerHTML = Analytics();
-				break;
-			default:
-				content.innerHTML = SellerDashboard();
-		}
-	}
+  if (user.role === "seller") {
+    switch (route) {
+      case "#dashboard":
+        content.innerHTML = SellerDashboard();
+         break;
+      case "#products":
+        content.innerHTML = Products();
+        break;
+      case "#seller-orders":
+        content.innerHTML = sellerOrders();
+        break;
+      default:
+        content.innerHTML = SellerDashboard();
+    }
+  }
 
 	if (user.role === "admin") {
 		switch (route) {
@@ -59,4 +56,5 @@ export function loadPage(route) {
 				content.innerHTML = AdminDashboard();
 		}
 	}
+
 }
