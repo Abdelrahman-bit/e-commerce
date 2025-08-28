@@ -1,5 +1,3 @@
-// import { getOrders } from "../../js/storage.js";
-// import { getProducts } from "../../js/storage.js";
 import {
   getCurrentUser,
   getOrders,
@@ -36,6 +34,11 @@ export function SellerDashboard() {
             class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom eeeeee"
           >
             <h1 class="h2">Seller Dashboard</h1>
+            <div class="quick-actions mb-4 d-flex">
+              <a href="#dashboard"><i class="fas fa-tachometer-alt"></i></a>
+              <a href="#products"><i class="fa-solid fa-box-open"></i></a>
+              <a href="#sellerOrders"><i class="fas fa-box"></i></a>
+            </div>
           </div>
           <div
             class="d-flex flex-column flex-sm-row justify-content-center justify-content-sm-between flex-wrap flex-md-nowrap align-items-center py-2 my-4 eeeeee"
