@@ -21,32 +21,60 @@ export function Users() {
       filter: invert(13%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(30%) contrast(100%);
       cursor: pointer;
     }
+
+    @media (max-width: 768px) {
+      table {
+        font-size: 14px;
+      }
+      th, td {
+        padding: 6px !important;
+      }
+      .delete-icon, .edit-icon {
+        width: 18px;
+      }
+      .modal-dialog {
+        max-width: 95% !important;
+        margin: auto;
+      }
+    }
+    @media (max-width: 480px) {
+      table {
+        font-size: 13px;
+      }
+      th, td {
+        padding: 4px !important;
+      }
+      h2 {
+        font-size: 18px;
+        text-align: center;
+      }
+    }
   </style>
 
-    <h2>Manage Users</h2>
-    <table class="table table-hover table-bordered table-responsive">
-      <thead>
-        <tr class="text-center">
-          <th>#</th>
-          <th>Name</th>
-          <th>Email</th>
-          <th>Role</th>
-          <th>Delete</th>
-          <th>Edit</th>
-        </tr>
-      </thead>
-      <tbody>
-        ${filteredUsers
-          .map(
-            (u, index) => {
+    <h2 class="mb-3">Manage Users</h2>
+    <div class="table-responsive">
+      <table class="table table-hover table-bordered align-middle">
+        <thead class="table-light text-center">
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
+            <th>Delete</th>
+            <th>Edit</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${filteredUsers
+            .map((u, index) => {
               const modalId = `editModal-${u.id || index}`;
               return `
                 <tr class="text-center">
                   <th>${index + 1}</th>
                   <td>${u.name || ""}</td>
-                  <td>${u.email || ""}</td>
+                  <td class="text-break">${u.email || ""}</td>
                   <td>
-                    <span class="badge bg-${ 
+                    <span class="badge bg-${
                       u.role === "seller" ? "info" : "success"
                     }">${u.role || "User"}</span>
                   </td>
@@ -61,7 +89,7 @@ export function Users() {
                         src="https://img.icons8.com/?size=100&id=zqRKVWtC1VeY&format=png&color=000000" 
                         alt="Edit" width="20">
 
-                    <!-- Modal لكل يوزر -->
+                    <!-- Modal -->
                     <div class="modal fade" id="${modalId}" tabindex="-1" 
                         aria-labelledby="${modalId}-label" aria-hidden="true">
                       <div class="modal-dialog">
@@ -92,13 +120,12 @@ export function Users() {
                   </td>
                 </tr>
               `;
-            }
-          )
-          .join("")}
-      </tbody>
-    </table>
+            })
+            .join("")}
+        </tbody>
+      </table>
+    </div>
   `;
-
 
   setTimeout(() => {
     document.querySelectorAll(".save-edit-btn").forEach(btn => {
@@ -110,10 +137,8 @@ export function Users() {
           name: form.name.value,
           password: form.password.value,
         };
-
         const newUsers = allusers.map(u => (u.id == id ? updatedUser : u));
         localStorage.setItem("users", JSON.stringify(newUsers));
-
         location.reload();
       });
     });
@@ -124,7 +149,6 @@ export function Users() {
       icon.addEventListener("click", e => {
         const tr = e.target.closest("tr");
         const id = e.target.dataset.id;
-
         tr.innerHTML = `
           <td colspan="6" class="text-center">
             <span class="fw-medium text-danger small me-2">Delete this user?</span>
@@ -132,14 +156,12 @@ export function Users() {
             <button class="btn btn-sm btn-outline-secondary confirm-no">No</button>
           </td>
         `;
-
         tr.querySelector(".confirm-yes").addEventListener("click", () => {
           let allusers = JSON.parse(localStorage.getItem("users")) || [];
           const newUsers = allusers.filter(u => u.id != id);
           localStorage.setItem("users", JSON.stringify(newUsers));
           tr.remove();
         });
-
         tr.querySelector(".confirm-no").addEventListener("click", () => location.reload());
       });
     });
