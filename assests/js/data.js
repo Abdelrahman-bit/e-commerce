@@ -1,38 +1,81 @@
 export const users = [
-	{
-		id: 1,
-		name: "admin",
-		role: "admin",
-		email: "admin@example.com",
-		password: "Admin123@",
-	},
-	{
-		id: 2,
-		name: "hamada",
-		role: "seller",
-		email: "hamada@example.com",
-		password: "Hamada123@",
-	},
-	{
-		id: 3,
-		name: "ali",
-		role: "customer",
-		email: "ali@example.com",
-		password: "Ali123@@",
-	},
+  {
+    id: 1,
+    name: "admin",
+    role: "admin",
+    email: "admin@example.com",
+    password: "Admin123@",
+  },
+  {
+    id: 2,
+    name: "hamada",
+    role: "seller",
+    email: "hamada@example.com",
+    password: "Hamada123@",
+  },
+  {
+    id: 3,
+    name: "ali",
+    role: "customer",
+    email: "ali@example.com",
+    password: "Ali123@@",
+  },
+  {
+    id: 4,
+    name: "sara",
+    role: "customer",
+    email: "sara@example.com",
+    password: "Sara123@",
+  },
+  {
+    id: 5,
+    name: "mona",
+    role: "seller",
+    email: "mona@example.com",
+    password: "Mona123@",
+  },
+  {
+    id: 6,
+    name: "ahmed",
+    role: "customer",
+    email: "ahmed@example.com",
+    password: "Ahmed123@",
+  },
+  {
+    id: 7,
+    name: "youssef",
+    role: "seller",
+    email: "youssef@example.com",
+    password: "Youssef123@",
+  },
+  {
+    id: 8,
+    name: "fatma",
+    role: "customer",
+    email: "fatma@example.com",
+    password: "Fatma123@",
+  },
+  {
+    id: 9,
+    name: "omar",
+    role: "admin",
+    email: "omar@example.com",
+    password: "Omar123@",
+  },
 ];
+
 
 export const products = [
 	{
 		id: 1,
-		sellerEmail: "hamada@example.com",
+		sellerEmail: "nova@gmail.com",
 		name: "Microsoft Surface Laptop",
 		price: 100,
 		description: "Description for laptop",
 		category: "computers",
 		image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/laptop_ksseyu.jpg",
 		fav: false,
-		stock: 50,
+		stock: 5,
 		quantity: 1,
 	},
 	{
@@ -239,7 +282,7 @@ export const products = [
 		category: "phones",
 		image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/tablet_vfmlus.jpg",
 		fav: false,
-		stock: 20,
+		stock: 9,
 		quantity: 1,
 	},
 	{

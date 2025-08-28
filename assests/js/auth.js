@@ -122,10 +122,10 @@ logout(options = { redirect: true }) {
 
         switch (this.currentUser.role) {
             case 'admin':
-                window.location.href = '/admin/admin-dashboard.html';
+                window.location.href = '/dashboard/index.html';
                 break;
             case 'seller':
-                window.location.href = '/seller/seller-dashboard.html';
+                window.location.href = "/dashboard/index.html";
                 break;
             case 'customer':
                 window.location.href = '/index.html';
