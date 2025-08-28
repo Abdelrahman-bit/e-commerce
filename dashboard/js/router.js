@@ -1,5 +1,6 @@
 import { SellerDashboard } from "./seller/dashboard.js";
 import { Products } from "./seller/products.js";
+import { adminProducts } from "./admin/adminProducts.js";
 import { adminOrders } from "./admin/adminOrders.js";
 import { sellerOrders } from "./seller/sellerOrders.js";
 
@@ -22,38 +23,38 @@ export function loadPage(route) {
     switch (route) {
       case "#dashboard":
         content.innerHTML = SellerDashboard();
-
-        break;
+         break;
       case "#products":
         content.innerHTML = Products();
         break;
       case "#seller-orders":
         content.innerHTML = sellerOrders();
         break;
-      case "#analytics":
-        content.innerHTML = Analytics();
-        break;
       default:
         content.innerHTML = SellerDashboard();
     }
   }
 
-  if (user.role === "admin") {
-    switch (route) {
-      case "#dashboard":
-        content.innerHTML = AdminDashboard();
-        break;
-      case "#users":
-        content.innerHTML = Users();
-        break;
-      case "#admin-orders":
-        content.innerHTML = adminOrders();
-        break;
-      case "#settings":
-        content.innerHTML = Settings();
-        break;
-      default:
-        content.innerHTML = AdminDashboard();
-    }
-  }
+	if (user.role === "admin") {
+		switch (route) {
+			case "#dashboard":
+				content.innerHTML = AdminDashboard();
+				break;
+			case "#users":
+				content.innerHTML = Users();
+				break;
+			case "#admin-orders":
+				content.innerHTML = adminOrders();
+				break;
+				case "#admin-products":
+				content.innerHTML = adminProducts();
+				break;
+			case "#settings":
+				content.innerHTML = Settings();
+				break;
+			default:
+				content.innerHTML = AdminDashboard();
+		}
+	}
+
 }

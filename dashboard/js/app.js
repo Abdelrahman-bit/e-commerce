@@ -1,6 +1,7 @@
 import { loadPage } from "./router.js";
 import { getCurrentUser } from "../../assests/js/storage.js";
 
+
 function renderSidebar(role) {
   const sidebar = document.getElementById("sidebar-desktop");
   const sidebarM = document.getElementById("sidebar-mobile");
@@ -23,26 +24,21 @@ function renderSidebar(role) {
 
   if (role === "admin") {
     menu += `
-  <li class="nav-item">
-  <a href="#dashboard" class="nav-link text-dark px-3 py-2 rounded">
-    <span class="nav-text">Admin Dashboard</span>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="#users" class="nav-link text-dark px-3 py-2 rounded">
-    <span class="nav-text">Manage Users</span>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="#admin-orders" class="nav-link text-dark px-3 py-2 rounded">
-    <span class="nav-text">Orders</span>
-  </a>
-</li>
-<li class="nav-item">
-  <a href="#analytics" class="nav-link text-dark px-3 py-2 rounded">
-    <span class="nav-text">Analytics</span>
-  </a>
-</li>
+      <li class="nav-item">
+        <a href="#dashboard" class="nav-link text-dark px-3 py-2 rounded">Admin Dashboard</a>
+      </li>
+      <li class="nav-item">
+        <a href="#users" class="nav-link text-dark px-3 py-2 rounded">Manage Users</a>
+      </li>
+      <li class="nav-item">
+        <a href="#admin-orders" class="nav-link text-dark px-3 py-2 rounded">Orders</a>
+      </li>
+      <li class="nav-item">
+        <a href="#admin-products" class="nav-link text-dark px-3 py-2 rounded">Products</a>
+      </li>
+      <li class="nav-item">
+        <a href="#analytics" class="nav-link text-dark px-3 py-2 rounded">Analytics</a>
+      </li>
 
     `;
   }
