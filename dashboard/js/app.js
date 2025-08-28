@@ -1,5 +1,5 @@
-import {loadPage} from "./router.js";
-import {getCurrentUser} from "../../assests/js/storage.js";
+import { loadPage } from "./router.js";
+import { getCurrentUser } from "../../assests/js/storage.js";
 
 function renderSidebar(role) {
   const sidebar = document.getElementById("sidebar-desktop");
