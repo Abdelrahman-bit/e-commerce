@@ -1,8 +1,8 @@
 import { SellerDashboard } from "./seller/dashboard.js";
 import { products } from "./seller/products.js";
-import { adminOrders } from "./admin/adminOrders.js";
 import { sellerOrders } from "./seller/sellerOrders.js";
 
+import { adminOrders } from "./admin/adminOrders.js";
 import { AdminDashboard } from "./admin/dashboard.js";
 import { Users } from "./admin/users.js";
 import { Analytics } from "./admin/analytics.js";
@@ -31,9 +31,6 @@ export function loadPage(route) {
 				break;
 			case "#seller-orders":
 				content.innerHTML = sellerOrders();
-				break;
-			case "#analytics":
-				content.innerHTML = Analytics();
 				break;
 			default:
 				content.innerHTML = SellerDashboard();
