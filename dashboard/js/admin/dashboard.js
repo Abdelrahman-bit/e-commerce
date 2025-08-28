@@ -7,7 +7,7 @@ export function AdminDashboard() {
     (sum, order) => sum + (Number(order.total) || 0),
     0
   );
-  const lowStock = products.filter((p) => Number(p.stock) < 5).length;
+  const lowStock = products.filter((p) => Number(p.stock) < 10).length;
 
   // ---- Top Products ----
   const productSales = {};
@@ -42,17 +42,50 @@ export function AdminDashboard() {
 
   return `
     <style>
-      @media (max-width: 576px) {
+  @media (max-width: 576px) {
         .card h5, .card h6 { font-size: 0.8rem; }
         .card strong { font-size: 1rem; }
         table { font-size: 0.7rem; }
         .list-group-item{font-size: 0.7rem;}
+        .quick-actions span { display: none; } /* يخفي النصوص */
+        
+  .nav-item {
+    display: block; 
+  }
+ 
       }
+        
+      .quick-actions a {
+        margin-right: 10px;
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9rem;
+        display:block;
+        transition: transform 0.2s;
+
+      }
+         .quick-actions a:hover{
+    transform: scale(1.4);
+ }
+        @media(min-width:576px){
+                         .quick-actions a{
+display:none !important;
+background-color:red;
+         }
+
+  }
+
+
     </style>
 
     <div class="container-fluid">
       <h2 class="my-3">Admin Dashboard</h2>
-      
+      <div class="quick-actions mb-4 d-flex">
+        <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> </a>
+        <a href="#users"><i class="fas fa-users"></i> </a>
+        <a href="#admin-orders"><i class="fas fa-box"></i></a>
+        <a href="#analytics"><i class="fas fa-chart-line"></i> </a>
+      </div>
       <div class="row g-3 mb-4">
         <div class="col-12 col-sm-6 col-md-3">
           <div class="card p-3 text-center shadow-sm">
@@ -97,7 +130,7 @@ export function AdminDashboard() {
                       <td>${o.orderId}</td>
                       <td>${o.customerName}</td>
                       <td>$${o.total}</td>
-                      <td class="badge bg-danger text-light shadow-sm" >${o.status}</td>
+                      <td><span class="badge bg-danger text-light shadow-sm">${o.status}</span></td>
                     </tr>
                   `
                     )
@@ -152,8 +185,8 @@ export function AdminDashboard() {
                               u.role === "admin"
                                 ? "danger"
                                 : u.role === "seller"
-                                ? "success"
-                                : "secondary";
+                                ? "info"
+                                : "success";
                             return `
                             <tr>
                               <td>${u.name}</td>
@@ -192,8 +225,8 @@ export function AdminDashboard() {
                               u.role === "admin"
                                 ? "danger"
                                 : u.role === "seller"
-                                ? "success"
-                                : "secondary";
+                                ? "info"
+                                : "success";
                             return `
                             <tr>
                               <td>${u.name}</td>
