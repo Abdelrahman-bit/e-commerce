@@ -1,6 +1,12 @@
 export function Users() {
 	return `
     <h2>Manage Users</h2>
+       <div class="quick-actions mb-4 d-flex">
+        <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> </a>
+        <a href="#users"><i class="fas fa-users"></i> </a>
+        <a href="#admin-orders"><i class="fas fa-box"></i></a>
+        <a href="#analytics"><i class="fas fa-chart-line"></i> </a>
+      </div>
     <table class="table">
   <thead>
     <tr>

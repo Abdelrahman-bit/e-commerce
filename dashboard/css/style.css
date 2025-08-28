@@ -1,0 +1,31 @@
+  @media (max-width: 576px) {
+        .card h5, .card h6 { font-size: 0.8rem; }
+        .card strong { font-size: 1rem; }
+        table { font-size: 0.7rem; }
+        .list-group-item{font-size: 0.7rem;}
+        .quick-actions span { display: none; } 
+        
+  /* .nav-item {
+    display:  none !important; 
+  }
+  */
+      }
+        
+      .quick-actions a {
+        margin-right: 10px;
+        text-decoration: none;
+        color: #333;
+        font-size: 0.9rem;
+        display:block;
+        transition: transform 0.2s;
+
+      }
+         .quick-actions a:hover{
+    transform: scale(1.4);
+ }
+        @media(min-width:576px){
+.quick-actions a{
+display:none !important;
+         }
+
+  }
