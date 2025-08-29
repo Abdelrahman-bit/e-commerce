@@ -54,7 +54,7 @@ export function Users() {
     <h2 class="mb-3">Manage Users</h2>
     <div class="table-responsive">
       <table class="table table-hover table-bordered align-middle">
-        <thead class="table-light text-center">
+        <thead class="table-light text-center table-dark">
           <tr>
             <th>#</th>
             <th>Name</th>

@@ -169,7 +169,7 @@ background-color:red;
             <h6>🆕 Latest Registered Users</h6>
             <div class="table-responsive">
               <table class="table table-sm table-striped table-hover">
-                <thead class="table-light">
+                <thead class="table-light table-dark">
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
@@ -209,7 +209,7 @@ background-color:red;
             <h6>🔥 Most Active Users</h6>
             <div class="table-responsive">
               <table class="table table-sm table-striped table-hover">
-                <thead class="table-light">
+                <thead class="table-light table-dark">
                   <tr>
                     <th>Name</th>
                     <th>Orders</th>
