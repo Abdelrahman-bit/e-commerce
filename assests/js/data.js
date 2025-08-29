@@ -411,7 +411,7 @@ const dummyOrders = [
   {
     orderId: "ORD-1",
     customerEmail: "ali@example.com",
-    customerName: "Ali Hassan",
+    customerName: "Ali",
     address: "123 Main Street, Cairo, Egypt",
     items: [
       {
@@ -441,7 +441,7 @@ const dummyOrders = [
   {
     orderId: "ORD-2",
     customerEmail: "sara@example.com",
-    customerName: "Sara Mohamed",
+    customerName: "Sara",
     address: "45 Nile Street, Giza, Egypt",
     items: [
       {
