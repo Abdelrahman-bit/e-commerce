@@ -39,9 +39,9 @@
               <a class="btn btn-dark" href="">dashboard</a>
             </li>
             <div class="d-flex gap-2">
-              <li class="nav-item">
+              <!-- <li class="nav-item">
                 <a class="nav-link" href="#"><i class="far fa-heart"></i></a>
-              </li>
+              </li> -->
               <li class="nav-item">
 
                 <a id="cart-icon" class="nav-link cart-icon-container" href="#">
@@ -101,10 +101,7 @@
     // hide icons in dashboard
     if(window.location.pathname === '/dashboard/index.html'){
       console.log(window.location.pathname);
-      
-      const favIcon = document.querySelector('.fa-heart');
       const cartIcon = document.querySelector('.fa-shopping-cart');
-      favIcon.closest("li").style.display = "none"; 
       cartIcon.closest("li").style.display = "none"; 
       
     }

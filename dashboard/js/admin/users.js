@@ -50,11 +50,16 @@ export function Users() {
       }
     }
   </style>
-
+    <div class="quick-actions mb-4 d-flex">
+        <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> </a>
+        <a href="#users"><i class="fas fa-users"></i> </a>
+        <a href="#admin-orders"><i class="fas fa-box"></i></a>
+        <a href="#analytics"><i class="fas fa-chart-line"></i> </a>
+      </div>
     <h2 class="mb-3">Manage Users</h2>
     <div class="table-responsive">
       <table class="table table-hover table-bordered align-middle">
-        <thead class="table-light text-center">
+        <thead class="text-center table-dark">
           <tr>
             <th>#</th>
             <th>Name</th>
@@ -66,17 +71,15 @@ export function Users() {
         </thead>
         <tbody>
           ${filteredUsers
-            .map((u, index) => {
-              const modalId = `editModal-${u.id || index}`;
-              return `
+				.map((u, index) => {
+					const modalId = `editModal-${u.id || index}`;
+					return `
                 <tr class="text-center">
                   <th>${index + 1}</th>
                   <td>${u.name || ""}</td>
                   <td class="text-break">${u.email || ""}</td>
                   <td>
-                    <span class="badge bg-${
-                      u.role === "seller" ? "info" : "success"
-                    }">${u.role || "User"}</span>
+                    <span class="badge bg-${u.role === "seller" ? "info" : "success"}">${u.role || "User"}</span>
                   </td>
                   <td>
                     <img class="delete-icon" data-id="${u.id}" 
@@ -120,8 +123,8 @@ export function Users() {
                   </td>
                 </tr>
               `;
-            })
-            .join("")}
+				})
+				.join("")}
         </tbody>
       </table>
     </div>
