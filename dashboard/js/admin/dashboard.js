@@ -119,7 +119,7 @@ background-color:red;
             <h5>Recent Orders 🛒</h5>
             <div class="table-responsive">
               <table class="table table-sm">
-                <thead>
+                <thead class="table-dark">
                   <tr><th>ID</th><th>Customer</th><th>Total</th><th>Status</th></tr>
                 </thead>
                 <tbody>
