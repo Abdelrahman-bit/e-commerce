@@ -1,3 +1,4 @@
+import {hashPassword } from './utils.js'
 const toggleText = document.getElementById("toggle-text");
 const formTitle = document.getElementById("form-title");
 const formSubtitle = document.getElementById("form-subtitle");
@@ -69,14 +70,15 @@ function resetForm(form) {
 	form.classList.remove("was-validated");
 }
 
-loginForm.addEventListener("submit", (e) => {
+loginForm.addEventListener("submit", async(e) => {
 	e.preventDefault();
 	if (validateForm(loginForm)) {
 		const email = document.getElementById("login-email").value.trim().toLowerCase();
 		const password = document.getElementById("login-password").value;
+		const hashedPassword = await hashPassword(password);
 
 		try {
-			authManager.login(email, password);
+			authManager.login(email, hashedPassword);
 			showAlert("Login successful! Redirecting...", "success");
 			setTimeout(() => authManager.redirectToRolePage(), 1500);
 		} catch (err) {
@@ -93,7 +95,7 @@ document.getElementById("login-password").addEventListener("input", (e) => {
 	e.target.setCustomValidity("");
 });
 
-registerForm.addEventListener("submit", (e) => {
+registerForm.addEventListener("submit", async (e) => {
 	e.preventDefault();
 	if (validateForm(registerForm)) {
 		const name = document.getElementById("reg-name").value.trim();
@@ -101,6 +103,7 @@ registerForm.addEventListener("submit", (e) => {
 		const phone = document.getElementById("reg-phone").value.trim();
 		const role = document.getElementById("reg-role").value;
 		const password = document.getElementById("reg-password").value;
+		const hashedPassword = await hashPassword(password)
 		const confirm = document.getElementById("reg-confirm").value;
 
 		if (password !== confirm) {
@@ -109,7 +112,7 @@ registerForm.addEventListener("submit", (e) => {
 		}
 
 		try {
-			authManager.register({ name, email, phone, role, password });
+			authManager.register({ name, email, phone, role, password:hashedPassword });
 			showAlert("Account created successfully! You can now login.", "success");
 			setTimeout(() => {
 				resetForm(registerForm);

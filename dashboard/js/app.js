@@ -17,7 +17,7 @@ function renderSidebar(role) {
         <a href="#products" class="nav-link text-dark px-3 py-2 rounded">Products</a>
       </li>
       <li class="nav-item">
-        <a href="#seller-orders" class="nav-link text-dark px-3 py-2 rounded">Orders</a>
+        <a href="#sellerOrders" class="nav-link text-dark px-3 py-2 rounded">Orders</a>
       </li>
     `;
   }
@@ -45,7 +45,6 @@ function renderSidebar(role) {
 
   menu += `</ul>`;
   sidebar.innerHTML = menu;
-  sidebarM.innerHTML = menu;
   // تحديد الـ active link
   setActiveLink(location.hash || "#dashboard");
 }

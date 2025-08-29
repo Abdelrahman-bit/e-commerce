@@ -79,13 +79,13 @@ background-color:red;
     </style>
 
     <div class="container-fluid">
-      <h2 class="my-3">Admin Dashboard</h2>
       <div class="quick-actions mb-4 d-flex">
         <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> </a>
         <a href="#users"><i class="fas fa-users"></i> </a>
         <a href="#admin-orders"><i class="fas fa-box"></i></a>
         <a href="#analytics"><i class="fas fa-chart-line"></i> </a>
       </div>
+      <h2 class="my-3">Admin Dashboard</h2>
       <div class="row g-3 mb-4">
         <div class="col-12 col-sm-6 col-md-3">
           <div class="card p-3 text-center shadow-sm">
@@ -119,13 +119,13 @@ background-color:red;
             <h5>Recent Orders 🛒</h5>
             <div class="table-responsive">
               <table class="table table-sm">
-                <thead>
+                <thead class="table-dark">
                   <tr><th>ID</th><th>Customer</th><th>Total</th><th>Status</th></tr>
                 </thead>
                 <tbody>
                   ${recentOrders
-                    .map(
-                      (o) => `
+						.map(
+							(o) => `
                     <tr>
                       <td>${o.orderId}</td>
                       <td>${o.customerName}</td>
@@ -133,8 +133,8 @@ background-color:red;
                       <td><span class="badge bg-danger text-light shadow-sm">${o.status}</span></td>
                     </tr>
                   `
-                    )
-                    .join("")}
+						)
+						.join("")}
                 </tbody>
               </table>
             </div>
@@ -146,15 +146,15 @@ background-color:red;
             <h5>Top Products ⭐</h5>
             <ul class="list-group">
               ${topProducts
-                .map(
-                  ([name, qty]) => `
+					.map(
+						([name, qty]) => `
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                   ${name}
                   <span class="badge bg-primary rounded-pill">${qty}</span>
                 </li>
               `
-                )
-                .join("")}
+					)
+					.join("")}
             </ul>
           </div>
         </div>
@@ -169,7 +169,7 @@ background-color:red;
             <h6>🆕 Latest Registered Users</h6>
             <div class="table-responsive">
               <table class="table table-sm table-striped table-hover">
-                <thead class="table-light">
+                <thead class="table-dark">
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
@@ -178,27 +178,20 @@ background-color:red;
                 </thead>
                 <tbody>
                   ${
-                    latestUsers.length
-                      ? latestUsers
-                          .map((u) => {
-                            let badgeClass =
-                              u.role === "admin"
-                                ? "danger"
-                                : u.role === "seller"
-                                ? "info"
-                                : "success";
-                            return `
+						latestUsers.length
+							? latestUsers
+									.map((u) => {
+										let badgeClass = u.role === "admin" ? "danger" : u.role === "seller" ? "info" : "success";
+										return `
                             <tr>
                               <td>${u.name}</td>
                               <td>${u.email}</td>
-                              <td><span class="badge bg-${badgeClass}">${
-                              u.role || "user"
-                            }</span></td>
+                              <td><span class="badge bg-${badgeClass}">${u.role || "user"}</span></td>
                             </tr>`;
-                          })
-                          .join("")
-                      : `<tr><td colspan="3" class="text-center">No users found</td></tr>`
-                  }
+									})
+									.join("")
+							: `<tr><td colspan="3" class="text-center">No users found</td></tr>`
+					}
                 </tbody>
               </table>
             </div>
@@ -209,7 +202,7 @@ background-color:red;
             <h6>🔥 Most Active Users</h6>
             <div class="table-responsive">
               <table class="table table-sm table-striped table-hover">
-                <thead class="table-light">
+                <thead class="table-dark">
                   <tr>
                     <th>Name</th>
                     <th>Orders</th>
@@ -218,27 +211,20 @@ background-color:red;
                 </thead>
                 <tbody>
                   ${
-                    activeUsers.length
-                      ? activeUsers
-                          .map((u) => {
-                            let badgeClass =
-                              u.role === "admin"
-                                ? "danger"
-                                : u.role === "seller"
-                                ? "info"
-                                : "success";
-                            return `
+						activeUsers.length
+							? activeUsers
+									.map((u) => {
+										let badgeClass = u.role === "admin" ? "danger" : u.role === "seller" ? "info" : "success";
+										return `
                             <tr>
                               <td>${u.name}</td>
                               <td>${u.orderCount}</td>
-                              <td><span class="badge bg-${badgeClass}">${
-                              u.role || "user"
-                            }</span></td>
+                              <td><span class="badge bg-${badgeClass}">${u.role || "user"}</span></td>
                             </tr>`;
-                          })
-                          .join("")
-                      : `<tr><td colspan="3" class="text-center">No active users</td></tr>`
-                  }
+									})
+									.join("")
+							: `<tr><td colspan="3" class="text-center">No active users</td></tr>`
+					}
                 </tbody>
               </table>
             </div>

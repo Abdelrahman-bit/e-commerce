@@ -83,10 +83,9 @@ function loadUserAddress() {
 
 	const users = getFromStorage("users") || [];
 	const user = users.find((u) => u.email === currentUser.email);
-	// console.log(user.addresses[user.selectedAddressIndex]);
 
-	const selectedAddress = user.addresses[user.selectedAddressIndex].fullAddress;
 	if (user && user.addresses) {
+		const selectedAddress = user.addresses[user.selectedAddressIndex].fullAddress;
 		userAddressElement.textContent = selectedAddress;
 	} else {
 		userAddressElement.innerHTML = '<span class="text-warning">No address found. Please update your profile.</span>';
@@ -237,7 +236,14 @@ function updateProductStock(purchasedItems) {
 	const products = getFromStorage("products") || [];
 	
 	purchasedItems.forEach(item => {
-		const productIndex = products.findIndex(p => p.id === item.id);
+		// Try to match by ID first
+		let productIndex = products.findIndex(p => p.id === item.id);
+
+		// If no ID match, fallback to name
+		if (productIndex === -1) {
+			productIndex = products.findIndex(p => p.name === item.name);
+		}
+
 		if (productIndex !== -1) {
 			// Decrease stock by the quantity purchased
 			products[productIndex].stock = Math.max(0, products[productIndex].stock - item.quantity);
@@ -402,8 +408,10 @@ document.addEventListener("DOMContentLoaded", function () {
 			} catch (error) {
 				console.log("Cart badge manager not available");
 			}
-            // show empty cart message before exite the modle
+
+			// show empty cart message before exiting the modal
 			loadCartProducts();
+
 			// Show receipt modal
 			const receiptModal = new bootstrap.Modal(document.getElementById("receiptModal"));
 			receiptModal.show();

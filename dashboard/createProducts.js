@@ -7,7 +7,7 @@ const categories = [
 	{ id: 1, name: "Phones", image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681676/iphone_tsbejx.jpg" },
 	{ id: 2, name: "Computers", image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/laptop_ksseyu.jpg" },
 	{ id: 3, name: "SmartWatch", image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681884/smartwatch_mi1bhk.png" },
-	{ id: 4, name: "Tablets", image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/tablet_vfmlus.jpg" },
+	{ id: 4, name: "Cameras", image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/tablet_vfmlus.jpg" },
 	{ id: 5, name: "HeadPhones", image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/headphone_qmavwj.jpg" },
 	{ id: 6, name: "Gaming", image: "https://res.cloudinary.com/dzcjymfa3/image/upload/v1755681675/laptop_ksseyu.jpg" },
 ];
