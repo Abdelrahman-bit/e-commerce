@@ -119,7 +119,7 @@ background-color:red;
             <h5>Recent Orders 🛒</h5>
             <div class="table-responsive">
               <table class="table table-sm">
-                <thead>
+                <thead class="table-dark">
                   <tr><th>ID</th><th>Customer</th><th>Total</th><th>Status</th></tr>
                 </thead>
                 <tbody>
@@ -169,7 +169,7 @@ background-color:red;
             <h6>🆕 Latest Registered Users</h6>
             <div class="table-responsive">
               <table class="table table-sm table-striped table-hover">
-                <thead class="table-light">
+                <thead class="table-dark">
                   <tr>
                     <th>Name</th>
                     <th>Email</th>
@@ -202,7 +202,7 @@ background-color:red;
             <h6>🔥 Most Active Users</h6>
             <div class="table-responsive">
               <table class="table table-sm table-striped table-hover">
-                <thead class="table-light">
+                <thead class="table-dark">
                   <tr>
                     <th>Name</th>
                     <th>Orders</th>
