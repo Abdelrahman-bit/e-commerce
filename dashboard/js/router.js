@@ -28,7 +28,7 @@ export function loadPage(route) {
 			case "#products":
 				content.innerHTML = products();
 				break;
-			case "#seller-orders":
+			case "#sellerOrders":
 				content.innerHTML = sellerOrders();
 				break;
 			default:
