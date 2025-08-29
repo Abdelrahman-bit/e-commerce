@@ -1,31 +1,90 @@
-  @media (max-width: 576px) {
-        .card h5, .card h6 { font-size: 0.8rem; }
-        .card strong { font-size: 1rem; }
-        table { font-size: 0.7rem; }
-        .list-group-item{font-size: 0.7rem;}
-        .quick-actions span { display: none; } 
-        
-  /* .nav-item {
+@media (max-width: 576px) {
+	.card h5,
+	.card h6 {
+		font-size: 0.8rem;
+	}
+	.card strong {
+		font-size: 1rem;
+	}
+	table {
+		font-size: 0.7rem;
+	}
+	.list-group-item {
+		font-size: 0.7rem;
+	}
+	.quick-actions span {
+		display: none;
+	}
+	#sidebar-desktop {
     display:  none !important; 
   }
-  */
-      }
-        
-      .quick-actions a {
-        margin-right: 10px;
-        text-decoration: none;
-        color: #333;
-        font-size: 0.9rem;
-        display:block;
-        transition: transform 0.2s;
+ 
+}
 
-      }
-         .quick-actions a:hover{
-    transform: scale(1.4);
- }
-        @media(min-width:576px){
-.quick-actions a{
-display:none !important;
-         }
+.quick-actions a {
+	margin-right: 10px;
+	text-decoration: none;
+	color: #333;
+	font-size: 0.9rem;
+	display: block;
+	transition: transform 0.2s;
+}
+.quick-actions a:hover {
+	transform: scale(1.4);
+}
+@media (min-width: 576px) {
+	.quick-actions a {
+		display: none !important;
+	}
+}
 
+
+
+/* Default (large screens) → vertical sidebar */
+.sidebar {
+  background: #f8f9fa;
+  height: 100dvh;
+  border-right: 1px solid #ddd;
+  padding: 1rem 0.5rem;
+  width: 220px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Small screens → top navbar */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    height: auto; /* no fixed height */
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+    flex-direction: row;   /* make it horizontal */
+    justify-content: space-around;
+    align-items: center;
+    padding: 0.5rem;
   }
+
+  .sidebar ul {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-around;
+    margin: 0;
+    padding: 0;
+  }
+
+  .sidebar li {
+    flex: 1;
+    text-align: center;
+    list-style: none;
+  }
+
+  .sidebar a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.85rem;
+    padding: 0.25rem;
+  }
+}

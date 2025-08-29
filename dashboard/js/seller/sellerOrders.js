@@ -9,6 +9,11 @@ export function sellerOrders() {
 
   return `
     <div class="container-fluid p-3">
+    <div class="quick-actions mb-4 d-flex">
+      <a href="#dashboard"><i class="fas fa-tachometer-alt"></i></a>
+      <a href="#products"><i class="fa-solid fa-box-open"></i></a>
+      <a href="#sellerOrders"><i class="fas fa-box"></i></a>
+    </div>
       <h2 class="my-3">Seller Orders</h2>
       <h4>Orders</h4>
 
@@ -26,19 +31,18 @@ export function sellerOrders() {
           </thead>
           <tbody>
             ${
-              sellerOrders.length ? sellerOrders
-                .map((order) => {
-                  const user = users.find((u) => u.email === order.customerEmail);
+				sellerOrders.length
+					? sellerOrders
+							.map((order) => {
+								const user = users.find((u) => u.email === order.customerEmail);
 
-                  const sellerItems = order.items.filter(item => item.sellerEmail === currentUser.email);
+								const sellerItems = order.items.filter((item) => item.sellerEmail === currentUser.email);
 
-                  const productList = sellerItems
-                    .map((item) => `${item.name} (x${item.quantity})`)
-                    .join(", ");
+								const productList = sellerItems.map((item) => `${item.name} (x${item.quantity})`).join(", ");
 
-                  const sellerTotal = sellerItems.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+								const sellerTotal = sellerItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
-                  return `
+								return `
                     <tr>
                       <td>${order.orderId}</td>
                       <td class="text-secondary p-2">${user ? user.name : order.customerName}</td>
@@ -46,20 +50,20 @@ export function sellerOrders() {
                       <td class="text-secondary p-2">$${sellerTotal}</td>
                       <td class="p-2">
                         <span class="badge ${
-                          order.status === "Completed"
-                            ? "bg-secondary"
-                            : order.status === "Pending"
-                            ? "bg-warning text-dark"
-                            : "bg-secondary"
-                        }">${order.status}</span>
+							order.status === "Completed"
+								? "bg-secondary"
+								: order.status === "Pending"
+								? "bg-warning text-dark"
+								: "bg-secondary"
+						}">${order.status}</span>
                       </td>
                       <td class="text-secondary p-2">${new Date(order.orderDate).toLocaleDateString()}</td>
                     </tr>
                   `;
-                })
-                .join("")
-              : `<tr><td colspan="6" class="text-center text-muted">No orders found</td></tr>`
-            }
+							})
+							.join("")
+					: `<tr><td colspan="6" class="text-center text-muted">No orders found</td></tr>`
+			}
           </tbody>
         </table>
       </div>
