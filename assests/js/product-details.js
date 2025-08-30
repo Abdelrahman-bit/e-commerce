@@ -19,7 +19,7 @@ function renderProduct(product) {
   if (!product) return;
 
   // Keep local copy and persist for other pages
-  currentProduct = product;
+  currentProduct = product; // new code => currentProduct = {...product, selectedColor}
   localStorage.setItem("selectedProduct", JSON.stringify(product));
 
   const imgContainer = document.querySelector(".img-OfProduct");
