@@ -11,6 +11,15 @@
   <!-- FontAwesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 </head>
+<style>
+  header{
+    position: fixed;
+    width: 100%;
+    z-index: 100;
+    top: 0;
+    margin-bottom: 20px;
+  }
+</style>
 
 <body>
   <header>
@@ -109,7 +118,7 @@
     if(window.location.pathname === '/dashboard/index.html'){
       console.log(window.location.pathname);
       const cartIcon = document.querySelector('.fa-shopping-cart');
-      cartIcon.closest("div").style.display = "none"; 
+      cartIcon.closest("a").style.display = "none"; 
       
     }
 
