@@ -100,7 +100,8 @@
     </div>
     <!-- Footer -->
     <!-- <footer id="footer"></footer> -->
-    <script>
+    <script type="module">
+        import { hashPassword } from './assests/js/utils.js'
         // Load current user data
         const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
         document.getElementById('name').value = currentUser.name || "";
@@ -144,13 +145,14 @@
         });
 
         // Password Form
-        document.getElementById("passwordForm").addEventListener("submit", function (e) {
+        document.getElementById("passwordForm").addEventListener("submit", async function (e) {
             e.preventDefault();
-            const currentPasswordInput = document.getElementById("currentPassword");
+            const currentPasswordInput = document.getElementById("currentPassword").value;
+            const hashedPassword = await hashPassword(currentPasswordInput);
             const newPasswordInput = document.getElementById("newPassword");
             let valid = true;
 
-            if (currentPasswordInput.value !== currentUser.password) {
+            if (hashedPassword !== currentUser.password) {
                 currentPasswordInput.classList.add("is-invalid");
                 valid = false;
             } else {
@@ -165,7 +167,7 @@
             }
 
             if (valid) {
-                currentUser.password = newPasswordInput.value;
+                currentUser.password = await hashPassword(newPasswordInput.value);
                 localStorage.setItem("currentUser", JSON.stringify(currentUser));
                 showSuccess();
                 setTimeout(() => {

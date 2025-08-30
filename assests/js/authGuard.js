@@ -13,7 +13,8 @@
     "/admin/dashboard.html",
     "/seller/seller-dashboard.html",
     "/seller/seller-orders.html",
-    "/dashboard/index.html"
+    "/dashboard/index.html",
+    "/customer/orders.html"
   ];
 
   // Role restrictions
@@ -49,3 +50,13 @@
     }
   }
 })();
+
+function addFavicon() {
+	const link = document.createElement("link");
+	link.rel = "icon";
+	link.type = "image/png";
+	link.href = "/assests/images/Logo.png"; 
+	document.head.appendChild(link);
+}
+
+addFavicon();

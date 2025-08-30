@@ -1,5 +1,5 @@
-import { addProduct, getProducts, addUser, getUsers, saveCart } from "./storage.js";
-import { users, products } from "./data.js";
+import { addProduct, getProducts, addUser, getUsers, getOrders, addOrder } from "./storage.js";
+import { users, products, dummyOrders } from "./data.js";
 
 // add all the dummy users in local storage
 
@@ -15,6 +15,13 @@ if (getProducts().length === 0) {
 	products.forEach((product) => {
 		addProduct(product);
 	});
+}
+
+// add all the dummy orders to the localstorage in the first load
+if(getOrders().length === 0){
+	dummyOrders.forEach((order)=>{
+		addOrder(order);
+	})
 }
 
 // Add sample cart data for testing (for user with id 3 - ali)

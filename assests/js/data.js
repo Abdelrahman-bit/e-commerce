@@ -394,7 +394,7 @@ export const favorites = [
 	},
 ];
 // Dummy orders data
-const dummyOrders = [
+export const dummyOrders = [
 	{
 		orderId: `ORD-${Date.now()}-A1B2C3`,
 		customerEmail: "ali@example.com",
@@ -500,5 +500,4 @@ const dummyOrders = [
 	},
 ];
 
-// Save dummy orders into localStorage
-localStorage.setItem("orders", JSON.stringify(dummyOrders));
+
