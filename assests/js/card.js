@@ -4,8 +4,7 @@ export function createProductCard({ id, image, name, price, description, categor
 	card.dataset.id = id; // بيحفظ ال اي دي عشان نستخدمه بعدين
 
 	card.innerHTML = `
-        <div class="card text-center shadow-sm h-100 border-0 position-relative">
-            <span class="position-absolute top-0 end-0 p-2 favorite">♡</span>
+        <div class="card text-center shadow-sm h-100 border-0">        
             <img draggable="false" src="${image}" class="card-img-top p-4" alt="${name}">
             <div class="card-body d-flex flex-column">
                 <h5 class="card-title">${name}</h5>
@@ -19,11 +18,11 @@ export function createProductCard({ id, image, name, price, description, categor
     `;
 
 	// toggle favorite red heart
-	const fav = card.querySelector(".favorite");
-	fav.addEventListener("click", function () {
-		fav.classList.toggle("active");
-		fav.textContent = fav.classList.contains("active") ? "♥" : "♡";
-	});
+	// const fav = card.querySelector(".favorite");
+	// fav.addEventListener("click", function () {
+	// 	fav.classList.toggle("active");
+	// 	fav.textContent = fav.classList.contains("active") ? "♥" : "♡";
+	// });
 
 	// If btnAction is provided → attach it to the view details button
 	if (btnAction) {
