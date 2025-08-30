@@ -57,6 +57,66 @@
         .continue-shopping-btn {
             animation: pulse 2.5s infinite;
         }
+
+        /* cart items fix layout */
+        /* shared */
+        .quantity-input {
+            width: 52px;
+            text-align: center;
+        }
+
+        .quantity-btn {
+            width: 34px;
+            height: 34px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background: #fff;
+        }
+
+        .quantity-btn i {
+            pointer-events: none;
+        }
+
+        /* MOBILE: neat 1-line grid for price | qty | total | remove */
+        .cart-mobile {
+            display: grid;
+            grid-template-columns: auto auto 1fr auto;
+            /* unit | qty | total grows | remove */
+            align-items: center;
+            column-gap: .75rem;
+        }
+
+        .cart-mobile .unit,
+        .cart-mobile .total {
+            white-space: nowrap;
+        }
+
+        .cart-mobile .total {
+            justify-self: end;
+        }
+
+        /* push total to the right */
+        .cart-mobile .qty {
+            justify-self: center;
+        }
+
+        .cart-mobile .remove-btn {
+            justify-self: end;
+        }
+
+        /* DESKTOP tweaks */
+        @media (min-width: 768px) {
+            .cart-item h5 {
+                max-width: 100%;
+            }
+        }
+
+        /* Optional visuals */
+        .cart-item {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .04);
+        }
     </style>
 </head>
 
@@ -138,41 +198,72 @@
                 const cartContainer = document.getElementById('cart-items');
                 cartContainer.innerHTML = this.cart.map((item, index) => `
                     <div class="cart-item p-3">
-                        <div class="row align-items-center g-2 g-md-3">
-                            <div class="col-md-2 col-4 order-1 order-md-1">
-                                <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                        <div class="row g-3 align-items-center">
+
+                            <!-- Image -->
+                            <div class="col-4 col-md-2">
+                            <img src="${item.image}" alt="${item.name}" class="img-fluid rounded-3">
                             </div>
-                            <div class="col-md-4 col-8 order-2 order-md-2">
-                                <div class="cart-item-details">
-                                    <h5>${item.name}</h5>
-                                    <p class="text-muted mb-0">${item.category}</p>
+
+                            <!-- Title + category -->
+                            <div class="col-8 col-md-4">
+                            <h5 class="mb-1 text-truncate">${item.name}</h5>
+                            <p class="text-muted mb-0 small">${item.category}</p>
+                            </div>
+
+                            <!-- MOBILE controls (single row: price | qty | total | remove) -->
+                            <div class="col-12 d-md-none">
+                            <div class="cart-mobile">
+                                <div class="unit fw-bold">$${item.price}</div>
+
+                                <div class="qty d-inline-flex align-items-center gap-2">
+                                <button class="quantity-btn" onclick="cartManager.updateQuantity(${index}, -1)">
+                                    <i class="fas fa-minus"></i>
+                                </button>
+                                <input type="number" class="quantity-input" value="${item.quantity}"
+                                        min="1" max="${item.stock}" onchange="cartManager.updateQuantityInput(${index}, this.value)">
+                                <button class="quantity-btn" onclick="cartManager.updateQuantity(${index}, 1)">
+                                    <i class="fas fa-plus"></i>
+                                </button>
                                 </div>
-                            </div>
-                            <div class="col-md-2 col-6 col-price order-3 order-md-3">
-                                <div class="cart-item-price">$${item.price}</div>
-                            </div>
-                            <div class="col-md-2 col-5 col-qty order-4 order-md-4">
-                                <div class="quantity-controls">
-                                    <button class="quantity-btn" onclick="cartManager.updateQuantity(${index}, -1)">
-                                        <i class="fas fa-minus"></i>
-                                    </button>
-                                    <input type="number" class="quantity-input" value="${item.quantity}" 
-                                            min="1" max="${item.stock}" onchange="cartManager.updateQuantityInput(${index}, this.value)">
-                                    <button class="quantity-btn" onclick="cartManager.updateQuantity(${index}, 1)">
-                                        <i class="fas fa-plus"></i>
-                                    </button>
-                                </div>
-                            </div>
-                            <div class="col-md-1 col-7 col-total order-5 order-md-5">
-                                <div class="cart-item-price">$${(item.price * item.quantity)}</div>
-                            </div>
-                            <div class="col-md-1 col-6 col-remove text-start text-md-end mt-2 mt-md-0 order-6 order-md-6">
-                                <button class="remove-btn" onclick="cartManager.removeItem(${index})">
-                                    <i class="fas fa-trash"></i>
+
+                                <div class="total fw-bold text-dark">$${(item.price * item.quantity)}</div>
+
+                                <button class="remove-btn btn btn-sm btn-outline-danger"
+                                        onclick="cartManager.removeItem(${index})" aria-label="Remove">
+                                <i class="fas fa-trash"></i>
                                 </button>
                             </div>
+                            </div>
+
+                            <!-- DESKTOP columns -->
+                            <div class="col-md-2 d-none d-md-block text-center fw-bold">$${item.price}</div>
+
+                            <div class="col-md-2 d-none d-md-flex justify-content-center align-items-center">
+                            <button class="quantity-btn" onclick="cartManager.updateQuantity(${index}, -1)">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <input type="number" class="quantity-input mx-2" value="${item.quantity}"
+                                    min="1" max="${item.stock}" onchange="cartManager.updateQuantityInput(${index}, this.value)">
+                            <button class="quantity-btn" onclick="cartManager.updateQuantity(${index}, 1)">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                            </div>
+
+                            <div class="col-md-1 d-none d-md-block text-center fw-bold text-dark">
+                            $${(item.price * item.quantity)}
+                            </div>
+
+                            <div class="col-md-1 d-none d-md-flex justify-content-end">
+                            <button class="remove-btn btn btn-sm btn-outline-danger"
+                                    onclick="cartManager.removeItem(${index})" aria-label="Remove">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            </div>
+
                         </div>
                     </div>
+
                 `).join('');
             }
 

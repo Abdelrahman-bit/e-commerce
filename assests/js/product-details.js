@@ -141,7 +141,7 @@ if (addToCartBtn) {
 
     // Update cart badge
     try {
-      const { cartBadgeManager } = await import("./assests/js/cartBadge.js");
+      const { cartBadgeManager } = await import("./cartBadge.js");
       cartBadgeManager.addItemToCart();
     } catch (error) {
       console.log("Cart badge manager not available");

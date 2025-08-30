@@ -431,7 +431,7 @@ export const dummyOrders = [
 		shipping: 0,
 		total: 798,
 		status: "Completed",
-		orderDate: new Date().toISOString(),
+		orderDate: "2025-08-28T18:50:29.410Z",
 	},
 	{
 		orderId: `ORD-${Date.now()}-D4E5F6`,
@@ -458,7 +458,7 @@ export const dummyOrders = [
 		shipping: 10,
 		total: 1378,
 		status: "Processing",
-		orderDate: new Date().toISOString(),
+		orderDate: "2025-08-29T18:50:29.410Z",
 	},
 	{
 		orderId: `ORD-${Date.now()}-G7H8I9`,
@@ -496,7 +496,7 @@ export const dummyOrders = [
 		shipping: 0,
 		total: 1140,
 		status: "Shipped",
-		orderDate: new Date().toISOString(),
+		orderDate: "2025-08-30T18:50:29.410Z",
 	},
 ];
 
