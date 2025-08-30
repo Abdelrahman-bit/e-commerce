@@ -6,11 +6,16 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="../assests/css/bootstrap.min.css">
   <link rel="stylesheet" href="../components/style.css" />
+  <link rel="stylesheet" href="../assests/css/cartBadge.css" />
+
   <script type="module">
     import { loadComponent } from '../assests/js/utils.js';
     // Load header and footer components
     loadComponent('header', '../components/header.html');
     loadComponent('footer', '../components/footer.html');
+    setTimeout(() => {
+        import("../assests/js/cartBadge.js");
+      }, 1000);
   </script>
   <title>Orders page</title>
 </head>

@@ -24,7 +24,14 @@
 
   <body>
     <header id="header"></header>
-    <div class="main-container px-3 px-md-4">
+    <!-- breadcrumb -->
+    <nav style="--bs-breadcrumb-divider: '>'; margin-top: 4rem; margin-bottom: 1rem; padding-left: 2rem" aria-label="breadcrumb">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="/Products.html">products</a></li>
+        <li class="breadcrumb-item active" aria-current="page"> product details </li>
+      </ol>
+    </nav>
+    <div class="main-container px-3 px-md-4" style="margin-top: 1rem !important;">
       <div class="container my-5">
         <div class="row g-4 align-items-start">
           <!-- Product display -->
