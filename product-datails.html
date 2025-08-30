@@ -11,9 +11,7 @@
     <link rel="stylesheet" href="./assests/css/cartBadge.css" />
     <title>details</title>
 
-    <style>
-     
-    </style>
+    <style></style>
 
     <script type="module">
       import { loadComponent } from "./assests/js/utils.js";
@@ -122,11 +120,13 @@
         productName.textContent = product.name || "Product";
         imgContainer.src = product.image || "";
         imgContainer.alt = product.name || "Product";
-        priceContainer.textContent = `$${Number(product.price || 0).toFixed(2)}`;
+        priceContainer.textContent = `$${Number(
+          (product.price || 0) * 1.5
+        ).toFixed(2)}`;
         descriptionProduct.textContent =
           product.description || "No description available.";
 
-        const discounted = (Number(product.price || 0) * 0.8).toFixed(2);
+        const discounted = Number(product.price || 0).toFixed(2);
         priceDiscounted.textContent = `$${discounted}`;
 
         // Load similar products
