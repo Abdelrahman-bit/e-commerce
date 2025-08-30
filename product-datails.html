@@ -54,7 +54,7 @@
             </p>
             <button
               id="AddToCart-Btn"
-              class="btn btn-dark w-100 w-md-auto px-4 py-2 mt-3"
+              class="btn btn-dark w-100 w-md-auto px-4 py-2 mt-3 add-to-cart-btn"
             >
               Add to Cart
             </button>
@@ -107,88 +107,7 @@
 
     <footer id="footer"></footer>
 
-    <script>
-      const product = JSON.parse(localStorage.getItem("selectedProduct"));
-
-      if (product) {
-        const imgContainer = document.querySelector(".img-OfProduct");
-        const productName = document.querySelector(".product-OfName");
-        const priceContainer = document.querySelector(".price-OfProduct");
-        const descriptionProduct = document.querySelector(".desk-OfProduct");
-        const priceDiscounted = document.querySelector(".priceDiscounted");
-
-        productName.textContent = product.name || "Product";
-        imgContainer.src = product.image || "";
-        imgContainer.alt = product.name || "Product";
-        priceContainer.textContent = `$${Number(
-          (product.price || 0) * 1.5
-        ).toFixed(2)}`;
-        descriptionProduct.textContent =
-          product.description || "No description available.";
-
-        const discounted = Number(product.price || 0).toFixed(2);
-        priceDiscounted.textContent = `$${discounted}`;
-
-        // Load similar products
-        const products = JSON.parse(localStorage.getItem("products")) || [];
-        const similar = products
-          .filter((p) => p.category === product.category && p.id !== product.id)
-          .slice(0, 5);
-
-        const container = document.getElementById("similarProductsContainer");
-        if (container) {
-          if (similar.length > 0) {
-            container.innerHTML = similar
-              .map(
-                (p) => `
-              <div class="col-12 col-sm-6 col-md-4 col-lg-3 mb-4">
-                <div class="card h-100 shadow-sm">
-                  <img src="${p.image || ""}" class="card-img-top" alt="${
-                  p.name || "Product"
-                }">
-                  <div class="card-body d-flex flex-column text-center">
-                    <h6 class="card-title fw-bold text-truncate" title="${
-                      p.name || ""
-                    }">${p.name || "Product"}</h6>
-                    <p class="card-text text-muted mb-2">$${Number(
-                      p.price || 0
-                    ).toFixed(2)}</p>
-                    <button class="btn btn-outline-dark mt-auto viewProductBtn" data-id="${
-                      p.id
-                    }">
-                      View Details
-                    </button>
-                  </div>
-                </div>
-              </div>
-            `
-              )
-              .join("");
-
-            // Add event listeners
-            container.querySelectorAll(".viewProductBtn").forEach((btn) => {
-              btn.addEventListener("click", (e) => {
-                const id = e.currentTarget.getAttribute("data-id");
-                const selected = products.find(
-                  (p) => String(p.id) === String(id)
-                );
-                if (selected) {
-                  localStorage.setItem(
-                    "selectedProduct",
-                    JSON.stringify(selected)
-                  );
-                  location.reload();
-                }
-              });
-            });
-          } else {
-            container.innerHTML =
-              '<p class="text-muted">No similar products found.</p>';
-          }
-        }
-      }
-    </script>
-
+    <script src="./assests/js/product-details.js"></script>
     <script src="./assests/js/authGuard.js"></script>
   </body>
 </html>
