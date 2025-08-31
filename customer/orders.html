@@ -1,33 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../assests/css/bootstrap.min.css">
-    <link rel="stylesheet" href="../components/style.css" />
-    <script src="../assests/js/bootstrap.bundle.min.js" defer></script>
-    <script type="module">
-        import { loadComponent } from '../assests/js/utils.js';
-        // Load header and footer components
-        loadComponent('header', '../components/header.html');
-        loadComponent('footer', '../components/footer.html');
-    </script>
-    <title>Orders page</title>
-</head>
-<body>
-    <header id="header"></header>
 
-    <main class="main-content">
-      <div class="container">
-        <div class="row">
-          <div class="col-12 text-center my-5">
-            <h2>Your Orders</h2>
-            <p class="lead">Review your past orders below</p>
-          </div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../assests/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../components/style.css" />
+  <link rel="stylesheet" href="../assests/css/cartBadge.css" />
+
+  <script type="module">
+    import { loadComponent } from '../assests/js/utils.js';
+    // Load header and footer components
+    loadComponent('header', '../components/header.html');
+    loadComponent('footer', '../components/footer.html');
+    setTimeout(() => {
+        import("../assests/js/cartBadge.js");
+      }, 1000);
+  </script>
+  <title>Orders page</title>
+</head>
+
+<body>
+  <header id="header"></header>
+
+  <main class="main-content" style="margin-top: 2rem !important;">
+    <div class="container">
+      <!-- empty message -->
+      <div id="empty" class="row d-none">
+        <div class="col-12 text-center my-5">
+          <h2>Your Orders</h2>
+          <p class="lead">Review your past orders</p>
         </div>
       </div>
-    </main>
+      
+      <div id="orders"></div>
 
-    <footer id="footer"></footer>
+      </div>
+    </div>
+  </main>
+
+  <footer id="footer"></footer>
+  <script>
+    const customerOrders  = document.querySelector('#orders');
+    customerOrders.innerHTML = cutomerOrders();
+    function cutomerOrders() {
+      const orders = JSON.parse(localStorage.getItem("orders")) || [];
+      const users = JSON.parse(localStorage.getItem("users")) || [];
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+
+      const cutomerOrders = orders.filter(order =>
+        order.items.some(item => order.customerEmail === currentUser.email)
+      );
+      const emptyMessage = document.querySelector('#empty');
+      cutomerOrders.length === 0 && emptyMessage.classList.remove('d-none')
+      
+
+      return `
+    <div class="container-fluid p-3">
+      <h2 class="my-3">My Orders</h2>
+      <div class="table-responsive">
+        <table class="table border table-striped table-hover">
+          <thead>
+            <tr class="table-dark">
+              <th scope="col">Order ID</th>
+              <th scope="col">Customer</th>
+              <th scope="col">Products</th>
+              <th scope="col">Total</th>
+              <th scope="col">Status</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${cutomerOrders.length
+          ? cutomerOrders
+            .map((order) => {
+              const user = users.find((u) => u.email === order.customerEmail);
+
+              const sellerItems = order.items.filter((item) => order.customerEmail === currentUser.email);
+
+              const productList = sellerItems.map((item) => `${item.name} (x${item.quantity})`).join(", ");
+
+              const sellerTotal = sellerItems.reduce((sum, item) => sum + item.price * item.quantity, 0);
+
+              return `
+                    <tr>
+                      <td>${order.orderId}</td>
+                      <td class="text-secondary p-2">${user ? user.name : order.customerName}</td>
+                      <td class="text-secondary p-2">${productList}</td>
+                      <td class="text-secondary p-2">$${sellerTotal}</td>
+                      <td class="p-2">
+                        <span class="badge ${order.status === "Completed"
+                  ? "bg-secondary"
+                  : order.status === "Pending"
+                    ? "bg-warning text-dark"
+                    : "bg-secondary"
+                }">${order.status}</span>
+                      </td>
+                      <td class="text-secondary p-2">${new Date(order.orderDate).toLocaleDateString()}</td>
+                    </tr>
+                  `;
+            })
+            .join("")
+          : `<tr><td colspan="6" class="text-center text-muted">No orders found</td></tr>`
+        }
+          </tbody>
+        </table>
+      </div>
+    </div>
+  `;
+    }
+
+  </script>
 </body>
+
 </html>

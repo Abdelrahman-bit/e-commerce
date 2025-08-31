@@ -1,3 +1,4 @@
+import {hashPassword} from '../../../assests/js/utils.js'
 export function Users() {
   const allusers = JSON.parse(localStorage.getItem("users")) || [];
   const filteredUsers = allusers.filter(u => u.role !== "admin");
@@ -54,6 +55,7 @@ export function Users() {
         <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> </a>
         <a href="#users"><i class="fas fa-users"></i> </a>
         <a href="#admin-orders"><i class="fas fa-box"></i></a>
+        <a href="#admin-products"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
         <a href="#analytics"><i class="fas fa-chart-line"></i> </a>
       </div>
     <h2 class="mb-3">Manage Users</h2>
@@ -132,14 +134,14 @@ export function Users() {
 
   setTimeout(() => {
     document.querySelectorAll(".save-edit-btn").forEach(btn => {
-      btn.addEventListener("click", e => {
+      btn.addEventListener("click", async (e) => {
         const id = e.target.dataset.id;
         const form = document.getElementById(`form-${id}`);
         const updatedUser = {
-          ...allusers.find(u => u.id == id),
-          name: form.name.value,
-          password: form.password.value,
-        };
+        ...allusers.find((u) => u.id == id),
+        name: form.name.value,
+        password: await hashPassword(form.password.value),
+      };
         const newUsers = allusers.map(u => (u.id == id ? updatedUser : u));
         localStorage.setItem("users", JSON.stringify(newUsers));
         location.reload();

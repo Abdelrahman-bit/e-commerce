@@ -27,7 +27,7 @@
     <!-- Header Navigation -->
     <header id="header"></header>
 
-    <div class="profile mt-5">
+    <div class="profile " style="margin-top: 5rem !important;">
         <h2 class="mb-4 text-center">Edit Profile</h2>
 
         <div id="successMsg" class="alert alert-success d-none" role="alert">
@@ -100,7 +100,8 @@
     </div>
     <!-- Footer -->
     <!-- <footer id="footer"></footer> -->
-    <script>
+    <script type="module">
+        import { hashPassword } from './assests/js/utils.js'
         // Load current user data
         const currentUser = JSON.parse(localStorage.getItem('currentUser')) || {};
         document.getElementById('name').value = currentUser.name || "";
@@ -144,13 +145,14 @@
         });
 
         // Password Form
-        document.getElementById("passwordForm").addEventListener("submit", function (e) {
+        document.getElementById("passwordForm").addEventListener("submit", async function (e) {
             e.preventDefault();
-            const currentPasswordInput = document.getElementById("currentPassword");
+            const currentPasswordInput = document.getElementById("currentPassword").value;
+            const hashedPassword = await hashPassword(currentPasswordInput);
             const newPasswordInput = document.getElementById("newPassword");
             let valid = true;
 
-            if (currentPasswordInput.value !== currentUser.password) {
+            if (hashedPassword !== currentUser.password) {
                 currentPasswordInput.classList.add("is-invalid");
                 valid = false;
             } else {
@@ -165,7 +167,7 @@
             }
 
             if (valid) {
-                currentUser.password = newPasswordInput.value;
+                currentUser.password = await hashPassword(newPasswordInput.value);
                 localStorage.setItem("currentUser", JSON.stringify(currentUser));
                 showSuccess();
                 setTimeout(() => {
@@ -182,9 +184,7 @@
             }, 2000);
         }
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
     <script src="./assests/js/authGuard.js"></script>  
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

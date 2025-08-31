@@ -39,10 +39,11 @@ export function adminProducts() {
     </style>
 
     <div class="container mt-4">
-    <div class="quick-actions mb-4 d-flex">
+      <div class="quick-actions mb-4 d-flex">
         <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> </a>
         <a href="#users"><i class="fas fa-users"></i> </a>
         <a href="#admin-orders"><i class="fas fa-box"></i></a>
+        <a href="#admin-products"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
         <a href="#analytics"><i class="fas fa-chart-line"></i> </a>
       </div>
       <h2 class="mb-3">Products Dashboard</h2>
@@ -63,9 +64,9 @@ export function adminProducts() {
           </thead>
           <tbody id="productsTbody">
             ${products
-				.map(
-					(p) => `
-              <tr>
+              .map(
+                (p) => `
+              <tr data-id="${p.id}">
                 <td>${p.id}</td>
                 <td><img src="${p.image}" width="50" height="50" class="rounded"></td>
                 <td>${p.name}</td>
@@ -79,8 +80,8 @@ export function adminProducts() {
                 </td>
               </tr>
             `
-				)
-				.join("")}
+              )
+              .join("")}
           </tbody>
         </table>
       </div>
@@ -88,8 +89,8 @@ export function adminProducts() {
       <!-- Mobile Cards -->
       <div id="productCards" class="d-block d-sm-none">
         ${products
-			.map(
-				(p) => `
+          .map(
+            (p) => `
           <div class="product-card" data-id="${p.id}">
             <img src="${p.image}" alt="${p.name}">
             <p><strong>ID:</strong> ${p.id}</p>
@@ -104,8 +105,8 @@ export function adminProducts() {
             </div>
           </div>
         `
-			)
-			.join("")}
+          )
+          .join("")}
       </div>
     </div>
 
@@ -157,8 +158,14 @@ export function adminProducts() {
                 </div>
               </div>
               <div class="mb-3">
-                <label class="form-label">Image URL</label>
-                <input type="text" class="form-control" id="editImage" required>
+                <label class="form-label">Image</label>
+                <div class="d-flex align-items-center gap-2">
+                  <input type="text" class="form-control" id="editImage" placeholder="Upload or paste URL" required>
+                  <button type="button" class="btn btn-outline-secondary" id="editUploadBtn">
+                    <i class="fas fa-cloud-upload-alt me-1"></i> Upload
+                  </button>
+                </div>
+                <div id="editImagePreview" class="mt-2"></div>
               </div>
               <div class="mb-3">
                 <label class="form-label">Description</label>
@@ -221,6 +228,9 @@ export function adminProducts() {
           document.getElementById("editImage").value = product.image;
           document.getElementById("editDescription").value = product.description;
           document.getElementById("editSellerEmail").value = product.sellerEmail;
+          document.getElementById("editImagePreview").innerHTML = `
+            <img src="${product.image}" class="img-fluid rounded" style="max-height:150px; object-fit:cover;">
+          `;
           new bootstrap.Modal(editModalEl).show();
         }
 
@@ -234,6 +244,35 @@ export function adminProducts() {
         }
       });
     });
+
+    // Cloudinary Upload Widget for Edit Modal
+    const openCloudinaryEditWidget = () => {
+      const widget = cloudinary.createUploadWidget(
+        {
+          cloudName: "di6z8fske",
+          uploadPreset: "unsigned_preset",
+          folder: "ecommerce-products",
+          cropping: true,
+          croppingAspectRatio: 1,
+          multiple: false,
+          sources: ["local", "url", "camera"],
+          clientAllowedFormats: ["jpg", "png", "jpeg", "webp"],
+          maxFileSize: 2000000,
+          transformation: [{ width: 500, height: 500, crop: "fill", quality: "auto", format: "auto" }],
+        },
+        (error, result) => {
+          if (!error && result && result.event === "success") {
+            const url = result.info.secure_url;
+            document.getElementById("editImage").value = url;
+            document.getElementById("editImagePreview").innerHTML = `
+              <img src="${url}" class="img-fluid rounded" style="max-height:150px; object-fit:cover;">
+            `;
+          }
+        }
+      );
+      widget.open();
+    };
+    document.getElementById("editUploadBtn").addEventListener("click", openCloudinaryEditWidget);
 
     // EDIT FORM SUBMIT
     editForm.addEventListener("submit", (e) => {
@@ -258,7 +297,7 @@ export function adminProducts() {
 
       // Update both table and card views
       const row = [...document.querySelectorAll("tr")].find(
-        (r) => parseInt(r.cells[0]?.textContent, 10) === id
+        (r) => parseInt(r.dataset.id || r.cells[0]?.textContent, 10) === id
       );
       if (row) {
         row.cells[2].textContent = products[idx].name;

@@ -11,8 +11,7 @@
 
 .main-container {
   min-width: 360px;
-  /* padding: 0 10px; */
-  /* width: 100%; */
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,15 +28,13 @@ section.s1 > * {
 }
 .left-sec {
   gap: 30px;
-  /* width: 330px; */
-  /* couldnt add gap in bootstrap, as it is 4 not 5  */
+
 }
 .left-sec,
 .right-sec {
   max-width: 540px;
 }
 .left-sec .sub-cont-onephone {
-  /* width: 330px; */
   height: 330px;
   img {
     width: 100%;
@@ -46,10 +43,8 @@ section.s1 > * {
   }
 }
 .left-sec .sub-cont-morephones {
-  /* justify-content: space-between; */
   gap: 10px;
   .cover {
-    /* width: 100px; */
     height: 65px;
     img {
       width: 100%;
@@ -59,18 +54,15 @@ section.s1 > * {
   }
 }
 
-/* .right-sec .price  */
 .price {
   font-family: "SF Pro Display";
   font-size: 2rem;
   font-weight: 500;
-  /* span::last-child {
-  } */
+ 
   del {
     font-size: 1.5rem;
     font-weight: 400;
     color: gray;
-    /* color: red; */
 
     margin-left: 10px;
   }
@@ -131,7 +123,6 @@ section.s1 > * {
   }
   .spec-text {
     width: 100%;
-    /* text-align: center; */
     margin-left: 10px;
 
     p {
@@ -147,12 +138,7 @@ section.s1 > * {
 .btns {
   margin: 20px 0;
   gap: 20px;
-  /* .btn {
-    height: 55px;
-    border-radius: 8px;
-    border: 1px solid black;
-    min-width: 165px;
-  } */
+  
   .wishBtn {
     background-color: #fff;
     color: #000;
@@ -161,7 +147,6 @@ section.s1 > * {
     background-color: #000;
     color: #fff;
   }
-  /* height: 130px; */
 }
 
 .btnView {
@@ -175,13 +160,11 @@ section.s1 > * {
   margin-top: 10px;
   width: 100%;
   margin: 0 auto;
-  /* background-color: aqua; */
 }
 .features > div {
   padding: 0;
   .feature-item {
-    /* width: 95px; */
-    /* padding-inline: 5px; */
+   
     gap: 10px;
 
     i {
@@ -192,7 +175,6 @@ section.s1 > * {
       border-radius: 10px;
       background-color: lightgrey;
       text-align: center;
-      /* margin-bottom: 20px; */
     }
     p {
       margin-bottom: 5px;
@@ -219,35 +201,35 @@ section.s1 > * {
     margin: 0 auto;
   }
 }
-/* Add margin to separate items on wrapped lines */
-/* .storage-item:not(:last-child) {
-  margin-right: 10px;
-}
-.storage-item:nth-child(n + 3) {
-  margin-top: 10px;
-} */
- /* Uniform image size but fully visible */
+
       .similar-products .card-img-top {
-        height: 200px;              /* all images same height */
-        object-fit: contain;        /* show full image */
-        background: #fff;           /* white background for empty space */
-        padding: 10px;              /* spacing inside */
+        height: 200px;              
+        object-fit: contain;       
+        background: #fff;           
+        padding: 10px;             
         transition: transform 0.3s ease;
       }
 
-      /* Hover zoom on image */
       .similar-products .card:hover .card-img-top {
         transform: scale(1.05);
       }
 
-      /* Card hover effect */
       .similar-products .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-  overflow: hidden;      /* keep image inside card borders */
-  border-radius: 0.75rem; /* match Bootstrap rounded */
+  overflow: hidden;     
+  border-radius: 0.75rem; 
 }
 
       .similar-products .card:hover {
         transform: translateY(-5px);
         box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+      }
+
+      .img-OfProduct {
+        width: 400px;        
+        height: 400px;        
+        object-fit: contain; 
+        background-color: #f8f9fa; 
+        display: block;
+        margin: 0 auto;       
       }
