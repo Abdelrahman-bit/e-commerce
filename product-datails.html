@@ -9,6 +9,29 @@
     <link rel="stylesheet" href="./assests/css/style.css" />
     <link rel="stylesheet" href="./assests/css/cartBadge.css" />
     <title>details</title>
+    <style>
+  .color-circle {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+  border: 2px solid #ccc; 
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.color-circle:hover {
+  transform: scale(1.1);
+}
+
+.color-circle.selected {
+  border: 2px solid black;
+}
+
+
+
+
+    </style>
 
     <script type="module">
       import { loadComponent } from "./assests/js/utils.js";
@@ -23,13 +46,26 @@
   <body>
     <header id="header"></header>
     <!-- breadcrumb -->
-    <nav style="--bs-breadcrumb-divider: '>'; margin-top: 4rem; margin-bottom: 1rem; padding-left: 2rem" aria-label="breadcrumb">
+    <nav
+      style="
+        --bs-breadcrumb-divider: '>';
+        margin-top: 4rem;
+        margin-bottom: 1rem;
+        padding-left: 2rem;
+      "
+      aria-label="breadcrumb"
+    >
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="/Products.html">products</a></li>
-        <li class="breadcrumb-item active" aria-current="page"> product details </li>
+        <li class="breadcrumb-item active" aria-current="page">
+          product details
+        </li>
       </ol>
     </nav>
-    <div class="main-container px-3 px-md-4" style="margin-top: 1rem !important;">
+    <div
+      class="main-container px-3 px-md-4"
+      style="margin-top: 1rem !important"
+    >
       <div class="container my-5">
         <div class="row g-4 align-items-start">
           <div class="col-12 col-md-6 text-center text-md-start">
@@ -54,10 +90,26 @@
             <div class="color-options">
               <p class="fw-bold mb-2">Available Colors:</p>
               <div>
-                <span class="color-circle" style="background-color: black;" data-color="Black"></span>
-                <span class="color-circle" style="background-color: white; border:1px solid #ccc;" data-color="White"></span>
-                <span class="color-circle" style="background-color: blue;" data-color="Blue"></span>
-                <span class="color-circle" style="background-color: red;" data-color="Red"></span>
+                <span
+                  class="color-circle"
+                  style="background-color: black"
+                  data-color="Black"
+                ></span>
+                <span
+                  class="color-circle"
+                  style="background-color: gray;"
+                  data-color="Gray"
+                ></span>
+                <span
+                  class="color-circle"
+                  style="background-color: blue"
+                  data-color="Blue"
+                ></span>
+                <span
+                  class="color-circle"
+                  style="background-color: gold"
+                  data-color="Gold"
+                ></span>
               </div>
             </div>
 
@@ -123,17 +175,18 @@
     <footer id="footer"></footer>
 
     <script>
-      // ✅ Handle color selection
-      document.addEventListener("DOMContentLoaded", () => {
-        const circles = document.querySelectorAll(".color-circle");
-        circles.forEach(circle => {
-          circle.addEventListener("click", () => {
-            circles.forEach(c => c.classList.remove("selected"));
-            circle.classList.add("selected");
-            console.log("Selected color:", circle.dataset.color);
-          });
-        });
+  // ✅ Handle color selection
+  document.addEventListener("DOMContentLoaded", () => {
+    const circles = document.querySelectorAll(".color-circle");
+    circles.forEach(circle => {
+      circle.addEventListener("click", () => {
+        circles.forEach(c => c.classList.remove("selected"));
+        circle.classList.add("selected");
+        console.log("Selected color:", circle.dataset.color);
       });
+    });
+  });
+
     </script>
 
     <script src="./assests/js/product-details.js"></script>

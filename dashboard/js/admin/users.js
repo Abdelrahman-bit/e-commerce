@@ -55,6 +55,7 @@ export function Users() {
         <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> </a>
         <a href="#users"><i class="fas fa-users"></i> </a>
         <a href="#admin-orders"><i class="fas fa-box"></i></a>
+        <a href="#admin-products"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
         <a href="#analytics"><i class="fas fa-chart-line"></i> </a>
       </div>
     <h2 class="mb-3">Manage Users</h2>

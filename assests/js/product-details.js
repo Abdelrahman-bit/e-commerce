@@ -18,9 +18,12 @@ function scrollToTopRobust() {
 function renderProduct(product) {
   if (!product) return;
 
+  // Get previously selected color if exists
+  let selectedColor = currentProduct?.selectedColor || null;
+
   // Keep local copy and persist for other pages
-  currentProduct = product; // new code => currentProduct = {...product, selectedColor}
-  localStorage.setItem("selectedProduct", JSON.stringify(product));
+  currentProduct = { ...product, selectedColor }; // <-- add selectedColor
+  localStorage.setItem("selectedProduct", JSON.stringify(currentProduct));
 
   const imgContainer = document.querySelector(".img-OfProduct");
   const productName = document.querySelector(".product-OfName");
@@ -85,6 +88,27 @@ function renderProduct(product) {
   } else {
     container.innerHTML = '<p class="text-muted">No similar products found.</p>';
   }
+
+  // -------------------------
+  // ✅ Color Selection Logic
+  // -------------------------
+  const colorCircles = document.querySelectorAll(".color-circle");
+  // Mark previously selected color
+  colorCircles.forEach(c => {
+    if (c.dataset.color === selectedColor) c.classList.add("selected");
+  });
+
+  colorCircles.forEach(c => {
+    c.addEventListener("click", () => {
+      colorCircles.forEach(c2 => c2.classList.remove("selected"));
+      c.classList.add("selected");
+      selectedColor = c.dataset.color;
+
+      // Update currentProduct with selected color
+      currentProduct = { ...product, selectedColor };
+      localStorage.setItem("selectedProduct", JSON.stringify(currentProduct));
+    });
+  });
 }
 
 // Initial render on first load
@@ -92,7 +116,9 @@ window.addEventListener("DOMContentLoaded", () => {
   renderProduct(currentProduct);
 });
 
+// -------------------------
 // ADD TO CART
+// -------------------------
 const addToCartBtn = document.querySelector(".add-to-cart-btn");
 if (addToCartBtn) {
   addToCartBtn.addEventListener("click", async () => {
@@ -120,18 +146,23 @@ if (addToCartBtn) {
     const cart = JSON.parse(localStorage.getItem(`cart_${currentUser.id}`)) || [];
 
     // Check if product already exists in cart
-    const existingItem = cart.find((item) => item.id === currentProduct.id);
+    const existingItem = cart.find(
+      (item) =>
+        item.id === currentProduct.id &&
+        item.selectedColor === currentProduct.selectedColor // differentiate by color
+    );
 
     if (existingItem) {
       // Update quantity if product exists
       existingItem.quantity += 1;
-      if (existingItem.quantity > existingItem.stock) {
-        existingItem.quantity = existingItem.stock;
+      if (existingItem.quantity > (existingItem.stock || 10)) {
+        existingItem.quantity = existingItem.stock || 10;
       }
     } else {
       // Add new product to cart
       cart.push({
         ...currentProduct,
+        selectedColor: currentProduct.selectedColor ,
         quantity: 1,
       });
     }
